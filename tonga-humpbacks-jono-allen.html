@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonga Humpback Whale Expedition | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #0a1628;
+    --ocean: #0d2847;
+    --teal: #2dd4bf;
+    --teal-dim: rgba(45, 212, 191, 0.08);
+    --sand: #f5f0eb;
+    --white: #ffffff;
+    --grey-light: #94a3b8;
+    --grey-mid: #64748b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--white);
+    background: var(--deep);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ─────────────────────────────── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px 40px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/6626421806f27b9d69c9a5bd_tonga-01.webp') center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom,
+      rgba(10,22,40,0.3) 0%, rgba(10,22,40,0.05) 30%,
+      rgba(10,22,40,0.6) 70%, rgba(10,22,40,0.97) 100%);
+  }
+  .hero-logo { position: absolute; top: 40px; left: 40px; z-index: 2; }
+  .hero-logo img { height: 36px; opacity: 0.9; }
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 20px;
+  }
+  .hero-tag span { width: 24px; height: 1px; background: var(--teal); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 700; line-height: 1.05; margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: 18px; color: var(--grey-light); line-height: 1.6; max-width: 540px;
+  }
+  .hero-meta {
+    position: relative; z-index: 2;
+    display: flex; gap: 40px; margin-top: 40px;
+    padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--grey-mid);
+  }
+  .hero-meta-value { font-size: 16px; font-weight: 600; color: var(--white); }
+
+  /* ── SHARED ───────────────────────────── */
+  section { padding: 100px 40px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600; line-height: 1.15; margin-bottom: 24px;
+  }
+
+  /* ── HIGHLIGHTS ───────────────────────── */
+  .highlights { background: var(--ocean); padding: 80px 40px; }
+  .highlights-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 40px;
+  }
+  .highlight-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px; padding: 28px 24px;
+  }
+  .highlight-icon { font-size: 28px; margin-bottom: 14px; }
+  .highlight-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: var(--white); }
+  .highlight-card p { font-size: 14px; line-height: 1.6; color: var(--grey-light); }
+
+  /* ── ABOUT ────────────────────────────── */
+  .about { background: var(--deep); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: start;
+  }
+  .about-text p {
+    font-size: 16px; line-height: 1.8; color: var(--grey-light); margin-bottom: 20px;
+  }
+  .about-text p:first-of-type { font-size: 18px; color: var(--sand); line-height: 1.7; }
+  .about-image { border-radius: 12px; overflow: hidden; aspect-ratio: 4/5; }
+  .about-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ── TESTIMONIAL ──────────────────────── */
+  .testimonial {
+    background: var(--ocean); text-align: center; padding: 80px 40px;
+  }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-style: italic; line-height: 1.6;
+    max-width: 800px; margin: 0 auto 32px; color: var(--sand);
+  }
+  .testimonial cite {
+    font-style: normal; font-family: 'Inter', sans-serif;
+    font-size: 14px; color: var(--grey-light);
+  }
+  .testimonial cite strong { color: var(--white); font-weight: 600; }
+
+  /* ── GUIDE ────────────────────────────── */
+  .guide { background: var(--deep); }
+  .guide-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 60px; align-items: center;
+  }
+  .guide-image { border-radius: 12px; overflow: hidden; aspect-ratio: 3/4; }
+  .guide-image img { width: 100%; height: 100%; object-fit: cover; }
+  .guide-text p {
+    font-size: 16px; line-height: 1.8; color: var(--grey-light); margin-bottom: 20px;
+  }
+  .guide-text p:first-of-type { font-size: 18px; color: var(--white); }
+
+  /* ── WHY BOOK ─────────────────────────── */
+  .why-book { background: var(--ocean); }
+  .why-book-inner { max-width: 780px; margin: 0 auto; }
+  .why-book-inner p {
+    font-size: 16px; line-height: 1.85; color: var(--grey-light); margin-bottom: 20px;
+  }
+  .why-book-inner p:first-of-type { font-size: 19px; color: var(--sand); line-height: 1.7; }
+
+  /* ── GALLERY STRIP ────────────────────── */
+  .gallery-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 4px; padding: 0;
+  }
+  .gallery-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+  /* ── ITINERARY ────────────────────────── */
+  .itinerary { background: var(--deep); }
+  .itinerary-list { margin-top: 48px; }
+  .itin-day {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 32px; padding: 40px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .itin-day:first-child { padding-top: 0; }
+  .itin-number { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .itin-number-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--grey-mid);
+  }
+  .itin-number-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700; color: var(--teal);
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600; margin-bottom: 4px;
+  }
+  .itin-content .itin-subtitle {
+    font-size: 14px; color: var(--teal); font-weight: 500; margin-bottom: 16px;
+  }
+  .itin-content p { font-size: 15px; line-height: 1.7; color: var(--grey-light); }
+
+  /* ── FULL IMAGE ───────────────────────── */
+  .full-image {
+    height: 60vh; min-height: 400px;
+    background-size: cover; background-position: center;
+  }
+
+  /* ── ACCOMMODATION & BOAT ─────────────── */
+  .feature-section { background: var(--deep); }
+  .feature-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  .feature-grid.reverse { grid-template-columns: 1fr 1.2fr; }
+  .feature-image { border-radius: 12px; overflow: hidden; aspect-ratio: 16/10; }
+  .feature-image img { width: 100%; height: 100%; object-fit: cover; }
+  .feature-text p {
+    font-size: 16px; line-height: 1.8; color: var(--grey-light); margin-bottom: 20px;
+  }
+
+  /* ── CREW / TEAM ──────────────────────── */
+  .crew { background: var(--ocean); }
+  .crew-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 32px; margin-top: 48px;
+  }
+  .crew-card { text-align: center; }
+  .crew-photo {
+    width: 140px; height: 140px; border-radius: 50%;
+    overflow: hidden; margin: 0 auto 16px;
+    border: 2px solid rgba(255,255,255,0.1);
+  }
+  .crew-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .crew-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 600; margin-bottom: 4px;
+  }
+  .crew-role {
+    font-size: 13px; color: var(--teal); font-weight: 500;
+    letter-spacing: 0.5px; margin-bottom: 10px;
+  }
+  .crew-bio {
+    font-size: 13px; line-height: 1.6; color: var(--grey-light);
+  }
+
+  /* ── INCLUDED ─────────────────────────── */
+  .included { background: var(--deep); }
+  .included-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 40px; margin-top: 48px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600; margin-bottom: 20px; color: var(--white);
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative; padding-left: 24px; padding-bottom: 14px;
+    font-size: 15px; line-height: 1.6; color: var(--grey-light);
+  }
+  .included-col li::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+  }
+  .not-included li::before { background: var(--grey-mid); }
+
+  /* ── FAQ ───────────────────────────────── */
+  .faq { background: var(--ocean); }
+  .faq-list { max-width: 780px; margin: 40px auto 0; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 28px 0;
+  }
+  .faq-item:first-child { padding-top: 0; }
+  .faq-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; margin-bottom: 12px; color: var(--white);
+  }
+  .faq-answer {
+    font-size: 15px; line-height: 1.7; color: var(--grey-light);
+  }
+
+  /* ── PRICING & DATES ──────────────────── */
+  .pricing { background: var(--deep); text-align: center; }
+  .price-display {
+    margin: 40px 0 20px;
+  }
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 700; color: var(--white);
+  }
+  .price-per {
+    font-size: 16px; color: var(--grey-mid); margin-top: 4px;
+  }
+  .price-deposit {
+    font-size: 15px; color: var(--grey-light);
+    margin-bottom: 40px; line-height: 1.6;
+  }
+  .dates-grid {
+    display: flex; justify-content: center; gap: 24px;
+    margin: 0 0 20px; flex-wrap: wrap;
+  }
+  .date-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 32px 40px; min-width: 220px;
+  }
+  .date-card-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
+  }
+  .date-card-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; color: var(--white);
+  }
+  .spots-note {
+    font-size: 14px; color: var(--grey-mid); margin-top: 24px;
+  }
+  .spots-note strong { color: var(--grey-light); }
+
+  /* ── CTA ──────────────────────────────── */
+  .cta { background: var(--ocean); text-align: center; padding: 100px 40px; }
+  .cta .section-title { margin-bottom: 16px; }
+  .cta-sub {
+    font-size: 18px; color: var(--grey-light); margin-bottom: 40px;
+    max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6;
+  }
+  .cta-button {
+    display: inline-block; background: var(--teal); color: var(--deep);
+    font-size: 16px; font-weight: 600; padding: 18px 48px;
+    border-radius: 60px; text-decoration: none; letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(45,212,191,0.3);
+  }
+  .cta-contacts {
+    margin-top: 32px; display: flex; justify-content: center;
+    gap: 32px; flex-wrap: wrap;
+  }
+  .cta-contact-item { font-size: 14px; color: var(--grey-mid); }
+  .cta-contact-item a { color: var(--teal); text-decoration: none; }
+  .cta-contact-item .label {
+    display: block; font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 4px; color: var(--grey-mid);
+  }
+
+  /* ── FOOTER ───────────────────────────── */
+  .footer {
+    text-align: center; padding: 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 13px; color: var(--grey-mid);
+  }
+  .footer a { color: var(--grey-light); text-decoration: none; }
+
+  /* ── RESPONSIVE ───────────────────────── */
+  @media (max-width: 768px) {
+    .hero { padding: 40px 24px; min-height: 600px; }
+    .hero-logo { left: 24px; top: 24px; }
+    .hero-meta { flex-wrap: wrap; gap: 24px; }
+    section { padding: 60px 24px; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-image { aspect-ratio: 16/10; order: -1; }
+    .guide-grid { grid-template-columns: 1fr; gap: 32px; }
+    .guide-image { aspect-ratio: 16/10; }
+    .feature-grid, .feature-grid.reverse { grid-template-columns: 1fr; gap: 32px; }
+    .feature-image { order: -1; }
+    .crew-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    .included-grid { grid-template-columns: 1fr; }
+    .itin-day { grid-template-columns: 60px 1fr; gap: 20px; }
+  }
+
+  /* ── PRINT ────────────────────────────── */
+  @media print {
+    body { background: var(--deep); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hero { min-height: auto; height: auto; padding: 80px 40px 60px; page-break-after: always; }
+    .hero-bg { position: absolute; }
+    section { page-break-inside: avoid; }
+    .cta-button { border: 2px solid var(--teal); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-logo">
+    <img src="https://cdn.prod.website-files.com/618492b2c3bd4268f23ff521/674ea9b9030ce35fdba791a5_airguide-logo-01.svg" alt="Airguides">
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag"><span></span>Ocean Expedition</div>
+    <h1>Swim with Humpback Whales in Tonga</h1>
+    <p class="hero-sub">8 days in the Kingdom of Tonga with marine scientist and ocean cinematographer Jono Allen. Small group. Private vessel. Face-to-face with the gentle giants.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Duration</div>
+      <div class="hero-meta-value">8 Days / 7 Nights</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Location</div>
+      <div class="hero-meta-value">Vava'u, Tonga</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Group Size</div>
+      <div class="hero-meta-value">Max 7 Guests</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">From</div>
+      <div class="hero-meta-value">US$4,900</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HIGHLIGHTS ═══════════════ -->
+<section class="highlights">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">Tonga, like you've never seen it</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-icon">🐋</div>
+        <h3>5 Days with Humpback Whales</h3>
+        <p>Full days on a private vessel with expert guides, swimming alongside humpbacks in their breeding grounds.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">📷</div>
+        <h3>Photography Masterclasses</h3>
+        <p>Hands-on underwater photography guidance from Jono, plus a dedicated editing session on your final day.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🧑‍🔬</div>
+        <h3>Marine Science Expertise</h3>
+        <p>Jono's background as an environmental scientist means you'll understand whale behaviour, not just observe it.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🍽️</div>
+        <h3>All-Inclusive Dining</h3>
+        <p>Every meal covered. Traditional Tongan welcome feast, daily breakfasts, lunches on the boat, and group dinners by an award-winning chef.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🏝️</div>
+        <h3>Cultural Immersion</h3>
+        <p>Paluki's island tour with stories of Tongan heritage, secret beaches, hidden lookouts, and the rich local culture of Vava'u.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🤿</div>
+        <h3>Beyond the Whales</h3>
+        <p>Coral reefs, blue caves, isolated white beaches, and the incredible underwater world of Vava'u between whale encounters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT THE EXPERIENCE ═══════════════ -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About the Experience</div>
+        <div class="section-title">An expedition, not a tour</div>
+        <p>Join Jono and a small group of ocean-loving travellers in the remote island group of Vava'u, Kingdom of Tonga, where humpback whales return each year to mate, calve, and raise their young in warm, crystal-clear waters.</p>
+        <p>Each day you'll board a private vessel with expert guides and experienced skippers to find and swim alongside these extraordinary animals. This isn't a crowded whale-watching trip where you glimpse a tail from a distance. You'll be in the water, face-to-face, watching a mother and calf pass beneath you.</p>
+        <p>Between whale encounters, you'll drop anchor over vibrant coral reefs, explore blue caves and deserted beaches, and get to know the landscape both above and below the surface. Evenings are spent back at your ocean-view accommodation sharing stories over meals prepared by the resort's award-winning chef.</p>
+        <p>This trip is for anyone who feels at home in the water. Whether you're a photographer, freediver, or simply someone who's always dreamed of swimming with whales, the only prerequisite is that you're a confident snorkeller.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/6626421910c50c49116b9321_manta-17.webp" alt="Swimming with whales in Tonga">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIAL 1 ═══════════════ -->
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"The whales were mind blowing. What a gift to be in Tonga staring into the eye of a baby whale. This trip was a lifelong dream come true. We've already signed up again for next year."</blockquote>
+    <cite><strong>Laura Cottril</strong> · Tonga 2023 guest, United States</cite>
+  </div>
+</section>
+
+<!-- ═══════════════ YOUR GUIDE ═══════════════ -->
+<section class="guide">
+  <div class="container">
+    <div class="guide-grid">
+      <div class="guide-image">
+        <img src="https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/662254fab91b2310f46b6ee6_profile-06.webp" alt="Jono Allen">
+      </div>
+      <div class="guide-text">
+        <div class="section-label">Your Storyteller Guide</div>
+        <div class="section-title">Jono Allen</div>
+        <p>Environmental scientist, marine megafauna guide, and ocean cinematographer. Jono's knowledge and years in the water get you as close as possible to these creatures, creating encounters most people only dream about.</p>
+        <p>This isn't a tourist whale-watching tour. Jono rejects the "smile-for-the-camera" approach. He guides you on a journey of exploration and understanding. You'll learn about humpback physiology, behaviour, and individual personalities. Every encounter is immersive, enlightening, and deeply personal.</p>
+        <p>Jono is also committed to the local Tongan community of Vava'u. By working with local services, staff, cuisine, and accommodations, your experience maintains authenticity while directly supporting the people and place that make it all possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ WHY BOOK ═══════════════ -->
+<section class="why-book">
+  <div class="container">
+    <div class="why-book-inner">
+      <div class="section-label">Why Book This Experience?</div>
+      <div class="section-title">Beyond a whale tour</div>
+      <p>Most whale tours in Tonga give guests a single brief swim, share the water with large groups, and rush through the day. One encounter isn't enough to truly connect with these animals.</p>
+      <p>This trip is built differently. Five full days on the water with the same small group, learning to read whale behaviour, moving calmly and respectfully in the water, and letting genuine encounters unfold naturally rather than chasing the next tick-box moment.</p>
+      <p>With private charters and a maximum of seven guests, you get time and space in the water that a public tour simply can't offer. For photographers, it's ideal: Jono provides hands-on guidance throughout the trip, from shooting technique to editing your best frames on the final day.</p>
+      <p>By slowing the pace and keeping the experience personal, this week-long expedition removes the rush of a one-day tour and lets you truly immerse yourself in Tonga's incredible marine world.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GALLERY ═══════════════ -->
+<div class="gallery-strip">
+  <img src="https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/66264218548b6b626be5b933_manta-13.webp" alt="Underwater whale encounter">
+  <img src="https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/662642174790d17ccceb745c_tonga-03.webp" alt="Tonga coastline">
+  <img src="https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/66264218f70e38c8bdfd370d_manta-14.webp" alt="Humpback underwater">
+  <img src="https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/6626421676adc17dd87b9a41_tonga-04.webp" alt="Tonga waters">
+</div>
+
+<!-- ═══════════════ ITINERARY ═══════════════ -->
+<section class="itinerary">
+  <div class="container">
+    <div class="section-label">Day by Day</div>
+    <div class="section-title">Your Itinerary</div>
+
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">1</div>
+        </div>
+        <div class="itin-content">
+          <h3>Welcome to Vava'u</h3>
+          <div class="itin-subtitle">Dive into Humpback Heaven</div>
+          <p>A private driver meets you at Vava'u airport and takes you to your water-view accommodation. Meet Jono and your fellow travellers over lunch, where he'll share his work in marine conservation and underwater photography. Settle into Vava'u's slower pace with a free afternoon, then gather for a traditional Tongan welcome feast at sunset. The evening wraps with Jono's masterclass on humpback behaviour and responsible interaction.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">2</div>
+        </div>
+        <div class="itin-content">
+          <h3>Sunday, Day of Rest</h3>
+          <div class="itin-subtitle">Embrace Tongan Tranquility</div>
+          <p>Sunday is sacred in Tonga. A relaxed breakfast, then time to dial in your snorkel gear in the crystalline waters. In the afternoon, Paluki's island tour takes you to lookouts, secret beaches, and the best of Vava'u, with stories of Tongan culture along the way. Recharge for the adrenaline-filled days ahead.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Days</div>
+          <div class="itin-number-value">3–7</div>
+        </div>
+        <div class="itin-content">
+          <h3>Whale Odyssey</h3>
+          <div class="itin-subtitle">Daily Encounters with the Gentle Giants</div>
+          <p>Five full days on the water. Each morning you board your private vessel for ~7 hours of whale spotting along rugged coastlines, scanning for spouts, breaches, and tails. When the moment comes, you slip into the water for safe, guided swimming with humpbacks. Lunch anchored over coral reefs, with time to explore blue caves and isolated beaches. Evenings back at the resort with group dinners prepared by an award-winning chef.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">8</div>
+        </div>
+        <div class="itin-content">
+          <h3>Farewell, Vava'u</h3>
+          <div class="itin-subtitle">Turning Experiences into Lasting Captures</div>
+          <p>A morning masterclass with Jono on editing your whale photography, applying everything you've learned during the trip. Exchange farewells with your travel companions, then a private transfer back to Vava'u airport. 'Alu a!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FULL WIDTH IMAGE ═══════════════ -->
+<div class="full-image" style="background-image: url('https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/66264217f66aba8d2ca0b78d_manta-15.webp');"></div>
+
+<!-- ═══════════════ ACCOMMODATION ═══════════════ -->
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-image">
+        <img src="https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/66225cbeba2be350a7b78861_nongalo-01.webp" alt="Vava'u Resort accommodation">
+      </div>
+      <div class="feature-text">
+        <div class="section-label">Your Accommodation</div>
+        <div class="section-title">Vava'u Resort</div>
+        <p>Your base for the week is a water-view resort on the island of Vava'u. Wake up to ocean views each morning, with easy access to the water right from your doorstep.</p>
+        <p>The resort is comfortable and authentic to the island setting. Rooms are clean and well-appointed, with everything you need to recharge after full days on the water. Private rooms are available on request.</p>
+        <p>Evenings are spent at the resort sharing stories with your group over meals prepared by award-winning chef Andrea, using fresh local produce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ THE BOAT ═══════════════ -->
+<section class="feature-section" style="padding-top: 0;">
+  <div class="container">
+    <div class="feature-grid reverse">
+      <div class="feature-text">
+        <div class="section-label">On the Water</div>
+        <div class="section-title">Your Private Vessel</div>
+        <p>Each day you board a private vessel operated by one of the most experienced whale-watching teams in Tonga. With a maximum of seven guests, you have plenty of space on board and in the water.</p>
+        <p>The boat is equipped for full days at sea, with comfortable seating, shade, and space for lunch anchored over the reef. Safety briefings are conducted each morning before departure.</p>
+        <p>With expert skippers who know these waters intimately, you'll cover the best areas for whale encounters while also discovering hidden coastline, blue caves, and isolated white beaches between swims.</p>
+      </div>
+      <div class="feature-image">
+        <img src="https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/66264219e271b33e6e6ce4a9_tonga-02.webp" alt="Private vessel on the water">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIAL 2 ═══════════════ -->
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"The Airguides trip to Tonga to swim with humpback whales was the experience of a lifetime. I have traveled all over the world, and nothing compares. A wonderful and caring team made our adventures stress free. So much so, I am doing it again this year!"</blockquote>
+    <cite><strong>Mary</strong> · Tonga guest, returning for 2026</cite>
+  </div>
+</section>
+
+<!-- ═══════════════ CREW ═══════════════ -->
+<section class="crew">
+  <div class="container">
+    <div class="section-label">The People Behind the Experience</div>
+    <div class="section-title">Your Crew</div>
+    <div class="crew-grid">
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="https://www.bluevagabonds.com/cdn/shop/files/Profile.2_1024x1024.jpg?v=1725744049" alt="Jono Allen">
+        </div>
+        <div class="crew-name">Jono Allen</div>
+        <div class="crew-role">Storyteller Guide</div>
+        <div class="crew-bio">Underwater photographer, environmental scientist, and marine megafauna guide. Your expert for every whale encounter.</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="https://www.bluevagabonds.com/cdn/shop/files/IMG_0900_1024x1024.jpg?v=1724840743" alt="Eva">
+        </div>
+        <div class="crew-name">Eva</div>
+        <div class="crew-role">Expedition Guide</div>
+        <div class="crew-bio">Skilled freediver and hospitality expert. Eva ensures every detail is taken care of so you can fully immerse yourself in the experience.</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="https://www.bluevagabonds.com/cdn/shop/files/12B1DCB0-3E08-4106-9982-147EE337E126_1024x1024.jpg?v=1742722427" alt="Andrea">
+        </div>
+        <div class="crew-name">Andrea</div>
+        <div class="crew-role">Professional Chef</div>
+        <div class="crew-bio">Award-winning chef. Winner of Tonga's Best Chef Competition 2021. Prepares vibrant, fresh meals using seasonal local produce.</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="https://www.bluevagabonds.com/cdn/shop/files/93C42A5B-B3CE-4C7B-92AC-434C06CFB5FD_1_201_a_1024x1024.jpg?v=1742723282" alt="Paluki">
+        </div>
+        <div class="crew-name">Paluki</div>
+        <div class="crew-role">Cultural Guide</div>
+        <div class="crew-bio">Born and raised in Tonga. Shares the stories, customs, and hidden gems of Vava'u. Your connection to authentic Tongan culture.</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="https://cdn.prod.website-files.com/618492b2c3bd4268f23ff521/61de68184fe9343e0ee0040e_Airguides_team_colour_17.jpg" alt="Paul Rowsthorn">
+        </div>
+        <div class="crew-name">Paul Rowsthorn</div>
+        <div class="crew-role">Expedition Director</div>
+        <div class="crew-bio">Founder of Airguides. Handles all logistics, travel planning, and coordination so all you have to do is show up.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ WHAT'S INCLUDED ═══════════════ -->
+<section class="included">
+  <div class="container">
+    <div class="section-label">The Details</div>
+    <div class="section-title">What's Included</div>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Included</h3>
+        <ul>
+          <li>8 days / 7 nights ocean-view accommodation</li>
+          <li>5 full days of private vessel whale encounters (~7 hours/day)</li>
+          <li>All meals: welcome feast, daily breakfasts, lunches on the boat, group dinners by award-winning chef</li>
+          <li>Private airport transfers</li>
+          <li>Storyteller guide Jono Allen throughout</li>
+          <li>Dedicated Airguides Expedition Leader on-ground</li>
+          <li>Marine biologist and in-water guides on charters</li>
+          <li>Snorkelling equipment</li>
+          <li>Photography masterclass and editing session</li>
+          <li>Paluki's island cultural tour</li>
+          <li>Personalised gallery of your best trip photos</li>
+        </ul>
+      </div>
+      <div class="included-col not-included">
+        <h3>Not Included</h3>
+        <ul>
+          <li>International flights to Vava'u (VAV)</li>
+          <li>Travel insurance (required)</li>
+          <li>Personal expenses and gratuities</li>
+          <li>Alcoholic beverages</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label">Questions?</div>
+    <div class="section-title">Frequently Asked</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Do I need to be a photographer?</div>
+        <div class="faq-answer">Not at all. This trip is hosted by a professional photographer and ocean guide, so they'll be available to take photos from your week. We find even people who call themselves "not a photographer" get a lot out of the sessions and learn a lot. For anyone interested in upskilling, you'll have masterclasses and the chance to ask questions from Jono and our team of professionals.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I get to Vava'u?</div>
+        <div class="faq-answer">Our team will assist you with this process. In summary, most flights go via Nadi, Fiji from destinations like Australia, USA, and Singapore. Fiji Airways is the best airline to use. Once you're booked, we'll help coordinate your travel.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is everything included?</div>
+        <div class="faq-answer">Yes. This is a truly all-inclusive experience. Accommodation, all meals, private boat charters, airport transfers, guides, equipment, masterclasses, and cultural tours are all covered. The only extras are flights, travel insurance, personal expenses, and alcohol.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I get a private room?</div>
+        <div class="faq-answer">Absolutely. You can select a private room at the time of booking.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Are private or group weeks available?</div>
+        <div class="faq-answer">Yes. We offer both scheduled group departures and fully private weeks for families, friends, or corporate groups. Contact us at paul@airguides.com for options.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRICING & DATES ═══════════════ -->
+<section class="pricing">
+  <div class="container">
+    <div class="section-label">Investment</div>
+    <div class="section-title">Pricing & Dates</div>
+    <div class="price-display">
+      <div class="price-amount">US$4,900</div>
+      <div class="price-per">per person, all-inclusive</div>
+    </div>
+    <div class="price-deposit">
+      Secure your spot with a <strong>US$1,000 deposit</strong>. Balance due 90 days prior to arrival.
+    </div>
+    <div class="dates-grid">
+      <div class="date-card">
+        <div class="date-card-label">Trip 1</div>
+        <div class="date-card-value">Jul – Oct 2026</div>
+      </div>
+      <div class="date-card">
+        <div class="date-card-label">Trip 2</div>
+        <div class="date-card-value">Jul – Oct 2026</div>
+      </div>
+    </div>
+    <p class="spots-note"><strong>Maximum 7 guests per departure.</strong> Smaller private weeks available on request.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Secure Your Spot</div>
+    <p class="cta-sub">Spaces are limited. Get in touch to check availability and reserve your place with a US$1,000 deposit.</p>
+    <a href="mailto:hello@airguides.com?subject=Tonga Humpbacks 2026 – Booking Enquiry" class="cta-button">Enquire Now</a>
+    <div class="cta-contacts">
+      <div class="cta-contact-item">
+        <span class="label">Email</span>
+        <a href="mailto:hello@airguides.com">hello@airguides.com</a>
+      </div>
+      <div class="cta-contact-item">
+        <span class="label">Phone / WhatsApp</span>
+        <a href="https://wa.me/61402552918">(+61) 402 552 918</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <p><a href="https://www.airguides.com">airguides.com</a> · © 2026 Airguides</p>
+</footer>
+
+</body>
+</html>
