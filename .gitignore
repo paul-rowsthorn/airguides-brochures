@@ -1,5 +1,22 @@
+# Node
+node_modules/
+package-lock.json
+
+# Temp/intermediate PDFs
 tonga-paged*.pdf
 tonga-puppeteer.pdf
 tonga-brochure*.pdf
 tonga-final*.pdf
-react-pdf/node_modules/
+
+# React-PDF intermediate builds
+react-pdf/tonga-v*.pdf
+react-pdf/tonga-apr*.pdf
+react-pdf/tonga-react-*.pdf
+react-pdf/tonga-with-*.pdf
+react-pdf/tonga-final-*.pdf
+react-pdf/test-*.pdf
+react-pdf/test-*.mjs
+react-pdf/minimal-test.*
+
+# Large uncompressed PDFs (keep only compressed versions)
+react-pdf/tonga-humpbacks-jono-allen.pdf

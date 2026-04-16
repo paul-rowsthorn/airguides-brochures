@@ -125,21 +125,35 @@ brochures/
 ## Template File
 The Tonga brochure (`tonga-humpbacks-jono-allen.html`) is the canonical template. Copy it for new trips.
 
-## React-PDF Version (NEW)
+## React-PDF Version (FINAL)
 
 **Location:** `react-pdf/generate-final.mjs`
+**Canonical output:** `react-pdf/tonga-humpbacks-jono-allen.pdf`
 
-**Pros:**
+**Features:**
 - Native PDF rendering (not HTML-to-PDF conversion)
-- Perfect typography and layout control
-- 21KB file size (vs 7MB+ for Paged.js)
-- No font/image loading issues  
-- 84ms generation time
-- Programmatically data-driven
+- Full images: hero backgrounds, gallery, crew photos, accommodation
+- Blurred background images on FAQ/Pricing/CTA pages
+- Clickable links: product page, mailto, website
+- Proper Airguides white logo (images/airguides-logo-white.png)
+- 15 pages, ~5.6MB compressed
+- ~200ms generation time
+- Data-driven: swap content object for new trips
 
 **Usage:**
 ```bash
-cd react-pdf && node generate-final.mjs trip-name.pdf
+cd react-pdf && npm install && node generate-final.mjs trip-name.pdf
 ```
 
-**Current status:** Text-only (no images yet), but perfect quality for text-heavy sales brochures.
+**Key learnings:**
+- React-PDF overflows images at A4 height (841.89pt) — use 840pt for backgrounds
+- Progressive JPEGs fail silently — convert to baseline with PIL
+- No .webp support — convert to JPEG via sips
+- SVG not supported — use PNG logos
+- Use `React.createElement` (no JSX without build step)
+
+**Two output formats for each trip:**
+1. **HTML** — for web viewing via GitHub Pages
+2. **PDF** — for email delivery to leads (React-PDF generated)
+
+Both use the same content/data, optimised for their medium.
