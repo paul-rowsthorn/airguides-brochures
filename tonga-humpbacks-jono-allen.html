@@ -365,15 +365,82 @@
     .itin-day { grid-template-columns: 60px 1fr; gap: 20px; }
   }
 
-  /* ── PRINT ────────────────────────────── */
+  /* ── PAGED.JS / PRINT ────────────────── */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* Page breaks: Paged.js reads these outside @media print */
+  .page-break {
+    break-before: page;
+  }
+
+  /* Hero is its own page */
+  .hero {
+    break-after: page;
+  }
+
+  /* Gallery strips and testimonials stay with surrounding content */
+  .gallery-strip {
+    break-inside: avoid;
+  }
+
+  /* Itinerary days, feature grids, FAQ items don't split */
+  .itin-day,
+  .feature-grid,
+  .faq-item {
+    break-inside: avoid;
+  }
+
+  /* Full image gets its own page */
+  .full-image {
+    break-before: page;
+    break-after: page;
+    height: 297mm;
+  }
+
   @media print {
-    body { background: var(--deep); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .hero { min-height: auto; height: auto; padding: 80px 40px 60px; page-break-after: always; }
-    .hero-bg { position: absolute; }
-    section { page-break-inside: avoid; }
-    .cta-button { border: 2px solid var(--teal); }
+    body {
+      background: var(--deep);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .hero {
+      height: 297mm;
+      min-height: 0;
+    }
+
+    .hero-bg {
+      position: absolute;
+    }
+
+    section {
+      padding: 60px 40px;
+    }
+
+    .cta-button {
+      border: 2px solid var(--teal);
+    }
+    .cta-button:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .crew-grid { gap: 20px; }
+    .crew-photo { width: 100px; height: 100px; }
+    .section-title { font-size: 36px; }
   }
 </style>
+
+<!-- Paged.js polyfill for proper PDF pagination -->
+<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 </head>
 <body>
 
@@ -409,7 +476,7 @@
 </section>
 
 <!-- ═══════════════ HIGHLIGHTS ═══════════════ -->
-<section class="highlights">
+<section class="highlights page-break">
   <div class="container">
     <div class="section-label">Highlights</div>
     <div class="section-title">Tonga, like you've never seen it</div>
@@ -449,7 +516,7 @@
 </section>
 
 <!-- ═══════════════ ABOUT THE EXPERIENCE ═══════════════ -->
-<section class="about">
+<section class="about page-break">
   <div class="container">
     <div class="about-grid">
       <div class="about-text">
@@ -476,7 +543,7 @@
 </section>
 
 <!-- ═══════════════ YOUR GUIDE ═══════════════ -->
-<section class="guide">
+<section class="guide page-break">
   <div class="container">
     <div class="guide-grid">
       <div class="guide-image">
@@ -516,7 +583,7 @@
 </div>
 
 <!-- ═══════════════ ITINERARY ═══════════════ -->
-<section class="itinerary">
+<section class="itinerary page-break">
   <div class="container">
     <div class="section-label">Day by Day</div>
     <div class="section-title">Your Itinerary</div>
@@ -577,7 +644,7 @@
 <div class="full-image" style="background-image: url('https://cdn.prod.website-files.com/618492b2c3bd4249e23ff53e/66264217f66aba8d2ca0b78d_manta-15.webp');"></div>
 
 <!-- ═══════════════ ACCOMMODATION ═══════════════ -->
-<section class="feature-section">
+<section class="feature-section page-break">
   <div class="container">
     <div class="feature-grid">
       <div class="feature-image">
@@ -629,7 +696,7 @@
 </section>
 
 <!-- ═══════════════ CREW ═══════════════ -->
-<section class="crew">
+<section class="crew page-break">
   <div class="container">
     <div class="section-label">The People Behind the Experience</div>
     <div class="section-title">Your Crew</div>
@@ -679,7 +746,7 @@
 </section>
 
 <!-- ═══════════════ WHAT'S INCLUDED ═══════════════ -->
-<section class="included">
+<section class="included page-break">
   <div class="container">
     <div class="section-label">The Details</div>
     <div class="section-title">What's Included</div>
@@ -744,7 +811,7 @@
 </section>
 
 <!-- ═══════════════ PRICING & DATES ═══════════════ -->
-<section class="pricing">
+<section class="pricing page-break">
   <div class="container">
     <div class="section-label">Investment</div>
     <div class="section-title">Pricing & Dates</div>

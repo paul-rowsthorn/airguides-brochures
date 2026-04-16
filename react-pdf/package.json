@@ -1,0 +1,12 @@
+{
+  "name": "airguides-brochures-pdf",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.mjs"
+  },
+  "dependencies": {
+    "@react-pdf/renderer": "^3.4.0",
+    "react": "^18.2.0"
+  }
+}

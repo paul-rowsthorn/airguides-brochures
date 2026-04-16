@@ -124,3 +124,22 @@ brochures/
 
 ## Template File
 The Tonga brochure (`tonga-humpbacks-jono-allen.html`) is the canonical template. Copy it for new trips.
+
+## React-PDF Version (NEW)
+
+**Location:** `react-pdf/generate-final.mjs`
+
+**Pros:**
+- Native PDF rendering (not HTML-to-PDF conversion)
+- Perfect typography and layout control
+- 21KB file size (vs 7MB+ for Paged.js)
+- No font/image loading issues  
+- 84ms generation time
+- Programmatically data-driven
+
+**Usage:**
+```bash
+cd react-pdf && node generate-final.mjs trip-name.pdf
+```
+
+**Current status:** Text-only (no images yet), but perfect quality for text-heavy sales brochures.
