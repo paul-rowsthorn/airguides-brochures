@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanzania: Big Cats &amp; The Great Migration | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #1a1208;
+    --ocean: #2c1e0f;
+    --teal: #d4a853;
+    --teal-dim: rgba(212, 168, 83, 0.08);
+    --sand: #f5eed9;
+    --white: #ffffff;
+    --grey-light: #94a3b8;
+    --grey-mid: #64748b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--white);
+    background: var(--deep);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ─────────────────────────────── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px 40px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/hero-serengeti.jpg') center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom,
+      rgba(26,18,8,0.3) 0%, rgba(26,18,8,0.05) 30%,
+      rgba(26,18,8,0.6) 70%, rgba(26,18,8,0.97) 100%);
+  }
+  .hero-logo { position: absolute; top: 40px; left: 40px; z-index: 2; }
+  .hero-logo img { height: 36px; opacity: 0.9; }
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 20px;
+  }
+  .hero-tag span { width: 24px; height: 1px; background: var(--teal); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 700; line-height: 1.05; margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: 18px; color: var(--grey-light); line-height: 1.6; max-width: 540px;
+  }
+  .hero-meta {
+    position: relative; z-index: 2;
+    display: flex; gap: 40px; margin-top: 40px;
+    padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--grey-mid);
+  }
+  .hero-meta-value { font-size: 16px; font-weight: 600; color: var(--white); }
+
+  /* ── SHARED ───────────────────────────── */
+  section { padding: 100px 40px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600; line-height: 1.15; margin-bottom: 24px;
+  }
+
+  /* ── HIGHLIGHTS ───────────────────────── */
+  .highlights { background: var(--ocean); padding: 80px 40px; }
+  .highlights-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 40px;
+  }
+  .highlight-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px; padding: 28px 24px;
+  }
+  .highlight-icon { font-size: 28px; margin-bottom: 14px; }
+  .highlight-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: var(--white); }
+  .highlight-card p { font-size: 14px; line-height: 1.6; color: var(--grey-light); }
+
+  /* ── ABOUT ────────────────────────────── */
+  .about { background: var(--deep); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: start;
+  }
+  .about-text p {
+    font-size: 16px; line-height: 1.8; color: var(--grey-light); margin-bottom: 20px;
+  }
+  .about-text p:first-of-type { font-size: 18px; color: var(--sand); line-height: 1.7; }
+  .about-image { border-radius: 12px; overflow: hidden; aspect-ratio: 4/5; }
+  .about-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ── TESTIMONIAL ──────────────────────── */
+  .testimonial {
+    background: var(--ocean); text-align: center; padding: 80px 40px;
+  }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-style: italic; line-height: 1.6;
+    max-width: 800px; margin: 0 auto 32px; color: var(--sand);
+  }
+  .testimonial cite {
+    font-style: normal; font-family: 'Inter', sans-serif;
+    font-size: 14px; color: var(--grey-light);
+  }
+  .testimonial cite strong { color: var(--white); font-weight: 600; }
+
+  /* ── GUIDE ────────────────────────────── */
+  .guide { background: var(--deep); }
+  .guide-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 60px; align-items: center;
+  }
+  .guide-image { border-radius: 12px; overflow: hidden; aspect-ratio: 3/4; }
+  .guide-image img { width: 100%; height: 100%; object-fit: cover; }
+  .guide-text p {
+    font-size: 16px; line-height: 1.8; color: var(--grey-light); margin-bottom: 20px;
+  }
+  .guide-text p:first-of-type { font-size: 18px; color: var(--white); }
+
+  /* ── WHY BOOK ─────────────────────────── */
+  .why-book { background: var(--ocean); }
+  .why-book-inner { max-width: 780px; margin: 0 auto; }
+  .why-book-inner p {
+    font-size: 16px; line-height: 1.85; color: var(--grey-light); margin-bottom: 20px;
+  }
+  .why-book-inner p:first-of-type { font-size: 19px; color: var(--sand); line-height: 1.7; }
+
+  /* ── GALLERY STRIP ────────────────────── */
+  .gallery-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 4px; padding: 0;
+  }
+  .gallery-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+  /* ── ITINERARY ────────────────────────── */
+  .itinerary { background: var(--deep); }
+  .itinerary-list { margin-top: 48px; }
+  .itin-day {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 32px; padding: 40px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .itin-day:first-child { padding-top: 0; }
+  .itin-number { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .itin-number-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--grey-mid);
+  }
+  .itin-number-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700; color: var(--teal);
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600; margin-bottom: 4px;
+  }
+  .itin-content .itin-subtitle {
+    font-size: 14px; color: var(--teal); font-weight: 500; margin-bottom: 16px;
+  }
+  .itin-content p { font-size: 15px; line-height: 1.7; color: var(--grey-light); }
+
+  /* ── FULL IMAGE ───────────────────────── */
+  .full-image {
+    height: 60vh; min-height: 400px;
+    background-size: cover; background-position: center;
+  }
+
+  /* ── ACCOMMODATION & BOAT ─────────────── */
+  .feature-section { background: var(--deep); }
+  .feature-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  .feature-grid.reverse { grid-template-columns: 1fr 1.2fr; }
+  .feature-image { border-radius: 12px; overflow: hidden; aspect-ratio: 16/10; }
+  .feature-image img { width: 100%; height: 100%; object-fit: cover; }
+  .feature-text p {
+    font-size: 16px; line-height: 1.8; color: var(--grey-light); margin-bottom: 20px;
+  }
+
+  /* ── CREW / TEAM ──────────────────────── */
+  .crew { background: var(--ocean); }
+  .crew-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 32px; margin-top: 48px;
+  }
+  .crew-card { text-align: center; }
+  .crew-photo {
+    width: 140px; height: 140px; border-radius: 50%;
+    overflow: hidden; margin: 0 auto 16px;
+    border: 2px solid rgba(255,255,255,0.1);
+  }
+  .crew-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .crew-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 600; margin-bottom: 4px;
+  }
+  .crew-role {
+    font-size: 13px; color: var(--teal); font-weight: 500;
+    letter-spacing: 0.5px; margin-bottom: 10px;
+  }
+  .crew-bio {
+    font-size: 13px; line-height: 1.6; color: var(--grey-light);
+  }
+
+  /* ── INCLUDED ─────────────────────────── */
+  .included { background: var(--deep); }
+  .included-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 40px; margin-top: 48px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600; margin-bottom: 20px; color: var(--white);
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative; padding-left: 24px; padding-bottom: 14px;
+    font-size: 15px; line-height: 1.6; color: var(--grey-light);
+  }
+  .included-col li::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+  }
+  .not-included li::before { background: var(--grey-mid); }
+
+  /* ── FAQ ───────────────────────────────── */
+  .faq { background: var(--ocean); }
+  .faq-list { max-width: 780px; margin: 40px auto 0; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 28px 0;
+  }
+  .faq-item:first-child { padding-top: 0; }
+  .faq-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; margin-bottom: 12px; color: var(--white);
+  }
+  .faq-answer {
+    font-size: 15px; line-height: 1.7; color: var(--grey-light);
+  }
+
+  /* ── PRICING & DATES ──────────────────── */
+  .pricing { background: var(--deep); text-align: center; }
+  .price-display {
+    margin: 40px 0 20px;
+  }
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 700; color: var(--white);
+  }
+  .price-per {
+    font-size: 16px; color: var(--grey-mid); margin-top: 4px;
+  }
+  .price-deposit {
+    font-size: 15px; color: var(--grey-light);
+    margin-bottom: 40px; line-height: 1.6;
+  }
+  .dates-grid {
+    display: flex; justify-content: center; gap: 24px;
+    margin: 0 0 20px; flex-wrap: wrap;
+  }
+  .date-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 32px 40px; min-width: 220px;
+  }
+  .date-card-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
+  }
+  .date-card-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; color: var(--white);
+  }
+  .spots-note {
+    font-size: 14px; color: var(--grey-mid); margin-top: 24px;
+  }
+  .spots-note strong { color: var(--grey-light); }
+
+  /* ── CTA ──────────────────────────────── */
+  .cta { background: var(--ocean); text-align: center; padding: 100px 40px; }
+  .cta .section-title { margin-bottom: 16px; }
+  .cta-sub {
+    font-size: 18px; color: var(--grey-light); margin-bottom: 40px;
+    max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6;
+  }
+  .cta-button {
+    display: inline-block; background: var(--teal); color: var(--deep);
+    font-size: 16px; font-weight: 600; padding: 18px 48px;
+    border-radius: 60px; text-decoration: none; letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(212,168,83,0.3);
+  }
+  .cta-contacts {
+    margin-top: 32px; display: flex; justify-content: center;
+    gap: 32px; flex-wrap: wrap;
+  }
+  .cta-contact-item { font-size: 14px; color: var(--grey-mid); }
+  .cta-contact-item a { color: var(--teal); text-decoration: none; }
+  .cta-contact-item .label {
+    display: block; font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 4px; color: var(--grey-mid);
+  }
+
+  /* ── FOOTER ───────────────────────────── */
+  .footer {
+    text-align: center; padding: 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 13px; color: var(--grey-mid);
+  }
+  .footer a { color: var(--grey-light); text-decoration: none; }
+
+  /* ── RESPONSIVE ───────────────────────── */
+  @media (max-width: 768px) {
+    .hero { padding: 40px 24px; min-height: 600px; }
+    .hero-logo { left: 24px; top: 24px; }
+    .hero-meta { flex-wrap: wrap; gap: 24px; }
+    section { padding: 60px 24px; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-image { aspect-ratio: 16/10; order: -1; }
+    .guide-grid { grid-template-columns: 1fr; gap: 32px; }
+    .guide-image { aspect-ratio: 16/10; }
+    .feature-grid, .feature-grid.reverse { grid-template-columns: 1fr; gap: 32px; }
+    .feature-image { order: -1; }
+    .crew-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    .included-grid { grid-template-columns: 1fr; }
+    .itin-day { grid-template-columns: 60px 1fr; gap: 20px; }
+  }
+
+  /* ── PAGED.JS / PRINT ────────────────── */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* Page breaks: Paged.js reads these outside @media print */
+  .page-break {
+    break-before: page;
+  }
+
+  /* Hero is its own page */
+  .hero {
+    break-after: page;
+  }
+
+  /* Gallery strips and testimonials stay with surrounding content */
+  .gallery-strip {
+    break-inside: avoid;
+  }
+
+  /* Itinerary days, feature grids, FAQ items don't split */
+  .itin-day,
+  .feature-grid,
+  .faq-item {
+    break-inside: avoid;
+  }
+
+  /* Full image gets its own page */
+  .full-image {
+    break-before: page;
+    break-after: page;
+    height: 297mm;
+  }
+
+  @media print {
+    body {
+      background: var(--deep);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .hero {
+      height: 297mm;
+      min-height: 0;
+    }
+
+    .hero-bg {
+      position: absolute;
+    }
+
+    section {
+      padding: 60px 40px;
+    }
+
+    .cta-button {
+      border: 2px solid var(--teal);
+    }
+    .cta-button:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .crew-grid { gap: 20px; }
+    .crew-photo { width: 100px; height: 100px; }
+    .section-title { font-size: 36px; }
+  }
+</style>
+
+<!-- Paged.js polyfill for proper PDF pagination -->
+<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-logo">
+    <img src="https://cdn.prod.website-files.com/618492b2c3bd4268f23ff521/674ea9b9030ce35fdba791a5_airguide-logo-01.svg" alt="Airguides">
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag"><span></span>Safari Expedition</div>
+    <h1>Big Cats &amp; The Great Migration</h1>
+    <p class="hero-sub">13 days in the Serengeti with world-renowned wildlife photographer Chris Fallows. Luxury camps. Max 8 guests. The greatest wildlife show on Earth.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Duration</div>
+      <div class="hero-meta-value">13 Days / 12 Nights</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Location</div>
+      <div class="hero-meta-value">Serengeti, Tanzania</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Group Size</div>
+      <div class="hero-meta-value">Max 8 Guests</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">From</div>
+      <div class="hero-meta-value">US$23,750</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HIGHLIGHTS ═══════════════ -->
+<section class="highlights page-break">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">Tanzania, like you've never seen it</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-icon">🦁</div>
+        <h3>5 Days in the Central Serengeti</h3>
+        <p>Prime big cat territory with lions, cheetahs, and leopards. Daily private guided game drives with Chris Fallows.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">📷</div>
+        <h3>Photography Masterclasses</h3>
+        <p>Hands-on wildlife photography guidance from one of the world's most published nature photographers. Plus editing sessions.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🦓</div>
+        <h3>The Great Migration</h3>
+        <p>Witness over two million wildebeest, zebra, and gazelles streaming across the plains. A spectacle like no other.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🏕️</div>
+        <h3>Luxury Asilia Lodges</h3>
+        <p>Three hand-picked camps: Usangu, Namiri, and Dunia. Africa's finest, including the first female-run luxury camp.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">✈️</div>
+        <h3>All-Inclusive Experience</h3>
+        <p>Every meal, all internal flights, airport transfers, daily guided safaris, and a personal gallery of trip highlights by Chris.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🌍</div>
+        <h3>Expert Conservation Stories</h3>
+        <p>Chris has spent 30+ years in the wild. His stories of sharks, lions, and conservation efforts make every evening unforgettable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT THE EXPERIENCE ═══════════════ -->
+<section class="about page-break">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About the Experience</div>
+        <div class="section-title">An expedition, not a tour</div>
+        <p>Step into the wild heart of the Serengeti on an extraordinary 13-day journey led by world-renowned wildlife photographer Chris Fallows. Limited to just 8 guests, this intimate safari offers unrivalled photographic opportunities, immersive wildlife encounters, and expert guidance in one of nature's greatest theatres.</p>
+        <p>Stay in exquisite luxury at Asilia's renowned lodges, Usangu, Namiri, and Dunia. Each location offers a unique window into Tanzania's breathtaking landscapes, from vast plains to hidden wildlife-rich havens. Dunia, Africa's first female-run luxury camp, provides not only world-class comfort but also an inspiring story of empowerment and resilience.</p>
+        <p>Throughout the journey, Chris Fallows leads hands-on photography masterclasses, helping you hone your skills and capture the magic of the Serengeti through your lens. Focus your camera on majestic big cats, towering elephants, and herds of wildebeest as they traverse the savanna.</p>
+        <p>Whether you're an aspiring photographer or a seasoned enthusiast, this journey deepens your connection with Tanzania's untamed beauty while elevating your craft. With expert guides, intimate campfire evenings, and the chance to witness Africa's raw splendour, this is more than a safari. It's a story waiting to be captured.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/gallery-web-1.jpg" alt="Wildlife in the Serengeti">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIAL 1 ═══════════════ -->
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"Chris is a once in a lifetime guide. His knowledge of wildlife behaviour meant we were always in the right place. I've done safaris before but nothing comes close to this level of access and intimacy."</blockquote>
+    <cite><strong>Guest Review</strong> · Tanzania expedition</cite>
+  </div>
+</section>
+
+<!-- ═══════════════ YOUR GUIDE ═══════════════ -->
+<section class="guide page-break">
+  <div class="container">
+    <div class="guide-grid">
+      <div class="guide-image">
+        <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/chris-fallows-profile.jpg" alt="Chris Fallows">
+      </div>
+      <div class="guide-text">
+        <div class="section-label">Your Storyteller Guide</div>
+        <div class="section-title">Chris Fallows</div>
+        <p>Chris Fallows is a renowned South African wildlife photographer and conservationist who has spent over 30 years capturing breathtaking images of the natural world. His groundbreaking work began in 1996 when he became the first to photograph a great white shark breaching near Seal Island, South Africa, a moment that has since become iconic.</p>
+        <p>Known as a pioneer in wildlife storytelling, Chris's work has been featured in over 60 international documentaries, including Planet Earth and Shark Week, as well as in more than 500 publications worldwide.</p>
+        <p>His philosophy underscores the responsibility of photographers to use their art to raise awareness and drive conservation, ensuring future generations can experience the wonders of the natural world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ WHY BOOK ═══════════════ -->
+<section class="why-book">
+  <div class="container">
+    <div class="why-book-inner">
+      <div class="section-label">Why Book This Experience?</div>
+      <div class="section-title">Big Cats &amp; The Great Migration</div>
+      <p>In Tanzania's legendary Serengeti, the Great Migration is one of nature's greatest spectacles. As seasonal rains refresh the plains, more than two million wildebeest stream forward, joined by huge numbers of zebras and gazelles.</p>
+      <p>Lions rest on rocky kopjes, watching for the perfect moment, while leopards wait patiently in the branches of acacia trees. Cheetahs glide across the grasslands, exploding into breathtaking sprints when the chance appears.</p>
+      <p>The arrival of the herds transforms the plains into a vivid, moving picture. Great clouds of dust rise as thousands flow forward, river crossings become dramatic scenes of courage and chaos. Big cats move through the throng, their golden coats standing out sharply against the swirling dust and golden grass.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GALLERY ═══════════════ -->
+<div class="gallery-strip">
+  <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/lions-14.jpg" alt="Lions in the Serengeti">
+  <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/cheetah-7.jpg" alt="Cheetah on the savanna">
+  <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/elephant.jpg" alt="Elephant in Tanzania">
+  <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/migration.jpg" alt="The Great Migration">
+</div>
+
+<!-- ═══════════════ ITINERARY ═══════════════ -->
+<section class="itinerary page-break">
+  <div class="container">
+    <div class="section-label">Day by Day</div>
+    <div class="section-title">Your Itinerary</div>
+
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">1</div>
+        </div>
+        <div class="itin-content">
+          <h3>Welcome to Tanzania</h3>
+          <div class="itin-subtitle">Arrive in Kilimanjaro</div>
+          <p>Airport transfers to your pre-trip accommodation near Kilimanjaro. Meet Chris and your fellow travellers over a welcome dinner. Rest up for the adventure ahead.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">2</div>
+        </div>
+        <div class="itin-content">
+          <h3>Into the Serengeti</h3>
+          <div class="itin-subtitle">Fly to Usangu</div>
+          <p>Internal flight to Usangu Wetlands in Ruaha National Park. Settle into camp and head out for your first afternoon game drive. Dinner at camp under the stars.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Days</div>
+          <div class="itin-number-value">3-5</div>
+        </div>
+        <div class="itin-content">
+          <h3>Usangu Wetlands</h3>
+          <div class="itin-subtitle">Big Cats, Elephants &amp; Antelopes</div>
+          <p>Daily private guided safaris searching for big cats, elephants, giraffes, and rare sable and roan antelopes. Chris leads photography masterclasses. Evenings around the campfire.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">6</div>
+        </div>
+        <div class="itin-content">
+          <h3>Transfer to Namiri Plains</h3>
+          <div class="itin-subtitle">Heart of Cheetah Country</div>
+          <p>Travel as a group to Namiri Plains, famous for its high concentration of big cats. Optional spa treatments at camp.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Days</div>
+          <div class="itin-number-value">7-9</div>
+        </div>
+        <div class="itin-content">
+          <h3>Namiri Plains</h3>
+          <div class="itin-subtitle">Lions, Cheetahs &amp; Leopards</div>
+          <p>Encounter majestic lions, sleek cheetahs, and elusive leopards. Chris guides your photography. Editing masterclass with Chris.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">10</div>
+        </div>
+        <div class="itin-content">
+          <h3>Transfer to Dunia Camp</h3>
+          <div class="itin-subtitle">Africa's First Female-Run Luxury Camp</div>
+          <p>Move to Dunia in the central Serengeti. The Great Migration may be in full swing.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Days</div>
+          <div class="itin-number-value">11-12</div>
+        </div>
+        <div class="itin-content">
+          <h3>The Great Migration</h3>
+          <div class="itin-subtitle">Wildebeest Herds &amp; River Crossings</div>
+          <p>Search for massive herds. Dramatic river crossings. Final photography session and editing masterclass with Chris.</p>
+        </div>
+      </div>
+
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">13</div>
+        </div>
+        <div class="itin-content">
+          <h3>Farewell, Tanzania</h3>
+          <div class="itin-subtitle">Departure</div>
+          <p>Final morning at camp. Transfers for your flight home. Depart with a personal gallery curated by Chris Fallows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FULL WIDTH IMAGE ═══════════════ -->
+<div class="full-image" style="background-image: url('https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/gallery-web-3.jpg');"></div>
+
+<!-- ═══════════════ ACCOMMODATION ═══════════════ -->
+<section class="feature-section page-break">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-image">
+        <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/camp-1.jpg" alt="Luxury safari camp in Tanzania">
+      </div>
+      <div class="feature-text">
+        <div class="section-label">Your Accommodation</div>
+        <div class="section-title">Your Safari Home</div>
+        <p>Your homes for the expedition are three luxury lodges hand-picked by Chris himself, all provided by Asilia, one of Africa's finest accommodation providers.</p>
+        <p>Usangu Expedition Camp sits in the remote Usangu Wetlands of Ruaha National Park. Namiri Plains is a secluded gem in the eastern Serengeti, famous for big cat sightings. Dunia Camp, Africa's first female-run luxury camp, offers world-class comfort in the heart of the central Serengeti.</p>
+        <p>Shared and private rooms available on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ACCOMMODATION GALLERY ═══════════════ -->
+<div class="gallery-strip">
+  <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/camp-2.jpg" alt="Safari camp interior">
+  <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/camp-3.jpg" alt="Safari camp exterior">
+  <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/camp-5.jpg" alt="Safari camp lounge">
+  <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/camp-6.jpg" alt="Safari camp dining">
+</div>
+
+<!-- ═══════════════ PHOTOGRAPHY MASTERCLASSES ═══════════════ -->
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-grid reverse">
+      <div class="feature-text">
+        <div class="section-label">Photography Masterclasses</div>
+        <div class="section-title">Learn from a Master</div>
+        <p>Chris has lived his life in the most remote places of Africa. Listen as he shares stories of the big cats and important conservation efforts.</p>
+        <p>Learn from a true master of his craft. Chris is one of the world's best known photographers. Learn how he sets up his camera and frames the perfect shots.</p>
+        <p>Dive into the fundamentals of photography with Chris as he teaches techniques he uses, including editing masterclasses.</p>
+      </div>
+      <div class="feature-image">
+        <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/chris-fallows-profile.jpg" alt="Chris Fallows leading a photography masterclass">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIAL 2 ═══════════════ -->
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"The photography masterclasses alone were worth the trip. Chris teaches you to see the wild differently. Add the luxury camps and the migration, and it's the greatest experience I've ever had."</blockquote>
+    <cite><strong>Guest Review</strong> · Tanzania expedition</cite>
+  </div>
+</section>
+
+<!-- ═══════════════ CREW ═══════════════ -->
+<section class="crew page-break">
+  <div class="container">
+    <div class="section-label">The People Behind the Experience</div>
+    <div class="section-title">Your Crew</div>
+    <div class="crew-grid">
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/tanzania-images/chris-fallows-profile.jpg" alt="Chris Fallows">
+        </div>
+        <div class="crew-name">Chris Fallows</div>
+        <div class="crew-role">Storyteller Guide</div>
+        <div class="crew-bio">World-renowned wildlife photographer and conservationist. Over 30 years in the field, 60+ documentaries, 500+ publications.</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="https://cdn.prod.website-files.com/618492b2c3bd4268f23ff521/61de68184fe9343e0ee0040e_Airguides_team_colour_17.jpg" alt="Paul Rowsthorn">
+        </div>
+        <div class="crew-name">Paul Rowsthorn</div>
+        <div class="crew-role">Expedition Director</div>
+        <div class="crew-bio">Founder of Airguides. Handles all logistics and coordination.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ WHAT'S INCLUDED ═══════════════ -->
+<section class="included page-break">
+  <div class="container">
+    <div class="section-label">The Details</div>
+    <div class="section-title">What's Included</div>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Included</h3>
+        <ul>
+          <li>1 night pre-trip accommodation near Kilimanjaro</li>
+          <li>10 nights luxury safari camp (Usangu, Namiri, Dunia)</li>
+          <li>Welcome dinner</li>
+          <li>All meals: daily breakfast, lunch, and dinner</li>
+          <li>All internal flights and transfers</li>
+          <li>Daily private guided photography safari tours</li>
+          <li>Storyteller guide Chris Fallows throughout</li>
+          <li>Dedicated Airguides Expedition Leader</li>
+          <li>Interactive safari photography masterclasses</li>
+          <li>Editing masterclasses with Chris</li>
+          <li>Personal gallery of trip highlights by Chris Fallows</li>
+          <li>Small group of only 8 guests</li>
+        </ul>
+      </div>
+      <div class="included-col not-included">
+        <h3>Not Included</h3>
+        <ul>
+          <li>International flights to/from Kilimanjaro (JRO)</li>
+          <li>Travel insurance (required)</li>
+          <li>Tanzania visa (available on arrival, approx. US$50)</li>
+          <li>Spa treatments at Namiri Camp</li>
+          <li>Personal expenses and gratuities</li>
+          <li>Alcoholic beverages (beyond camp inclusions)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label">Questions?</div>
+    <div class="section-title">Frequently Asked</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Do I need photography experience?</div>
+        <div class="faq-answer">Not at all. Chris caters to all levels, from smartphone shooters to professional photographers.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What camera gear should I bring?</div>
+        <div class="faq-answer">Chris will provide a recommended gear list after booking. A camera with a telephoto lens (200-400mm range) is ideal, but not essential.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I get to Kilimanjaro?</div>
+        <div class="faq-answer">Fly into Kilimanjaro International Airport (JRO). Common routes via Doha, Dubai, Nairobi, or Addis Ababa.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need vaccinations?</div>
+        <div class="faq-answer">Yellow fever vaccination is recommended. Consult your travel doctor for malaria prophylaxis.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How physically demanding is the trip?</div>
+        <div class="faq-answer">Not demanding at all. Most game drives are from comfortable vehicles.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Are private or custom departures available?</div>
+        <div class="faq-answer">Yes. We offer both scheduled group departures and fully private expeditions. Contact paul@airguides.com.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRICING & DATES ═══════════════ -->
+<section class="pricing page-break">
+  <div class="container">
+    <div class="section-label">Investment</div>
+    <div class="section-title">Pricing &amp; Dates</div>
+    <div class="price-display">
+      <div class="price-amount">US$23,750</div>
+      <div class="price-per">per person, all-inclusive</div>
+    </div>
+    <div class="price-deposit">
+      Secure your spot with a <strong>US$5,000 deposit</strong>. Balance due 90 days prior to departure.
+    </div>
+    <div class="dates-grid">
+      <div class="date-card">
+        <div class="date-card-label">Trip 1</div>
+        <div class="date-card-value">Jun - Jul 2026</div>
+      </div>
+      <div class="date-card">
+        <div class="date-card-label">Trip 2</div>
+        <div class="date-card-value">Jun - Jul 2027</div>
+      </div>
+    </div>
+    <p class="spots-note"><strong>Maximum 8 guests per departure.</strong> Private expeditions available on request.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Secure Your Spot</div>
+    <p class="cta-sub">Spaces are limited to 8 guests. Get in touch to check availability and reserve your place with a US$5,000 deposit.</p>
+    <a href="https://www.airguides.com/product/tanzania-big-cats-and-the-great-migration" class="cta-button">Book Now</a>
+    <div class="cta-contacts">
+      <div class="cta-contact-item">
+        <span class="label">Email</span>
+        <a href="mailto:paul@airguides.com">paul@airguides.com</a>
+      </div>
+      <div class="cta-contact-item">
+        <span class="label">Phone / WhatsApp</span>
+        <a href="https://wa.me/61402552918">(+61) 402 552 918</a>
+      </div>
+      <div class="cta-contact-item">
+        <span class="label">Website</span>
+        <a href="https://www.airguides.com">airguides.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <p><a href="https://www.airguides.com">airguides.com</a> · &copy; 2026 Airguides</p>
+</footer>
+
+</body>
+</html>
