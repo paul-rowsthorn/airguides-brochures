@@ -20,3 +20,5 @@ react-pdf/minimal-test.*
 
 # Large uncompressed PDFs (keep only compressed versions)
 react-pdf/tonga-humpbacks-jono-allen.pdf
+node_modules/
+*.pdf
