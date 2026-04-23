@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const IMG = join(__dirname);
+const IMG = join(__dirname, '../tanzania');
 const e = React.createElement;
 const img = (name) => join(IMG, name);
 
@@ -70,12 +70,12 @@ const s = StyleSheet.create({
 
   // Gallery
   galleryGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 16 },
-  galleryImg: { width: '48.5%', height: 170, borderRadius: 6, objectFit: 'cover' },
+  galleryImg: { width: '48.5%', height: 150, borderRadius: 6, objectFit: 'cover' },
   galleryImgSmall: { width: '48.5%', height: 120, borderRadius: 6, objectFit: 'cover' },
 
   // Itinerary
   itinDay: { flexDirection: 'row', marginBottom: 18, gap: 16 },
-  dayNum: { width: 50, alignItems: 'center' },
+  dayNum: { width: 65, minWidth: 65, alignItems: 'center', paddingRight: 8 },
   dayNumText: { fontSize: 28, fontWeight: 'bold', color: colors.gold, lineHeight: 1 },
   dayLabel: { fontSize: 8, textTransform: 'uppercase', letterSpacing: 1, color: colors.greyMid },
   dayContent: { flex: 1 },
@@ -127,7 +127,7 @@ const s = StyleSheet.create({
 // ==================== DATA ====================
 const data = {
   meta: [
-    { label: 'Duration', value: '13 Days / 12 Nights' },
+    { label: 'Duration', value: '13 Days / 11 Nights' },
     { label: 'Location', value: 'Serengeti, Tanzania' },
     { label: 'Group Size', value: 'Max 8 Guests' },
     { label: 'From', value: 'US$23,750' },
@@ -142,8 +142,9 @@ const data = {
     { title: 'Expert Conservation Stories', desc: 'Chris has spent 30+ years in the wild. His stories of sharks, lions, and conservation efforts make every evening unforgettable.' },
   ],
 
+
   aboutTexts: [
-    "Step into the wild heart of the Serengeti on an extraordinary 13-day journey led by world-renowned wildlife photographer Chris Fallows. Limited to just 8 guests, this intimate safari offers unrivalled photographic opportunities, immersive wildlife encounters, and expert guidance in one of nature's greatest theatres.",
+    "Step into the wild heart of the Serengeti on an extraordinary 11-day journey led by world-renowned wildlife photographer Chris Fallows. Limited to just 8 guests, this intimate safari offers unrivalled photographic opportunities, immersive wildlife encounters, and expert guidance in one of nature's greatest theatres.",
     "Stay in exquisite luxury at Asilia's renowned lodges, Usangu, Namiri, and Dunia. Each location offers a unique window into Tanzania's breathtaking landscapes, from vast plains to hidden wildlife-rich havens. Dunia, Africa's first female-run luxury camp, provides not only world-class comfort but also an inspiring story of empowerment and resilience.",
     "Throughout the journey, Chris Fallows leads hands-on photography masterclasses, helping you hone your skills and capture the magic of the Serengeti through your lens. Focus your camera on majestic big cats, towering elephants, and herds of wildebeest as they traverse the savanna.",
     "Whether you're an aspiring photographer or a seasoned enthusiast, this journey deepens your connection with Tanzania's untamed beauty while elevating your craft. With expert guides, intimate campfire evenings, and the chance to witness Africa's raw splendour, this is more than a safari. It's a story waiting to be captured.",
@@ -191,7 +192,7 @@ const data = {
 
   crew: [
     { name: 'Chris Fallows', role: 'Storyteller Guide', bio: 'World-renowned wildlife photographer and conservationist. Over 30 years in the field, 60+ documentaries, 500+ publications. Your expert for every wildlife encounter.', photo: 'chris-fallows-profile.jpg' },
-    { name: 'Paul Rowsthorn', role: 'Expedition Director', bio: 'Founder of Airguides. Handles all logistics, travel planning, and coordination so all you have to do is show up and enjoy.', photo: img('') },
+    { name: 'Paul Rowsthorn', role: 'Expedition Director', bio: 'Founder of Airguides and expert expedition leader with over 10 years experience.', photo: img('paul-rowsthorn.jpg') },
     { name: 'Asilia Guides', role: 'Local Safari Guides', bio: "Expert local guides provided by Asilia at each camp. Born and raised in Tanzania, they know the Serengeti's wildlife intimately.", photo: img('') },
   ],
 
@@ -229,8 +230,8 @@ const data = {
   ],
 
   dates: [
-    { label: 'Trip 1', value: 'Jun - Jul 2026' },
-    { label: 'Trip 2', value: 'Jun - Jul 2027' },
+    { label: 'Trip 1', value: '24 Nov - 6 Dec 2026' },
+    { label: 'Trip 2', value: '23 Nov - 5 Dec 2027' },
   ],
 };
 
@@ -248,7 +249,8 @@ const TanzaniaBrochure = e(Document, null,
       e(View, { style: s.heroCenter },
         e(Text, { style: s.heroTag }, 'Safari Expedition'),
         e(Text, { style: s.heroTitle }, 'Big Cats & The\nGreat Migration'),
-        e(Text, { style: s.heroSub }, '13 days in the Serengeti with world-renowned wildlife photographer Chris Fallows. Luxury camps. Max 8 guests. The greatest wildlife show on Earth.')
+        e(Text, { style: s.heroSub }, '13 days in the Serengeti with world-renowned wildlife photographer Chris Fallows. Luxury camps. Max 8 guests. The greatest wildlife show on Earth.'),
+        e(Text, { style: { fontSize: 10, color: colors.gold, marginTop: 8, textAlign: 'center' } }, '24th November - 6th December 2026')
       ),
       e(View, { style: s.metaBar },
         ...data.meta.map((m, i) => e(View, { key: i, style: s.metaItem },
@@ -328,14 +330,16 @@ const TanzaniaBrochure = e(Document, null,
       e(Image, { src: img('lions-14.jpg'), style: s.galleryImg }),
       e(Image, { src: img('cheetah-7.jpg'), style: s.galleryImg }),
       e(Image, { src: img('elephant.jpg'), style: s.galleryImg }),
-      e(Image, { src: img('migration.jpg'), style: s.galleryImg })
+      e(Image, { src: img('migration.jpg'), style: s.galleryImg }),
+      e(Image, { src: img('giraffe.jpg'), style: s.galleryImg }),
+      e(Image, { src: img('zebra.jpg'), style: s.galleryImg })
     )
   ),
 
   // ==================== PAGE 7: ITINERARY (part 1) ====================
   e(Page, { size: 'A4', style: s.pageEarth },
     e(Text, { style: s.sectionLabel }, 'Itinerary'),
-    e(Text, { style: s.sectionTitle }, 'Your 13-Day Journey'),
+    e(Text, { style: s.sectionTitle }, 'Your 13-Day Journey, 11 Nights'),
     ...data.itinerary.slice(0, 5).map((d, i) => e(View, { key: i, style: s.itinDay },
       e(View, { style: s.dayNum },
         e(Text, { style: s.dayNumText }, d.day),
