@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genetics Notes | Ch. 13 &amp; 14</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2333;
+    --border: rgba(255,255,255,0.07);
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --accent3: #f78166;
+    --accent4: #d2a8ff;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --gold: #e3b341;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0d1117 0%, #1a1f35 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '🧬';
+    position: absolute;
+    font-size: 300px;
+    opacity: 0.03;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+  }
+  .hero-tag span { width: 24px; height: 1px; background: var(--accent); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #58a6ff, #d2a8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto 32px;
+  }
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    justify-content: center;
+  }
+  .pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── LAYOUT ── */
+  .content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  /* ── CHAPTER DIVIDER ── */
+  .chapter {
+    display: flex; align-items: center; gap: 16px;
+    margin: 56px 0 32px;
+  }
+  .chapter-line { flex: 1; height: 1px; background: var(--border); }
+  .chapter-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ── SECTION CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-size: 18px; font-weight: 700; color: var(--text);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .card-title .icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+
+  /* ── CONCEPT BADGE ── */
+  .concept-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(88,166,255,0.15), rgba(210,168,255,0.15));
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: var(--accent); text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block; width: fit-content;
+  }
+
+  /* ── DEFINITION ── */
+  .def {
+    display: flex; gap: 12px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .def-term {
+    font-weight: 600; color: var(--gold);
+    min-width: 160px; flex-shrink: 0;
+    font-size: 14px; padding-top: 1px;
+  }
+  .def-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ── ARROW POINTS ── */
+  .points { list-style: none; margin: 10px 0; }
+  .points li {
+    display: flex; gap: 10px;
+    font-size: 14px; color: var(--muted);
+    margin-bottom: 8px; line-height: 1.6;
+  }
+  .points li .arrow {
+    color: var(--accent); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .points.sub li { margin-left: 20px; }
+  .points.sub li .arrow { color: var(--accent4); }
+  .points.numbered { counter-reset: item; }
+  .points.numbered li::before {
+    counter-increment: item;
+    content: counter(item) '.';
+    color: var(--accent3); font-weight: 700;
+    flex-shrink: 0; min-width: 18px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(63,185,80,0.08), rgba(63,185,80,0.03));
+    border-left: 3px solid var(--accent2);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .highlight strong { color: var(--accent2); }
+
+  .highlight.blue {
+    background: linear-gradient(135deg, rgba(88,166,255,0.08), rgba(88,166,255,0.03));
+    border-color: var(--accent);
+  }
+  .highlight.blue strong { color: var(--accent); }
+
+  .highlight.purple {
+    background: linear-gradient(135deg, rgba(210,168,255,0.08), rgba(210,168,255,0.03));
+    border-color: var(--accent4);
+  }
+  .highlight.purple strong { color: var(--accent4); }
+
+  .highlight.red {
+    background: linear-gradient(135deg, rgba(247,129,102,0.08), rgba(247,129,102,0.03));
+    border-color: var(--accent3);
+  }
+  .highlight.red strong { color: var(--accent3); }
+
+  /* ── TERM GRID ── */
+  .term-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin: 14px 0;
+  }
+  .term-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .term-chip strong { color: var(--accent4); display: block; margin-bottom: 2px; }
+  .term-chip span { color: var(--muted); font-size: 12px; }
+
+  /* ── TABLE ── */
+  .note-table {
+    width: 100%; border-collapse: collapse;
+    margin: 14px 0; font-size: 13px;
+    border-radius: 8px; overflow: hidden;
+  }
+  .note-table th {
+    background: var(--surface2);
+    color: var(--accent);
+    font-weight: 600; padding: 10px 14px;
+    text-align: left; border-bottom: 1px solid var(--border);
+  }
+  .note-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .note-table tr:last-child td { border-bottom: none; }
+  .note-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* ── PUNNETT SQUARE ── */
+  .punnett {
+    display: inline-grid;
+    border: 1px solid var(--border);
+    border-radius: 6px; overflow: hidden;
+    margin: 12px 0; font-size: 13px;
+    font-family: monospace;
+  }
+  .punnett-grid-2 { grid-template-columns: 60px 60px 60px; }
+  .punnett-grid-3 { grid-template-columns: 50px 50px 50px 50px; }
+  .punnett .cell {
+    padding: 8px 12px; text-align: center;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .punnett .cell:last-child { border-right: none; }
+  .punnett .header { background: var(--surface2); color: var(--accent); font-weight: 700; }
+  .punnett .empty { background: var(--surface); color: var(--muted); }
+
+  /* ── MECHANISM LIST ── */
+  .mechanism {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .mechanism-num {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--accent), var(--accent4));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0;
+  }
+  .mechanism-text { font-size: 14px; color: var(--text); padding-top: 3px; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 60px 20px 40px; }
+    .content { padding: 40px 16px; }
+    .card { padding: 20px; }
+    .term-grid { grid-template-columns: 1fr; }
+    .def { flex-direction: column; gap: 4px; }
+    .def-term { min-width: unset; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag"><span></span>Biology Notes<span></span></div>
+  <h1>Genetics</h1>
+  <p>Chapters 13 &amp; 14 &mdash; Chromosomes, Meiosis, Mendelian Inheritance &amp; Beyond</p>
+  <div class="hero-pills">
+    <span class="pill">🧬 Chromosomes</span>
+    <span class="pill">🔬 Meiosis</span>
+    <span class="pill">🌿 Mendel</span>
+    <span class="pill">⚖️ Segregation</span>
+    <span class="pill">🎲 Probability</span>
+    <span class="pill">🔗 Epistasis</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- ══ CHAPTER 13 ══ -->
+  <div class="chapter">
+    <div class="chapter-line"></div>
+    <div class="chapter-label">Chapter 13</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <!-- Cell types -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(88,166,255,0.15);">🔬</span>Key Cell Types</div>
+    <div class="def"><span class="def-term">Gametes</span><span class="def-desc">Reproductive cells (sperm and eggs)</span></div>
+    <div class="def"><span class="def-term">Somatic cells</span><span class="def-desc">All cells in the body <em>except</em> gametes and their precursors</span></div>
+    <div class="highlight blue"><strong>Note:</strong> Small amounts of DNA also found in mitochondria and chloroplasts</div>
+  </div>
+
+  <!-- Asexual vs Sexual -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(63,185,80,0.15);">⚡</span>Asexual vs Sexual Reproduction</div>
+    <div class="highlight">
+      <strong>Asexual</strong> = identical offspring from one parent (e.g. amoeba via mitotic cell division). Occasional mutations can occur.
+    </div>
+    <div class="highlight blue">
+      <strong>Sexual</strong> = two parents producing offspring with a unique genome.
+    </div>
+  </div>
+
+  <!-- Chromosomes -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(210,168,255,0.15);">🧬</span>Sets of Chromosomes</div>
+    <ul class="points">
+      <li><span class="arrow">→</span><span>Ordered display of chromosomes = <strong>Karyotype</strong></span></li>
+      <li><span class="arrow">→</span><span><strong>Homologous chromosome</strong> = same gene at the same place on both strands</span></li>
+      <li><span class="arrow">→</span><span><strong>X &amp; Y</strong> = exception &mdash; sex chromosomes (XX = Female, XY = Male)</span></li>
+      <li><span class="arrow">→</span><span><strong>Autosomes</strong> = all other chromosomes</span></li>
+      <li><span class="arrow">→</span><span><strong>Diploid cell</strong> = any cell with two chromosome sets</span></li>
+      <li><span class="arrow">→</span><span><strong>Haploid cell</strong> = single set of chromosomes</span></li>
+    </ul>
+    <div class="highlight purple">Each sexually reproducing species has a characteristic diploid and haploid number.</div>
+  </div>
+
+  <!-- Life Cycle -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(227,179,65,0.15);">🔄</span>Life Cycle</div>
+    <ul class="points">
+      <li><span class="arrow">→</span><span>Haploid sperm + Haploid egg fuse = <strong>Fertilisation</strong></span></li>
+      <li><span class="arrow">→</span><span>Fertilised egg = <strong>zygote</strong> = diploid (two chromosome sets)</span></li>
+      <li><span class="arrow">→</span><span>Only cells NOT produced by mitosis = <strong>gametes</strong> &mdash; develop from germ cells in the gonads (ovaries + testes)</span></li>
+      <li><span class="arrow">→</span><span><strong>Meiosis</strong> = gamete formation</span></li>
+    </ul>
+  </div>
+
+  <!-- Meiosis -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(247,129,102,0.15);">⚙️</span>Meiosis</div>
+    <div class="highlight red">Meiosis reduces the number of chromosome sets from <strong>diploid to haploid</strong>.</div>
+    <ul class="points">
+      <li><span class="arrow">→</span><span>Meiosis I &rarr; produces 4 daughter cells</span></li>
+      <li><span class="arrow">→</span><span>Meiosis II</span></li>
+    </ul>
+    <div class="def" style="margin-top:14px;"><span class="def-term">Sister chromatids</span><span class="def-desc">Two copies of one chromosome</span></div>
+    <div class="def"><span class="def-term">Allele</span><span class="def-desc">Different versions of a gene</span></div>
+    <div class="def"><span class="def-term">Locus</span><span class="def-desc">The precise location of a gene on a chromosome</span></div>
+    <p style="font-size:14px;color:var(--muted);margin:16px 0 8px;font-weight:600;">3 events unique to meiosis (occur during Meiosis I):</p>
+    <ul class="points">
+      <li><span class="arrow">→</span><span>Synapsis and crossing over (prophase I)</span></li>
+      <li><span class="arrow">→</span><span>Alignment of homologous pairs at the metaphase plate (metaphase I)</span></li>
+      <li><span class="arrow">→</span><span>Separation of homologues (anaphase I)</span></li>
+    </ul>
+  </div>
+
+  <!-- Genetic Variation -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(63,185,80,0.15);">🌀</span>Genetic Variation</div>
+    <div class="highlight">Genetic variation produced in sexual life cycles <strong>contributes to evolution</strong>.</div>
+    <p style="font-size:14px;color:var(--muted);margin:14px 0 10px;">Mechanisms that contribute to genetic variation:</p>
+    <div class="mechanism"><span class="mechanism-num">1</span><span class="mechanism-text">Independent assortment of chromosomes</span></div>
+    <div class="mechanism"><span class="mechanism-num">2</span><span class="mechanism-text">Crossing over</span></div>
+    <div class="mechanism"><span class="mechanism-num">3</span><span class="mechanism-text">Random fertilisation</span></div>
+    <div class="highlight blue" style="margin-top:14px;">
+      <strong>4</strong> possible combinations of maternal and paternal chromosomes. Crossing over produces <strong>recombinant chromosomes</strong>.
+    </div>
+    <div class="punnett punnett-grid-2" style="margin-top:12px;">
+      <div class="cell header"></div><div class="cell header">X</div><div class="cell header">X</div>
+      <div class="cell header">X</div><div class="cell empty">XX</div><div class="cell empty">XX</div>
+      <div class="cell header">Y</div><div class="cell empty">XY</div><div class="cell empty">XY</div>
+    </div>
+  </div>
+
+  <!-- ══ CHAPTER 14 ══ -->
+  <div class="chapter">
+    <div class="chapter-line"></div>
+    <div class="chapter-label">Chapter 14</div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <!-- Concept 14.1 -->
+  <div class="concept-badge">Concept 14.1</div>
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(88,166,255,0.15);">🌿</span>Mendel &amp; the Laws of Inheritance</div>
+    <div class="highlight blue">Mendel used the scientific approach to identify <strong>two laws of inheritance</strong>.</div>
+    <ul class="points" style="margin-top:14px;">
+      <li><span class="arrow">→</span><span><strong>Character</strong> = heritable feature that varies among individuals (e.g. flower colour)</span></li>
+      <li><span class="arrow">→</span><span><strong>Trait</strong> = each variant for a character</span></li>
+    </ul>
+    <p style="font-size:13px;color:var(--muted);margin:14px 0 8px;font-weight:600;">Why peas? Mendel's advantages:</p>
+    <ul class="points">
+      <li><span class="arrow">→</span><span>Clear contrasting traits</span></li>
+      <li><span class="arrow">→</span><span>Short generation time</span></li>
+      <li><span class="arrow">→</span><span>Many offspring</span></li>
+      <li><span class="arrow">→</span><span>Controlled mating ability</span></li>
+    </ul>
+    <div class="highlight" style="margin-top:14px;">Pea plants self-fertilise naturally. Mendel manually cross-pollinated by removing stamens and dusting pollen from another plant. Method = known percentages of offspring.</div>
+    <div class="highlight red" style="margin-top:10px;">Mendel's detailed quantitative analysis led to: <strong>Law of Segregation</strong> + <strong>Law of Independent Assortment</strong></div>
+  </div>
+
+  <!-- Mendel's Model -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(210,168,255,0.15);">🧪</span>Mendel's Model &mdash; 4 Related Concepts</div>
+    <div class="highlight purple">Developed to explain the <strong>3:1 inheritance pattern</strong> observed consistently among F2 offspring.</div>
+    <div style="margin-top:16px;">
+      <div class="mechanism"><span class="mechanism-num">1</span><div class="mechanism-text">Alternate versions of genes account for variations in inherited characters <strong>(alleles)</strong>. Today can be related to chromosomes and DNA.</div></div>
+      <div class="mechanism"><span class="mechanism-num">2</span><div class="mechanism-text">For each character, an organism inherits <strong>two alleles</strong> of a gene, one from each parent. Each somatic cell in a diploid organism has two sets of chromosomes (one from each parent).<br><span style="color:var(--muted);font-size:13px;">A genetic locus is represented twice in a diploid cell, one on each homologue of a specific pair of chromosomes.</span></div></div>
+      <div class="mechanism"><span class="mechanism-num">3</span><div class="mechanism-text">If the two alleles at a locus differ, the <strong>dominant allele</strong> determines the organism's appearance; the <strong>recessive allele</strong> has no noticeable effect on appearance.</div></div>
+      <div class="mechanism"><span class="mechanism-num">4</span><div class="mechanism-text"><strong>Law of Segregation</strong> = the two alleles for a heritable character segregate during gamete formation and end up in different gametes. Sperm/egg only gets one of the two alleles. If identical alleles = present in all gametes.</div></div>
+    </div>
+  </div>
+
+  <!-- Important Terms -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(227,179,65,0.15);">📖</span>Important Terms</div>
+    <div class="term-grid">
+      <div class="term-chip"><strong>Homozygous</strong><span>Two identical alleles</span></div>
+      <div class="term-chip"><strong>Heterozygous</strong><span>Two different alleles</span></div>
+      <div class="term-chip"><strong>Phenotype</strong><span>Observed appearance</span></div>
+      <div class="term-chip"><strong>Genotype</strong><span>Genetic makeup</span></div>
+      <div class="term-chip"><strong>Monohybrid</strong><span>Heterozygous for one specific trait (carrier)</span></div>
+      <div class="term-chip"><strong>Dihybrid</strong><span>Heterozygous for two different genetic loci</span></div>
+    </div>
+    <div class="highlight blue" style="margin-top:12px;"><strong>Test cross</strong> = Punnett square. Can be used to determine the genotype of an organism.<br>
+      <span style="font-family:monospace;display:block;margin-top:6px;">PP &times; pp = all Pp &nbsp;&nbsp;|&nbsp;&nbsp; Pp &times; pp = 1:1 phenotypic ratio</span>
+    </div>
+  </div>
+
+  <!-- Law of Independent Assortment -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(63,185,80,0.15);">🎲</span>Law of Independent Assortment</div>
+    <div class="highlight">Two or more genes assort independently &mdash; each pair of alleles segregates independently of any other pair during gamete formation.</div>
+    <div class="highlight red" style="margin-top:10px;"><strong>Only applies to</strong> genes (allele pairs) located on <strong>different chromosomes</strong> (not homologous) or genes that are <strong>very far apart</strong> on the same chromosome.</div>
+  </div>
+
+  <!-- Concept 14.2 -->
+  <div class="concept-badge" style="margin-top:32px;">Concept 14.2</div>
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(88,166,255,0.15);">🎯</span>Probability Laws in Mendelian Inheritance</div>
+    <div class="highlight blue">Like flipping a coin for which gene goes where.</div>
+    <div style="margin-top:16px;">
+      <div class="def"><span class="def-term">Multiplication rule</span><span class="def-desc">Multiply the probability of one event by the probability of the other &mdash; determines probability of one event <em>and</em> the other occurring.</span></div>
+      <div class="def"><span class="def-term">Addition rule</span><span class="def-desc">Probability that any one of two or more mutually exclusive events will occur = sum of individual probabilities. The multiplication rule gives individual probabilities which are then added.</span></div>
+    </div>
+    <div class="highlight purple" style="margin-top:10px;"><strong>Solving complex problems:</strong> Apply probability rules to crosses involving multiple characters &mdash; faster than a Punnett square. Larger sample size = closer results conform to predictions.</div>
+  </div>
+
+  <!-- Concept 14.3 -->
+  <div class="concept-badge" style="margin-top:32px;">Concept 14.3</div>
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(247,129,102,0.15);">🔗</span>Beyond Simple Mendelian Genetics</div>
+    <div class="highlight red">Inheritance patterns are often <strong>more complex</strong> than predicted by simple Mendelian genetics. Mendel's principles extend to diverse organisms and more complex patterns.</div>
+    <p style="font-size:14px;color:var(--muted);margin:16px 0 8px;">A single gene deviates from simple patterns when:</p>
+    <ul class="points">
+      <li><span class="arrow">→</span><span>Alleles are not completely dominant or recessive</span></li>
+      <li><span class="arrow">→</span><span>A particular gene has more than two alleles</span></li>
+      <li><span class="arrow">→</span><span>A single gene produces multiple phenotypes</span></li>
+    </ul>
+  </div>
+
+  <!-- Degrees of Dominance -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(210,168,255,0.15);">⚖️</span>Degrees of Dominance</div>
+    <div class="highlight purple" style="margin-bottom:12px;"><strong>Complete dominance</strong> = phenotypes of heterozygote and dominant homozygote are indistinguishable.</div>
+    <div class="highlight blue" style="margin-bottom:12px;"><strong>Incomplete dominance</strong> = phenotype of heterozygotes is <em>intermediate</em> between the two homozygous phenotypes.</div>
+    <div class="highlight" style="margin-bottom:12px;"><strong>Codominance</strong> = phenotypes of <em>both</em> alleles are exhibited in the heterozygote because both alleles affect the phenotype in separate, distinguishable ways.</div>
+    <div class="highlight red">The observed dominant/recessive relationship depends on the <strong>level at which we examine phenotype</strong>. Some dominant alleles are extremely rare &mdash; the recessive trait can be more common.</div>
+  </div>
+
+  <!-- Multiple Alleles -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(227,179,65,0.15);">🩸</span>Multiple Alleles &amp; ABO Blood Groups</div>
+    <div class="highlight">Most genes have <strong>more than two alleles</strong>. ABO blood groups are a classic example.</div>
+    <ul class="points" style="margin-top:10px;">
+      <li><span class="arrow">→</span><span>3 possible alleles: I<sup>A</sup>, I<sup>B</sup>, i</span></li>
+      <li><span class="arrow">→</span><span>4 blood types: A, B, AB, O</span></li>
+    </ul>
+    <table class="note-table" style="margin-top:14px;">
+      <thead><tr><th>Allele</th><th>Blood Type</th></tr></thead>
+      <tbody>
+        <tr><td>I<sup>A</sup></td><td>A</td></tr>
+        <tr><td>I<sup>B</sup></td><td>B</td></tr>
+        <tr><td>i</td><td>none (O)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pleiotropy & Epistasis -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(247,129,102,0.15);">🌐</span>Pleiotropy &amp; Epistasis</div>
+    <div class="def"><span class="def-term">Pleiotropy</span><span class="def-desc">The ability of a single gene to have multiple effects &mdash; responsible for many hereditary diseases.</span></div>
+    <div class="def" style="margin-top:10px;"><span class="def-term">Epistasis</span><span class="def-desc">A type of gene interaction where the phenotypic expression of one gene alters that of another independently inherited gene.</span></div>
+    <p style="font-size:13px;color:var(--muted);margin:16px 0 8px;font-weight:600;">Example: coat colour (BbEe &times; BbEe)</p>
+    <ul class="points">
+      <li><span class="arrow">→</span><span>B = black &nbsp;|&nbsp; b = brown &nbsp;|&nbsp; e = yellow</span></li>
+    </ul>
+    <div style="overflow-x:auto;margin-top:12px;">
+      <table class="note-table">
+        <thead>
+          <tr><th></th><th>BE (sperm)</th><th>bE</th><th>Be</th><th>be</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:var(--accent);font-weight:600;">BE (egg)</td><td>BBEE</td><td>BbEE</td><td>BBEe</td><td>BbEe</td></tr>
+          <tr><td style="color:var(--accent);font-weight:600;">bE</td><td>BbEE</td><td>bbEE</td><td>BbEe</td><td>bbEe</td></tr>
+          <tr><td style="color:var(--accent);font-weight:600;">Be</td><td>BBEe</td><td>BbEe</td><td>BBee</td><td>Bbee</td></tr>
+          <tr><td style="color:var(--accent);font-weight:600;">be</td><td>BbEe</td><td>bbEe</td><td>Bbee</td><td>bbee</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Biology Notes &mdash; Genetics Ch. 13 &amp; 14 &nbsp;&middot;&nbsp; Made with 🧬 by Airguides AI</p>
+</footer>
+
+</body>
+</html>
