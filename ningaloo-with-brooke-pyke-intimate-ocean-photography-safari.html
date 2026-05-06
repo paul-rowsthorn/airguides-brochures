@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ningaloo: Intimate Ocean Photography Safari | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #032635;
+    --reef: #06485a;
+    --lagoon: #0f7d90;
+    --aqua: #5ee1e7;
+    --foam: #eefbfb;
+    --mist: #a9c9cd;
+    --sand: #ecd2a6;
+    --sunset: #f07f5f;
+    --white: #ffffff;
+    --ink: #09222b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--white);
+    background: var(--deep);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 58px 42px;
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(3,38,53,0.08) 0%, rgba(3,38,53,0.16) 32%, rgba(3,38,53,0.68) 70%, rgba(3,38,53,0.98) 100%),
+      linear-gradient(to right, rgba(3,38,53,0.72) 0%, rgba(3,38,53,0.32) 48%, rgba(3,38,53,0.06) 100%);
+  }
+  .hero-logo { position: absolute; top: 38px; left: 42px; z-index: 2; }
+  .hero-logo img { height: 36px; width: auto; opacity: 0.96; }
+  .hero-content { position: relative; z-index: 2; max-width: 760px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 6.5vw, 82px);
+    line-height: 1.02;
+    letter-spacing: 0;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.62;
+    max-width: 650px;
+  }
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 18px;
+    margin-top: 38px;
+    max-width: 850px;
+  }
+  .meta-item {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 14px;
+  }
+  .meta-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .meta-value { color: var(--white); font-size: 15px; font-weight: 700; line-height: 1.32; }
+
+  section { padding: 96px 42px; }
+  .container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-label {
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(33px, 4vw, 50px);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+  .lead {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.72;
+    margin-bottom: 18px;
+  }
+  .copy p {
+    color: var(--mist);
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 16px;
+  }
+
+  .highlights, .testimonial, .why, .faq, .cta { background: var(--reef); }
+  .story, .guide, .itinerary, .included, .pricing, .vessel { background: var(--deep); }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 34px;
+  }
+  .highlight-card {
+    min-height: 176px;
+    padding: 24px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px;
+  }
+  .highlight-kicker {
+    color: var(--sunset);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .highlight-card h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .highlight-card p {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .split.reverse { grid-template-columns: 0.95fr 1.05fr; }
+  .image-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .image-frame.tall { aspect-ratio: 4/5; }
+  .image-frame.wide { aspect-ratio: 16/10; }
+  .image-frame.square { aspect-ratio: 1; }
+  .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .caption {
+    color: var(--mist);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+
+  .testimonial { text-align: center; }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.1vw, 34px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--sand);
+    max-width: 900px;
+    margin: 0 auto 28px;
+  }
+  .testimonial cite { color: var(--mist); font-size: 14px; font-style: normal; }
+  .testimonial strong { color: var(--white); }
+
+  .guide-card {
+    display: grid;
+    grid-template-columns: 0.88fr 1.12fr;
+    gap: 44px;
+    align-items: center;
+  }
+  .guide-photo { aspect-ratio: 4/5; overflow: hidden; border-radius: 8px; }
+  .guide-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .quote-note {
+    margin-top: 28px;
+    padding: 24px 28px;
+    border-left: 3px solid var(--sunset);
+    background: rgba(255,255,255,0.04);
+    color: var(--foam);
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 0;
+    background: var(--deep);
+  }
+  .gallery-strip img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .itinerary-list { display: grid; gap: 14px; margin-top: 30px; }
+  .itin-day {
+    display: grid;
+    grid-template-columns: 84px 1fr 118px;
+    gap: 22px;
+    align-items: start;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .itin-day:first-child { border-top: 0; padding-top: 0; }
+  .day-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .day-number {
+    color: var(--aqua);
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    line-height: 1.15;
+    margin-bottom: 7px;
+  }
+  .itin-content p { color: var(--mist); font-size: 14px; line-height: 1.62; }
+  .itin-tag {
+    color: var(--sand);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: right;
+    padding-top: 8px;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .stat { padding: 20px; border-top: 1px solid rgba(255,255,255,0.15); }
+  .stat-number {
+    color: var(--sand);
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label { color: var(--mist); font-size: 12px; line-height: 1.45; font-weight: 700; }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    margin-top: 34px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative;
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 0 11px 22px;
+  }
+  .included-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--aqua);
+  }
+  .not-included li::before { background: var(--sunset); }
+  .field-note { color: var(--mist); font-size: 12px; line-height: 1.55; margin-top: 14px; }
+
+  .faq-list { max-width: 900px; margin: 36px auto 0; }
+  .faq-item {
+    padding: 21px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .faq-item:first-child { border-top: 0; padding-top: 0; }
+  .faq-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    line-height: 1.2;
+    margin-bottom: 9px;
+  }
+  .faq-answer { color: var(--mist); font-size: 14px; line-height: 1.62; }
+
+  .price-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    margin-top: 34px;
+  }
+  .price-card {
+    padding: 32px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px;
+  }
+  .price-card h3 {
+    color: var(--mist);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .price-note { color: var(--mist); font-size: 14px; line-height: 1.55; }
+  .date-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+  }
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    color: var(--sand);
+    border: 1px solid rgba(236,210,166,0.35);
+    border-radius: 999px;
+    padding: 12px 18px;
+    font-weight: 800;
+  }
+
+  .cta { text-align: center; }
+  .cta .section-title { max-width: 820px; margin-left: auto; margin-right: auto; }
+  .cta-sub {
+    color: var(--mist);
+    font-size: 18px;
+    line-height: 1.65;
+    max-width: 660px;
+    margin: 0 auto 34px;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--aqua);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 17px 42px;
+    border-radius: 999px;
+  }
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .contact-item { color: var(--mist); font-size: 14px; }
+  .contact-item span {
+    display: block;
+    color: var(--aqua);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .contact-item a { color: var(--white); text-decoration: none; }
+  .footer {
+    color: var(--mist);
+    text-align: center;
+    font-size: 12px;
+    padding: 34px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer a { color: var(--foam); text-decoration: none; }
+
+  .page-break { break-before: page; }
+  .hero { break-after: page; }
+  .gallery-strip { break-before: page; break-after: page; }
+  .split, .guide-card, .highlight-card, .itin-day, .faq-item, .price-card { break-inside: avoid; }
+
+  @page { size: A4; margin: 0; }
+
+  @media (max-width: 860px) {
+    .hero { min-height: 720px; padding: 40px 24px; }
+    .hero-logo { top: 24px; left: 24px; }
+    .hero-meta { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+    section { padding: 64px 24px; }
+    .highlights-grid, .split, .split.reverse, .guide-card, .included-grid, .price-layout { grid-template-columns: 1fr; gap: 30px; }
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    .itin-day { grid-template-columns: 68px 1fr; }
+    .itin-tag { grid-column: 2; text-align: left; padding-top: 0; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print {
+    body, * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { width: 210mm; background: var(--deep); }
+    section {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 17mm 14mm;
+      display: flex;
+      align-items: center;
+      break-before: page;
+      break-after: page;
+      page-break-before: always;
+      page-break-after: always;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+    .container { width: 100%; max-width: none; }
+    .hero {
+      width: 210mm;
+      height: 297mm;
+      min-height: 0;
+      padding: 18mm 14mm;
+      break-before: auto;
+      page-break-before: auto;
+      box-shadow: none;
+    }
+    .hero-logo { top: 16mm; left: 14mm; }
+    .hero-logo img { height: 28px; }
+    .hero h1 { font-size: 48px; max-width: 690px; }
+    .hero-sub { font-size: 14px; line-height: 1.52; max-width: 610px; }
+    .hero-meta { grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; max-width: none; }
+    .meta-value { font-size: 12px; }
+    .section-title { font-size: 33px; margin-bottom: 14px; }
+    .section-label { font-size: 10px; margin-bottom: 10px; }
+    .lead { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+    .copy p { font-size: 11px; line-height: 1.43; margin-bottom: 8px; }
+    .highlights-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .highlight-card { min-height: 134px; padding: 18px; }
+    .highlight-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .highlight-card p { font-size: 10px; line-height: 1.42; }
+    .highlight-kicker { font-size: 9px; margin-bottom: 9px; }
+    .split { grid-template-columns: 1.05fr 0.95fr; }
+    .split.reverse { grid-template-columns: 0.95fr 1.05fr; }
+    .split, .split.reverse { gap: 34px; align-items: center; }
+    .image-frame.tall { aspect-ratio: 4/4.55; }
+    .image-frame.wide { aspect-ratio: 16/8.7; }
+    .caption { font-size: 9px; margin-top: 7px; }
+    .testimonial blockquote { font-size: 25px; line-height: 1.42; }
+    .testimonial cite { font-size: 12px; }
+    .guide-card { grid-template-columns: 0.88fr 1.12fr; gap: 34px; }
+    .quote-note { font-size: 17px; line-height: 1.42; padding: 20px 22px; margin-top: 20px; }
+    .gallery-strip {
+      width: 210mm;
+      height: 297mm;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0;
+    }
+    .gallery-strip img { aspect-ratio: auto; height: 100%; }
+    .itinerary-list { gap: 0; margin-top: 18px; }
+    .itin-day { grid-template-columns: 64px 1fr 90px; gap: 14px; padding: 10px 0; }
+    .day-number { font-size: 25px; }
+    .itin-content h3 { font-size: 17px; margin-bottom: 4px; }
+    .itin-content p { font-size: 9.8px; line-height: 1.32; }
+    .itin-tag { grid-column: auto; text-align: right; font-size: 8.5px; }
+    .stat-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 18px; }
+    .stat { padding: 12px; }
+    .stat-number { font-size: 28px; }
+    .stat-label { font-size: 9.5px; }
+    .included-grid { grid-template-columns: 1.05fr 0.95fr; gap: 34px; margin-top: 22px; }
+    .included-col h3 { font-size: 20px; margin-bottom: 12px; }
+    .included-col li { font-size: 10px; line-height: 1.32; padding-bottom: 7px; }
+    .included-col li::before { width: 6px; height: 6px; top: 5px; }
+    .field-note { font-size: 9px; }
+    .faq-list { margin-top: 20px; max-width: none; }
+    .faq-item { padding: 11px 0; }
+    .faq-question { font-size: 16px; margin-bottom: 4px; }
+    .faq-answer { font-size: 9.8px; line-height: 1.32; }
+    .price-layout { grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 22px; }
+    .price-card { padding: 24px; }
+    .price { font-size: 39px; }
+    .price-note { font-size: 11px; line-height: 1.42; }
+    .date-pill { font-size: 12px; padding: 10px 14px; }
+    .cta-sub { font-size: 14px; }
+    .footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/hero.jpg" alt="Whale shark on Ningaloo Reef">
+  </div>
+  <div class="hero-logo">
+    <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/airguides-logo-white.png" alt="Airguides">
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Ocean Photography Safari</div>
+    <h1>Ningaloo: Intimate Ocean Photography Safari</h1>
+    <p class="hero-sub">Nine days on Western Australia's Ningaloo Reef with award-winning underwater photographer Brooke Pyke. Private charters, whale sharks, manta rays, freediving foundations, editing workshops and a group limited to eight guests.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">Dates</div>
+      <div class="meta-value">1-9 Aug or 10-18 Aug 2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Duration</div>
+      <div class="meta-value">9 Days / 8 Nights</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Group Size</div>
+      <div class="meta-value">Max 8 Guests</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">From</div>
+      <div class="meta-value">US$9,350</div>
+    </div>
+  </div>
+</section>
+
+<section class="highlights page-break">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">Ningaloo done slowly, privately and close to the water</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-kicker">01</div>
+        <h3>4 Private Charters</h3>
+        <p>Two Exmouth megafauna days and two Coral Bay days, with whale sharks, manta rays, reef life and seasonal surprises.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">02</div>
+        <h3>Aerial Spotter</h3>
+        <p>A dedicated pilot and aircraft support charter days, helping the crew locate megafauna across the reef.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">03</div>
+        <h3>Brooke Pyke</h3>
+        <p>Photography fundamentals, in-water guidance, Lightroom editing and personalised feedback from Brooke.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">04</div>
+        <h3>Freediving Foundations</h3>
+        <p>A full-day workshop with Salty Hearts gives guests better breath, safety and camera movement skills.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">05</div>
+        <h3>Coral Bay Camping</h3>
+        <p>A cultural camping night near Cardabia Station, with stories, sky, reef and a slower connection to country.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">06</div>
+        <h3>Fully Catered</h3>
+        <p>Private chef meals, villa base, snacks, non-alcoholic drinks and Airguides support throughout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story page-break">
+  <div class="container">
+    <div class="split">
+      <div class="copy">
+        <div class="section-label">About the Experience</div>
+        <div class="section-title">A postcard reef, treated like a classroom</div>
+        <p class="lead">This is not just a trip to collect beautiful images. Across a week on the UNESCO-listed reef, guests learn to use photography as a creative lens for understanding Ningaloo's marine ecosystem and their place within it.</p>
+        <p>Brooke has shaped the experience with the insight of a long-time Exmouth local. The pace is unhurried, curious and close, with time to understand the animals rather than chase a quick encounter.</p>
+        <p>The week begins with freediving foundations, then moves into four full private charter days. Exmouth brings whale shark and megafauna searching with a spotter pilot overhead. Coral Bay brings manta rays, turtles, reef systems and a quieter southern rhythm.</p>
+        <p>Every day is designed around better water confidence, better image-making and deeper context: marine biology, ethical encounters, editing, feedback and professional guidance.</p>
+      </div>
+      <div>
+        <div class="image-frame tall">
+          <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/whale-shark-swim.jpg" alt="Photographer swimming with a whale shark">
+        </div>
+        <p class="caption">Ningaloo is one of the world's great whale shark coastlines, but every encounter is still guided by weather, wildlife and respect for the animals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"I booked this trip not really knowing what to expect. I left completely changed. Swimming alongside whale sharks is one thing. Doing it with someone who genuinely loves the ocean as much as Brooke does, and who wants to share that with you, that's something else entirely."</blockquote>
+    <cite><strong>Tessa H</strong> · Sydney, Ningaloo 2025</cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="guide-card">
+      <div class="guide-photo">
+        <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/brooke-pyke.jpg" alt="Brooke Pyke">
+      </div>
+      <div class="copy">
+        <div class="section-label">Your Guide</div>
+        <div class="section-title">Brooke Pyke</div>
+        <p class="lead">Brooke is an award-winning Australian underwater photographer whose work is rooted in Ningaloo, conservation and a calm, animal-first way of being in the water.</p>
+        <p>Originally from Melbourne, Brooke came to photography early through film, then found a new direction after a chance scuba diving encounter changed everything. She trained as a dive instructor, spent years working across Thailand, Indonesia and Australia, and built a career around showing people the beauty below the surface.</p>
+        <p>Her work has earned international recognition and her images have been featured in ocean publications around the world. On this trip, she is your teacher, field guide and creative lead, helping guests shoot, edit and understand the story behind the wildlife.</p>
+        <div class="quote-note">"Photography and art have the power to ignite a passion for conservation in the next generation." - Brooke Pyke</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <div class="split reverse">
+      <div>
+        <div class="image-frame wide">
+          <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/manta.jpg" alt="Manta ray in Ningaloo water">
+        </div>
+      </div>
+      <div class="copy">
+        <div class="section-label">Why Book This Experience?</div>
+        <div class="section-title">A reef safari built around access, not crowds</div>
+        <p class="lead">Public tours can mean sharing the water with large groups and moving on before an encounter has room to breathe. This trip was built because that version of Ningaloo was not enough.</p>
+        <p>With private charters, a small group and a spotter pilot overhead, each day can adapt to the reef. If whale sharks are moving, you move. If mantas are feeding, the day can slow down. If conditions change, the crew can make the best call for guests and wildlife.</p>
+        <p>The photography support also changes the experience. Brooke is in the water, at the table, in the review sessions and in the edit room. You are not just hoping for images, you are learning how to make them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gallery-strip">
+  <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/hero.jpg" alt="Whale shark underwater">
+  <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/manta.jpg" alt="Manta ray">
+  <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/stingray.jpg" alt="Stingray on sand">
+  <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/editing.jpg" alt="Editing workshop">
+</div>
+
+<section class="itinerary page-break">
+  <div class="container">
+    <div class="section-label">Day by Day</div>
+    <div class="section-title">Your Ningaloo photography safari</div>
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">1</div>
+        </div>
+        <div class="itin-content">
+          <h3>Welcome to Exmouth</h3>
+          <p>Arrive at the marina villa, settle in, meet Brooke, your hosts and fellow guests, then ease into the week with welcome drinks, snacks and a relaxed BBQ dinner.</p>
+        </div>
+        <div class="itin-tag">Arrival</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">2</div>
+        </div>
+        <div class="itin-content">
+          <h3>Freediving Fundamentals</h3>
+          <p>A full-day workshop covering physiology, breathing, safety, duck diving, streamlining, in-water rescue basics and moving with a camera.</p>
+        </div>
+        <div class="itin-tag">Training</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">3</div>
+        </div>
+        <div class="itin-content">
+          <h3>Photography Workshop</h3>
+          <p>Brooke leads a fundamentals session on camera settings, composition and creative decisions. A local marine biologist presents on the wildlife you are likely to encounter.</p>
+        </div>
+        <div class="itin-tag">Workshop</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Days</div>
+          <div class="day-number">4-5</div>
+        </div>
+        <div class="itin-content">
+          <h3>Exmouth Megafauna Charters</h3>
+          <p>Two private days aboard Latitude 22, with a spotter pilot overhead. Reef snorkels, outer reef searching, whale sharks, manta rays, humpbacks and dugongs all remain possible depending on season and conditions.</p>
+        </div>
+        <div class="itin-tag">Private Boat</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Days</div>
+          <div class="day-number">6-7</div>
+        </div>
+        <div class="itin-content">
+          <h3>Coral Bay and Cardabia Station</h3>
+          <p>Drive south to Coral Bay for two private charter days on the quieter southern end of Ningaloo. The night ashore brings a cultural camping experience under the stars near Cardabia Station.</p>
+        </div>
+        <div class="itin-tag">Mantas</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">8</div>
+        </div>
+        <div class="itin-content">
+          <h3>Photography and Editing</h3>
+          <p>Back on land, Brooke leads a hands-on Lightroom Classic workshop and each guest receives a personalised one-on-one feedback session.</p>
+        </div>
+        <div class="itin-tag">Editing</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">9</div>
+        </div>
+        <div class="itin-content">
+          <h3>Departure</h3>
+          <p>Breakfast and 10 AM checkout. Leave with a full memory card, sharper ocean skills and the kind of reef connection that is hard to get on a one-day tour.</p>
+        </div>
+        <div class="itin-tag">Farewell</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vessel">
+  <div class="container">
+    <div class="split">
+      <div>
+        <div class="image-frame wide">
+          <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/boat-guests.jpg" alt="Guests on a Ningaloo charter boat">
+        </div>
+      </div>
+      <div class="copy">
+        <div class="section-label">On The Water</div>
+        <div class="section-title">Private charter days, guided by the reef</div>
+        <p class="lead">Four private charter days give the group space, flexibility and a better chance of meaningful encounters than a standard day tour.</p>
+        <p>Exmouth days focus on whale sharks and other megafauna with Latitude 22. Coral Bay days move south to manta rays, loggerhead turtles and reef systems, with Wirraji listed in the trip materials as Western Australia's first fully electric vessel.</p>
+        <p>Aerial spotter support adds another layer of intelligence. The goal is not to guarantee wildlife, it is to make smart, ethical decisions that maximise the day while keeping the animals first.</p>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-number">4</div>
+        <div class="stat-label">private charter days across Exmouth and Coral Bay</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">8</div>
+        <div class="stat-label">guest maximum for a personal water experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">1</div>
+        <div class="stat-label">full freediving foundations workshop</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">2</div>
+        <div class="stat-label">creative workshops with Brooke: photo and editing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="container">
+    <div class="split reverse">
+      <div class="copy">
+        <div class="section-label">Life On Land</div>
+        <div class="section-title">Villa base, private chef and one night under the stars</div>
+        <p class="lead">The safari is based from a modern marina-front villa in Exmouth, with shared meals and a house rhythm that makes the group feel like a small expedition team rather than separate travellers.</p>
+        <p>Meals are prepared by a private chef, with vegetarian breakfasts, lunches and dinners listed in the trip materials, plus snacks, mineral water and non-alcoholic drinks throughout the week.</p>
+        <p>The Coral Bay section includes a cultural camping experience near Cardabia Station, with a night under canvas swags by the water, Nyinggulu stories shared by a traditional owner and time for Milky Way photography.</p>
+      </div>
+      <div>
+        <div class="image-frame wide">
+          <img src="ningaloo-with-brooke-pyke-intimate-ocean-photography-safari/workshop.jpg" alt="Ningaloo photography workshop">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"Airguides were exceptional hosts for our Raja Ampat liveaboard dive trip. Seamless, professional and incredibly well organised from start to finish."</blockquote>
+    <cite><strong>Adam McKnight</strong> · Raja 2025</cite>
+  </div>
+</section>
+
+<section class="included page-break">
+  <div class="container">
+    <div class="section-label">The Details</div>
+    <div class="section-title">What's included</div>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Included</h3>
+        <ul>
+          <li>Marina-front villa base in Exmouth</li>
+          <li>One-night cultural camping experience near Coral Bay</li>
+          <li>Private chef meals, snacks and non-alcoholic drinks</li>
+          <li>Two private Exmouth megafauna charters</li>
+          <li>Two private Coral Bay megafauna charters</li>
+          <li>Aerial marine-life spotter pilot and aircraft on charter days</li>
+          <li>Full-day freediving introduction with Salty Hearts</li>
+          <li>Marine biologist presentation</li>
+          <li>Photography fundamentals workshop with Brooke</li>
+          <li>Adobe Lightroom editing workshop</li>
+          <li>One-on-one photo feedback session with Brooke</li>
+          <li>Professional images from the trip captured by Brooke</li>
+          <li>Airguides expedition leader and co-host support</li>
+          <li>Small group of only eight guests</li>
+        </ul>
+        <p class="field-note">Wildlife encounters, exact charter routes and in-water time depend on weather, safety, wildlife behaviour and local regulations.</p>
+      </div>
+      <div class="included-col not-included">
+        <h3>Not Included</h3>
+        <ul>
+          <li>International or domestic flights</li>
+          <li>Airport transfers unless confirmed in booking terms</li>
+          <li>Travel and dive insurance</li>
+          <li>Underwater camera hire</li>
+          <li>Camera equipment insurance</li>
+          <li>Snorkelling or freediving equipment unless specified</li>
+          <li>Editing software and laptop</li>
+          <li>Portable hard drives and personal photography accessories</li>
+          <li>Alcoholic drinks</li>
+          <li>Personal expenses and gratuities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq page-break">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">What guests usually need to know</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Can you guarantee wildlife?</div>
+        <div class="faq-answer">No. This is a marine safari, and every day is guided by nature. The spotter pilot, private charter structure and experienced crew help maximise opportunities, but animal welfare and safety come first.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need to be a photographer?</div>
+        <div class="faq-answer">No. Photography is optional, but the trip is designed for people who want to understand the reef more deeply. Guests with cameras get direct support from Brooke, and non-photographers still benefit from the wildlife, ecology and ocean skills.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How strong a swimmer do I need to be?</div>
+        <div class="faq-answer">You should be a confident ocean snorkeller with moderate swimming ability and fitness. Conditions may include wind, swell and open water, though guides and safety-trained crew stay close.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need freediving experience?</div>
+        <div class="faq-answer">No. The trip includes a full-day freediving foundations workshop. Diving down is optional, but the skills help with comfort, safety and camera movement in the water.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What wildlife might we see?</div>
+        <div class="faq-answer">Possibilities include whale sharks, manta rays, humpback whales, turtles, reef sharks, stingrays, dugongs, dolphins, octopus, reef fish and macro life. Sightings cannot be guaranteed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What camera should I bring?</div>
+        <div class="faq-answer">A GoPro can work well for beginners. For guests with a larger setup, a compact or full-frame camera with underwater housing and a wide-angle or fisheye lens is ideal. Bring spare batteries, memory cards and backup storage.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing page-break">
+  <div class="container">
+    <div class="section-label">Pricing & Dates</div>
+    <div class="section-title">Two confirmed August 2026 departures</div>
+    <div class="price-layout">
+      <div class="price-card">
+        <h3>Trip 1</h3>
+        <div class="price">US$9,350</div>
+        <p class="price-note">Per person, based on the current public booking page. Departing 1 August to 9 August 2026.</p>
+      </div>
+      <div class="price-card">
+        <h3>Trip 2</h3>
+        <div class="price">US$9,350</div>
+        <p class="price-note">Per person, based on the current public booking page. Departing 10 August to 18 August 2026.</p>
+      </div>
+    </div>
+    <div class="date-row">
+      <div class="date-pill">1 August - 9 August 2026</div>
+      <div class="date-pill">10 August - 18 August 2026</div>
+    </div>
+    <p class="field-note">Availability, payment options, currency and final inclusions should be confirmed with Airguides at the time of booking.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">A small-group Ningaloo safari for people who want the reef to mean more</div>
+    <p class="cta-sub">Spaces are limited to eight guests. Get in touch to check availability, confirm the best departure and reserve your place.</p>
+    <a class="cta-button" href="https://www.airguides.com/products/ningaloo-with-brooke-pyke-intimate-ocean-photography-safari">Secure Your Spot</a>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:hello@airguides.com">hello@airguides.com</a>
+      </div>
+      <div class="contact-item">
+        <span>Phone / WhatsApp</span>
+        <a href="tel:+61402552918">(+61) 402 552 918</a>
+      </div>
+      <div class="contact-item">
+        <span>Website</span>
+        <a href="https://www.airguides.com">airguides.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="https://www.airguides.com">airguides.com</a> | Ningaloo: Intimate Ocean Photography Safari | Copyright Airguides
+</footer>
+
+</body>
+</html>
