@@ -1,11 +1,14 @@
 import puppeteer from 'puppeteer';
 import { createServer } from 'http';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { extname, join } from 'path';
 
 const DIR = new URL('.', import.meta.url).pathname;
 const INPUT = process.argv[2] || 'tonga-humpbacks-jono-allen.html';
 const OUTPUT = process.argv[3] || INPUT.replace('.html', '.pdf');
+const SYSTEM_CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const CHROME_EXECUTABLE = process.env.PUPPETEER_EXECUTABLE_PATH
+  || (existsSync(SYSTEM_CHROME) ? SYSTEM_CHROME : undefined);
 
 const MIME = {
   '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript',
@@ -31,6 +34,7 @@ server.listen(9222, async () => {
 
   const browser = await puppeteer.launch({
     headless: true,
+    executablePath: CHROME_EXECUTABLE,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 

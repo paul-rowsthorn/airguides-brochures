@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Arctic: Polar Bears in Fireweed | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #071421;
+    --ocean: #0b2438;
+    --teal: #2dd4bf;
+    --fireweed: #d9468f;
+    --ice: #e6f4ff;
+    --sand: #f5f0eb;
+    --white: #ffffff;
+    --grey-light: #a9bdd0;
+    --grey-mid: #6d8498;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--white);
+    background: var(--deep);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; }
+  a { color: inherit; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px 40px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(7,20,33,0.16) 0%, rgba(7,20,33,0.12) 32%, rgba(7,20,33,0.64) 70%, rgba(7,20,33,0.98) 100%);
+  }
+  .hero-logo { position: absolute; top: 40px; left: 40px; z-index: 2; }
+  .hero-logo img { height: 36px; width: auto; opacity: 0.95; }
+  .hero-content { position: relative; z-index: 2; max-width: 760px; }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 20px;
+  }
+  .hero-tag span { width: 24px; height: 1px; background: var(--teal); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 700;
+    line-height: 1.04;
+    margin-bottom: 18px;
+    max-width: 900px;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--ice);
+    line-height: 1.65;
+    max-width: 590px;
+  }
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 38px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.16);
+    flex-wrap: wrap;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; min-width: 120px; }
+  .hero-meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+  }
+  .hero-meta-value { font-size: 16px; font-weight: 700; color: var(--white); }
+
+  section { padding: 100px 40px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .highlights { background: var(--ocean); padding: 80px 40px; }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .highlight-card {
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.075);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+  .highlight-icon { font-size: 28px; margin-bottom: 14px; }
+  .highlight-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .highlight-card p { font-size: 14px; line-height: 1.65; color: var(--grey-light); }
+
+  .about { background: var(--deep); }
+  .about-grid, .guide-grid, .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .guide-grid { grid-template-columns: 1fr 1.2fr; align-items: center; }
+  .feature-grid { grid-template-columns: 1.15fr 1fr; align-items: center; }
+  .feature-grid.reverse { grid-template-columns: 1fr 1.15fr; }
+  .about-text p, .guide-text p, .why-book-inner p, .feature-text p {
+    font-size: 16px;
+    line-height: 1.82;
+    color: var(--grey-light);
+    margin-bottom: 20px;
+  }
+  .about-text p:first-of-type, .guide-text p:first-of-type, .why-book-inner p:first-of-type {
+    font-size: 18px;
+    color: var(--sand);
+    line-height: 1.72;
+  }
+  .about-image, .guide-image, .feature-image {
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.06);
+  }
+  .about-image { aspect-ratio: 4/5; }
+  .guide-image { aspect-ratio: 3/4; }
+  .feature-image { aspect-ratio: 16/10; }
+  .about-image img, .guide-image img, .feature-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  .testimonial {
+    background: var(--ocean);
+    text-align: center;
+    padding: 80px 40px;
+  }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 29px);
+    font-style: italic;
+    line-height: 1.58;
+    max-width: 860px;
+    margin: 0 auto 32px;
+    color: var(--sand);
+  }
+  .testimonial cite {
+    font-style: normal;
+    font-size: 14px;
+    color: var(--grey-light);
+  }
+  .testimonial cite strong { color: var(--white); font-weight: 700; }
+
+  .guide, .feature-section, .included, .pricing { background: var(--deep); }
+  .why-book, .faq, .crew, .cta { background: var(--ocean); }
+  .why-book-inner { max-width: 790px; margin: 0 auto; }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 0;
+  }
+  .gallery-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+  .itinerary { background: var(--deep); }
+  .itinerary-list { margin-top: 48px; }
+  .itin-day {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    padding: 38px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .itin-day:first-child { padding-top: 0; }
+  .itin-number { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .itin-number-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+  }
+  .itin-number-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: 700;
+    color: var(--teal);
+    text-align: center;
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .itin-subtitle { font-size: 14px; color: var(--teal); font-weight: 600; margin-bottom: 16px; }
+  .itin-content p { font-size: 15px; line-height: 1.72; color: var(--grey-light); }
+
+  .full-image {
+    height: 62vh;
+    min-height: 430px;
+    overflow: hidden;
+  }
+  .full-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  .crew-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .crew-card { text-align: center; }
+  .crew-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 16px;
+    border: 2px solid rgba(255,255,255,0.12);
+  }
+  .crew-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .crew-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .crew-role {
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .crew-bio { font-size: 13px; line-height: 1.65; color: var(--grey-light); }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 44px;
+    margin-top: 48px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative;
+    padding-left: 24px;
+    padding-bottom: 13px;
+    font-size: 15px;
+    line-height: 1.58;
+    color: var(--grey-light);
+  }
+  .included-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+  .not-included li::before { background: var(--grey-mid); }
+  .field-note { color: var(--grey-mid); font-size: 14px; line-height: 1.65; margin-top: 18px; }
+
+  .faq-list { max-width: 800px; margin: 40px auto 0; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 28px 0;
+  }
+  .faq-item:first-child { padding-top: 0; }
+  .faq-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .faq-answer { font-size: 15px; line-height: 1.72; color: var(--grey-light); }
+
+  .pricing { text-align: center; }
+  .price-display { margin: 40px 0 20px; }
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 700;
+  }
+  .price-per { font-size: 16px; color: var(--grey-mid); margin-top: 4px; }
+  .price-deposit {
+    font-size: 15px;
+    color: var(--grey-light);
+    margin-bottom: 40px;
+    line-height: 1.65;
+  }
+  .dates-grid {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 0 0 20px;
+    flex-wrap: wrap;
+  }
+  .date-card {
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.085);
+    border-radius: 12px;
+    padding: 32px 40px;
+    min-width: 240px;
+  }
+  .date-card-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .date-card-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .spots-note { font-size: 14px; color: var(--grey-mid); margin-top: 24px; }
+  .spots-note strong { color: var(--grey-light); }
+
+  .cta { text-align: center; padding: 100px 40px; }
+  .cta-sub {
+    font-size: 18px;
+    color: var(--grey-light);
+    margin: 0 auto 40px;
+    max-width: 540px;
+    line-height: 1.62;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--deep);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 18px 48px;
+    border-radius: 60px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .cta-contacts {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .cta-contact-item { font-size: 14px; color: var(--grey-mid); }
+  .cta-contact-item a { color: var(--teal); text-decoration: none; }
+  .cta-contact-item .label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 13px;
+    color: var(--grey-mid);
+  }
+  .footer a { color: var(--grey-light); text-decoration: none; }
+
+  @page { size: A4; margin: 0; }
+  .page-break { break-before: page; }
+  .hero { break-after: page; }
+  .gallery-strip, .feature-grid, .itin-day, .faq-item { break-inside: avoid; }
+  .full-image { break-before: page; break-after: page; height: 297mm; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 40px 24px; min-height: 640px; }
+    .hero-logo { left: 24px; top: 24px; }
+    .hero-meta { gap: 24px; }
+    section { padding: 60px 24px; }
+    .highlights-grid, .about-grid, .guide-grid, .feature-grid, .feature-grid.reverse, .included-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-image, .guide-image { aspect-ratio: 16/10; order: -1; }
+    .feature-image { order: -1; }
+    .crew-grid { grid-template-columns: 1fr; gap: 30px; }
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    .itin-day { grid-template-columns: 60px 1fr; gap: 20px; }
+  }
+
+  @media print {
+    body, * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { background: var(--deep); }
+    section, .gallery-strip, .full-image {
+      break-before: page;
+      break-after: page;
+      page-break-before: always;
+      page-break-after: always;
+    }
+    section {
+      min-height: 297mm;
+      padding: 18mm 14mm;
+      display: flex;
+      align-items: center;
+    }
+    .container { width: 100%; max-width: none; }
+    .hero {
+      height: 297mm;
+      min-height: 0;
+      padding: 18mm 14mm;
+      break-before: auto;
+      page-break-before: auto;
+    }
+    .hero h1 { font-size: 50px; }
+    .hero-sub { font-size: 15px; line-height: 1.55; max-width: 620px; }
+    .section-title { font-size: 32px; margin-bottom: 14px; }
+    .section-label { margin-bottom: 10px; }
+    .about-grid, .guide-grid, .feature-grid, .feature-grid.reverse { gap: 36px; align-items: center; }
+    .about-text p, .guide-text p, .why-book-inner p, .feature-text p {
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .about-text p:first-of-type, .guide-text p:first-of-type, .why-book-inner p:first-of-type {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .about-image { aspect-ratio: 4/4.4; }
+    .guide-image { aspect-ratio: 4/4.5; }
+    .feature-image { aspect-ratio: 16/8.5; }
+    .testimonial { min-height: 297mm; display: flex; align-items: center; }
+    .testimonial blockquote { font-size: 24px; line-height: 1.45; }
+    .gallery-strip {
+      height: 297mm;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+    .gallery-strip img { height: 100%; aspect-ratio: auto; }
+    .itinerary-list { margin-top: 24px; }
+    .itin-day {
+      grid-template-columns: 70px 1fr;
+      gap: 22px;
+      padding: 15px 0;
+    }
+    .itin-number-value { font-size: 30px; }
+    .itin-content h3 { font-size: 19px; }
+    .itin-subtitle { font-size: 12px; margin-bottom: 8px; }
+    .itin-content p { font-size: 12px; line-height: 1.42; }
+    .crew-grid { gap: 24px; }
+    .crew-photo { width: 105px; height: 105px; }
+    .crew-bio { font-size: 11px; line-height: 1.45; }
+    .included-grid { gap: 36px; margin-top: 30px; }
+    .included-col h3 { font-size: 20px; margin-bottom: 14px; }
+    .included-col li {
+      font-size: 11px;
+      line-height: 1.35;
+      padding-bottom: 7px;
+    }
+    .included-col li::before { top: 5px; }
+    .field-note { font-size: 10px; line-height: 1.45; }
+    .faq-list { max-width: none; margin-top: 22px; }
+    .faq-item { padding: 12px 0; }
+    .faq-question { font-size: 17px; margin-bottom: 6px; }
+    .faq-answer { font-size: 11px; line-height: 1.38; }
+    .price-display { margin: 24px 0 14px; }
+    .price-amount { font-size: 56px; }
+    .date-card { padding: 24px 30px; }
+    .cta { text-align: center; }
+    .footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="arctic-polar-bears-fireweed/hero.jpg" alt="">
+  </div>
+  <div class="hero-logo">
+    <img src="arctic-polar-bears-fireweed/airguides-logo-white.png" alt="Airguides">
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag"><span></span>Arctic Expedition</div>
+    <h1>The Arctic: Polar Bears in Fireweed</h1>
+    <p class="hero-sub">8 days in Canada's remote Arctic with award-winning wildlife photographer Martin Gregus. Polar bears in summer fireweed. Max 6 guests. Remote camp access few people ever experience.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Duration</div>
+      <div class="hero-meta-value">8 Days / 7 Nights</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Location</div>
+      <div class="hero-meta-value">Churchill, Canada</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Group Size</div>
+      <div class="hero-meta-value">Max 6 Guests</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">From</div>
+      <div class="hero-meta-value">US$25,900</div>
+    </div>
+  </div>
+</section>
+
+<section class="highlights page-break">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">A rare window into polar bear country</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-icon">🐻‍❄️</div>
+        <h3>Polar Bears in Fireweed</h3>
+        <p>Field sessions in the seasonal landscape that made Martin's Arctic photography famous, with bears moving through vivid summer fireweed.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">📷</div>
+        <h3>Martin Gregus Masterclasses</h3>
+        <p>Photography, conservation, polar bear behaviour, field craft and editing sessions led by Martin at camp.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">⛺</div>
+        <h3>Remote Arctic Safari Camp</h3>
+        <p>Shared camp accommodation in the wilderness, positioned for access to bears, belugas, seals and Arctic light.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🚁</div>
+        <h3>Flights and Helicopter Transfers</h3>
+        <p>Return Winnipeg to Churchill flights, helicopter transfers to camp, plus hotel and airport transfers included.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🦊</div>
+        <h3>Arctic Wildlife Walks</h3>
+        <p>Guided walking tours searching for Arctic fox, Arctic hare, sik sik, caribou and other northern wildlife.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">👥</div>
+        <h3>Only Six Guests</h3>
+        <p>Six guests per expedition, no exceptions. More space, quieter fieldwork and direct time with Martin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about page-break">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About the Experience</div>
+        <div class="section-title">This is the Arctic very few people reach</div>
+        <p>There are places on earth where very few people ever go. The remote wilderness of the Canadian Arctic is one of them. This trip is built around one of nature's most extraordinary seasonal moments: polar bears moving through fields of summer fireweed.</p>
+        <p>The journey begins in Winnipeg, with flights north to Churchill and onward transfers into a remote wilderness camp. From there, your days are shaped by weather, tides, light and wildlife movement. Each field session is about patience, respect and being ready when the Arctic gives you the moment.</p>
+        <p>Martin leads you into locations he has spent years quietly finding and returning to. You do not need to be a photographer to be here, but if you are, or if you want to become one, the access and instruction are unlike anything available on a standard wildlife tour.</p>
+        <p>Evenings at camp are for shared meals, stories, field notes, image reviews and the particular kind of conversation that only happens when a small group of people are somewhere genuinely remote together.</p>
+      </div>
+      <div class="about-image">
+        <img src="arctic-polar-bears-fireweed/field-bear.jpg" alt="Polar bear in the Arctic fireweed">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"To be in the presence of a unique visionary like Martin Gregus and be welcomed into his home away from home in the middle of nowhere is truly a once in a lifetime event right up there with getting married or having a child."</blockquote>
+    <cite><strong>Anne Prather</strong> · Fireweeds 2025 guest, United States</cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="guide-grid">
+      <div class="guide-image">
+        <img src="arctic-polar-bears-fireweed/martin-gregus.jpg" alt="Martin Gregus">
+      </div>
+      <div class="guide-text">
+        <div class="section-label">Your Storyteller Guide</div>
+        <div class="section-title">Martin Gregus</div>
+        <p>Martin Gregus grew up in Bratislava, Slovakia, in a household full of artists. He learned photography from his father and was exploring local wildlife with a camera before most kids had decided what they wanted to do with their lives.</p>
+        <p>Nineteen years later, his work has taken him across all seven continents and some of the most remote ecosystems on the planet. He has earned two wins and two nominations at Wildlife Photographer of the Year, and his 2022 polar bear project, <em>33 Days Among the Bears</em>, became an international story after National Geographic coverage.</p>
+        <p>His cinematography has contributed to productions for Disney, BBC and Netflix. Now based in Canada, Martin is recognised internationally for his work in polar regions, remote wilderness and the patience required to create images that feel impossible until you see them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-book">
+  <div class="container">
+    <div class="why-book-inner">
+      <div class="section-label">Why Book This Experience?</div>
+      <div class="section-title">A field expedition, not a viewing platform</div>
+      <p>Most people will only ever see polar bears from a crowded vehicle, a distant ship deck or a documentary. This expedition puts you in the field with Martin, working from a remote camp and moving at the pace of the Arctic.</p>
+      <p>The difference is access, but access alone is not enough. Martin's approach is grounded in patience and preparation. He teaches you how to read behaviour, work with distance, compose in difficult light and respect the animal first.</p>
+      <p>This trip also keeps the group deliberately tiny. Six guests means quieter movement, more direct instruction and a field rhythm that can adapt to conditions. When a bear steps through the fireweed, you are not fighting a crowd for the same frame.</p>
+      <p>The result is a rare blend of wilderness, conservation, photography and genuine time with someone who has devoted years to understanding this landscape.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gallery-strip">
+  <img src="arctic-polar-bears-fireweed/polar-03.jpg" alt="Polar bear portrait">
+  <img src="arctic-polar-bears-fireweed/guests-field.jpg" alt="Guests photographing in the Arctic field">
+  <img src="arctic-polar-bears-fireweed/polar-06.jpg" alt="Polar bear on Arctic shoreline">
+  <img src="arctic-polar-bears-fireweed/wide-arctic.jpg" alt="Wide Arctic wilderness landscape">
+</div>
+
+<section class="itinerary page-break">
+  <div class="container">
+    <div class="section-label">Day by Day</div>
+    <div class="section-title">Your 8-Day Arctic Journey</div>
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">1</div>
+        </div>
+        <div class="itin-content">
+          <h3>Welcome to Winnipeg</h3>
+          <div class="itin-subtitle">Gateway to the Arctic</div>
+          <p>Arrive in Winnipeg and settle into your hotel. That evening, join Martin, your Airguides expedition leader and your fellow travellers for a welcome dinner and trip briefing.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">2</div>
+        </div>
+        <div class="itin-content">
+          <h3>Into the Wilderness</h3>
+          <div class="itin-subtitle">Winnipeg to Churchill, then camp</div>
+          <p>Fly from Winnipeg to Churchill, where your expedition team meets you. From there, conditions decide the final transfer route into remote camp. After settling in, head into the field for your first polar bear session, followed by dinner and a Q&A with Martin.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Days</div>
+          <div class="itin-number-value">3-6</div>
+        </div>
+        <div class="itin-content">
+          <h3>Polar Bears in Fireweed</h3>
+          <div class="itin-subtitle">Field work, wildlife walks and masterclasses</div>
+          <p>Each day is built around polar bear activity, light, weather and safe field conditions. Search for bears, beluga whales and seals, join guided walks for Arctic wildlife, and return to camp for masterclasses on behaviour, conservation, composition and editing.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">7</div>
+        </div>
+        <div class="itin-content">
+          <h3>Final Hours in the Field</h3>
+          <div class="itin-subtitle">Last session, Churchill and Winnipeg</div>
+          <p>Begin with a final editing masterclass over breakfast, then spend one last half-day with the bears before returning to Churchill and flying back to Winnipeg for your final night.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number">
+          <div class="itin-number-label">Day</div>
+          <div class="itin-number-value">8</div>
+        </div>
+        <div class="itin-content">
+          <h3>Departure</h3>
+          <div class="itin-subtitle">Homeward</div>
+          <p>Breakfast together, then begin your journey home with images from a place most people will never see and a small group of people you will probably stay in touch with.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-image">
+  <img src="arctic-polar-bears-fireweed/full-bear.jpg" alt="">
+</div>
+
+<section class="feature-section page-break">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-image">
+        <img src="arctic-polar-bears-fireweed/guests.jpg" alt="Remote Arctic camp guests">
+      </div>
+      <div class="feature-text">
+        <div class="section-label">Accommodation</div>
+        <div class="section-title">Remote Arctic camp and Winnipeg hotels</div>
+        <p>Your accommodation includes two nights in Winnipeg and shared remote camp accommodation while you are in the Arctic field. The camp is practical, remote and positioned around access to the wildlife conditions that define this expedition.</p>
+        <p>This is not a hotel-based sightseeing trip. You are staying close to the landscape, with meals, briefings and masterclasses forming part of the rhythm of each day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-grid reverse">
+      <div class="feature-text">
+        <div class="section-label">Transfers</div>
+        <div class="section-title">Built around Arctic conditions</div>
+        <p>Return flights between Winnipeg and Churchill are included, along with hotel and airport transfers. The product-page inclusions also list return helicopter transfers to camp.</p>
+        <p>Daily plans are guided by weather, tides and conditions on the day. That flexibility is essential in polar bear country and is part of what makes this expedition feel real rather than scripted.</p>
+      </div>
+      <div class="feature-image">
+        <img src="arctic-polar-bears-fireweed/shoreline.jpg" alt="Arctic shoreline near Churchill">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"A truly unique experience that you will cherish for the rest of your life. You are being given a unique opportunity to go to a place that will only be accessible to a handful of mere mortals."</blockquote>
+    <cite><strong>Anne Prather</strong> · Fireweeds 2025 guest</cite>
+  </div>
+</section>
+
+<section class="crew page-break">
+  <div class="container">
+    <div class="section-label">Your Crew</div>
+    <div class="section-title">Small team, serious field experience</div>
+    <div class="crew-grid">
+      <div class="crew-card">
+        <div class="crew-photo"><img src="arctic-polar-bears-fireweed/martin-gregus.jpg" alt="Martin Gregus"></div>
+        <div class="crew-name">Martin Gregus</div>
+        <div class="crew-role">Storyteller Guide</div>
+        <div class="crew-bio">Award-winning wildlife photographer and polar-region specialist, with work recognised by Wildlife Photographer of the Year and National Geographic.</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo"><img src="arctic-polar-bears-fireweed/paul-rowsthorn.jpg" alt="Paul Rowsthorn"></div>
+        <div class="crew-name">Paul Rowsthorn</div>
+        <div class="crew-role">Expedition Director</div>
+        <div class="crew-bio">Founder of Airguides and expert expedition leader with over 10 years experience.</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo"><img src="arctic-polar-bears-fireweed/crew.jpg" alt="Arctic expedition crew"></div>
+        <div class="crew-name">Arctic Field Team</div>
+        <div class="crew-role">Local Operations</div>
+        <div class="crew-bio">The local camp and field team manage transfers, camp operations and safe movement in polar bear country.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="included page-break">
+  <div class="container">
+    <div class="section-label">What's Included</div>
+    <div class="section-title">A remote Arctic expedition package</div>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Included</h3>
+        <ul>
+          <li>4 nights luxury safari camp accommodation, shared</li>
+          <li>2 nights Winnipeg accommodation, pre and post trip</li>
+          <li>Return flights from Winnipeg to Churchill</li>
+          <li>Return helicopter transfers to camp</li>
+          <li>Hotel and airport transfers</li>
+          <li>Daily breakfast, lunch and dinner</li>
+          <li>Welcome dinner at outpost accommodation</li>
+          <li>4 days exploring for polar bears, beluga whales and seals</li>
+          <li>Walking tours searching for Arctic fox, Arctic hare, Arctic sik sik and Arctic wolf</li>
+          <li>Polar bear and conservation masterclass with Martin Gregus</li>
+          <li>Wildlife photography and editing masterclasses with Martin Gregus</li>
+          <li>Personal gallery of trip highlights by Martin Gregus</li>
+          <li>Airguides expedition leader</li>
+        </ul>
+        <p class="field-note">Daily itineraries are guided by weather, tides and conditions on the day.</p>
+      </div>
+      <div class="included-col not-included">
+        <h3>Not Included</h3>
+        <ul>
+          <li>Tips and gratuities</li>
+          <li>International and domestic flights unless specified</li>
+          <li>Airport transfers, taxes and excess baggage unless specified</li>
+          <li>Visa and passport fees</li>
+          <li>Travel insurance, required</li>
+          <li>Optional activities and personal expenses</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq page-break">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">Everything You Need to Know</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Is it safe to be around polar bears?</div>
+        <div class="faq-answer">Polar bears are apex predators, and your safety depends on following Martin, your Airguides expedition leader and the local field team's guidance at all times. Safe distances are strictly maintained to protect both guests and the bears. This trip is built around observation, not baiting, feeding or disrupting natural behaviour.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need photography experience?</div>
+        <div class="faq-answer">No. This trip is powerful for wildlife lovers as well as photographers. Martin teaches in the field and at camp, so beginners can learn the fundamentals while experienced photographers can work on behaviour, composition, editing and storytelling.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need a visa?</div>
+        <div class="faq-answer">Many nationalities are visa-exempt for Canada and can enter with an eTA, Electronic Travel Authorisation. Check the Canadian immigration website for your nationality, or ask the Airguides team for help.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What is the drone policy?</div>
+        <div class="faq-answer">Experienced operators may fly from camp only, and only when no guests or staff are in the field. You need a valid drone licence from your home country and liability insurance of up to US$1,000,000. Staff make the final call on where and when flying is permitted.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is there a solo traveller supplement?</div>
+        <div class="faq-answer">Yes. Solo travellers can request a private room for an additional fee. Roommate pairing may be available on a limited, first-come-first-served basis. Contact Airguides for current availability.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I get help with flights?</div>
+        <div class="faq-answer">Yes. The Airguides team can help with flight options and travel routing. Call, text or WhatsApp (+61) 402 552 918 to speak with someone who knows the trip.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing page-break">
+  <div class="container">
+    <div class="section-label">Pricing & Dates</div>
+    <div class="section-title">Secure Your Spot</div>
+    <div class="price-display">
+      <div class="price-amount">US$25,900</div>
+      <div class="price-per">per person</div>
+    </div>
+    <div class="price-deposit">Reserve your place with a US$5,000 deposit. Balance due according to Airguides booking terms.</div>
+    <div class="dates-grid">
+      <div class="date-card">
+        <div class="date-card-label">Confirmed</div>
+        <div class="date-card-value">7 August - 14 August 2027</div>
+      </div>
+      <div class="date-card">
+        <div class="date-card-label">Confirmed</div>
+        <div class="date-card-value">14 August - 21 August 2027</div>
+      </div>
+    </div>
+    <div class="spots-note"><strong>Maximum 6 guests per expedition.</strong> Six guests, no exceptions.</div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready to Join Us?</div>
+    <div class="section-title">This is your Arctic invitation</div>
+    <p class="cta-sub">A remote camp, a tiny group, and field time with Martin Gregus in the landscape that made his polar bear work famous.</p>
+    <a class="cta-button" href="https://www.airguides.com/products/the-arctic-polar-bears-in-fireweed">Secure Your Spot</a>
+    <div class="cta-contacts">
+      <div class="cta-contact-item">
+        <span class="label">Email</span>
+        <a href="mailto:hello@airguides.com">hello@airguides.com</a>
+      </div>
+      <div class="cta-contact-item">
+        <span class="label">Phone / WhatsApp</span>
+        <a href="tel:+61402552918">(+61) 402 552 918</a>
+      </div>
+      <div class="cta-contact-item">
+        <span class="label">Website</span>
+        <a href="https://www.airguides.com">airguides.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="https://www.airguides.com">airguides.com</a> · The Arctic: Polar Bears in Fireweed · Copyright Airguides
+</footer>
+
+</body>
+</html>
