@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenya: Elephants of Amboseli | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #171007;
+    --field: #26190c;
+    --gold: #d4a853;
+    --gold-soft: rgba(212, 168, 83, 0.14);
+    --sand: #f5eed9;
+    --paper: #fbf7ec;
+    --white: #ffffff;
+    --grey-light: #b7aa92;
+    --grey-mid: #7d715e;
+    --ink: #21190f;
+    --green: #6f7d4f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--white);
+    background: var(--deep);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 58px 42px;
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(23,16,7,0.16) 0%, rgba(23,16,7,0.08) 30%, rgba(23,16,7,0.62) 68%, rgba(23,16,7,0.98) 100%),
+      linear-gradient(to right, rgba(23,16,7,0.76) 0%, rgba(23,16,7,0.34) 48%, rgba(23,16,7,0.08) 100%);
+  }
+  .hero-logo {
+    position: absolute;
+    top: 38px;
+    left: 42px;
+    z-index: 2;
+  }
+  .hero-logo img { width: auto; height: 34px; opacity: 0.95; }
+  .hero-content { position: relative; z-index: 2; max-width: 790px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(46px, 6.3vw, 82px);
+    line-height: 1.02;
+    letter-spacing: 0;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    color: var(--sand);
+    font-size: 18px;
+    line-height: 1.62;
+    max-width: 660px;
+  }
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(130px, 1fr));
+    gap: 18px;
+    margin-top: 38px;
+    max-width: 880px;
+  }
+  .meta-item {
+    border-top: 1px solid rgba(255,255,255,0.18);
+    padding-top: 14px;
+  }
+  .meta-label {
+    color: var(--grey-light);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .meta-value { color: var(--white); font-size: 15px; font-weight: 700; line-height: 1.32; }
+
+  section { padding: 96px 42px; }
+  .container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-label {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(33px, 4vw, 50px);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+  .lead {
+    color: var(--sand);
+    font-size: 18px;
+    line-height: 1.72;
+    margin-bottom: 18px;
+  }
+  .copy p {
+    color: var(--grey-light);
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 16px;
+  }
+
+  .highlights, .testimonial, .why, .faq, .cta { background: var(--field); }
+  .story, .guide, .itinerary, .vehicle, .included, .pricing, .accommodation { background: var(--deep); }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 34px;
+  }
+  .highlight-card {
+    min-height: 176px;
+    padding: 24px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .highlight-kicker {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .highlight-card h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .highlight-card p {
+    color: var(--grey-light);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.04fr 0.96fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .split.reverse { grid-template-columns: 0.94fr 1.06fr; }
+  .image-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .image-frame.tall { aspect-ratio: 4/5; }
+  .image-frame.wide { aspect-ratio: 16/10; }
+  .image-frame.square { aspect-ratio: 1; }
+  .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .image-frame img.align-top { object-position: center top; }
+  .caption {
+    color: var(--grey-light);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+
+  .testimonial {
+    text-align: center;
+  }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.1vw, 34px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--sand);
+    max-width: 920px;
+    margin: 0 auto 28px;
+  }
+  .testimonial cite {
+    color: var(--grey-light);
+    font-size: 14px;
+    font-style: normal;
+  }
+  .testimonial strong { color: var(--white); }
+  .supporting-quote {
+    color: var(--grey-light);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 760px;
+    margin: 28px auto 10px;
+  }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 54px;
+    align-items: center;
+  }
+  .guide-photo {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+  }
+  .guide-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .guide-role {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .why-inner { max-width: 790px; margin: 0 auto; }
+  .why-inner p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--grey-light);
+    margin-bottom: 18px;
+  }
+  .why-inner p:first-of-type {
+    color: var(--sand);
+    font-size: 19px;
+    line-height: 1.7;
+  }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 0;
+    background: var(--deep);
+  }
+  .gallery-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+  .itinerary-list { margin-top: 44px; }
+  .itin-day {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    gap: 30px;
+    padding: 34px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .itin-day:first-child { padding-top: 0; }
+  .itin-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .itin-label {
+    color: var(--grey-mid);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .itin-value {
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .itin-subtitle {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .itin-content p {
+    color: var(--grey-light);
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  .full-image {
+    height: 62vh;
+    min-height: 430px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .full-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  .accommodation .split { align-items: start; }
+  .accom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-top: 42px;
+  }
+  .accom-grid img { width: 100%; aspect-ratio: 1.12; object-fit: cover; }
+
+  .crew-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 38px;
+  }
+  .crew-card {
+    padding: 26px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+  }
+  .crew-photo {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 16px;
+    border: 2px solid rgba(212,168,83,0.35);
+  }
+  .crew-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .crew-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  .crew-role {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .crew-card p {
+    color: var(--grey-light);
+    font-size: 13px;
+    line-height: 1.58;
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+  }
+  .included-col {
+    padding: 30px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative;
+    padding-left: 22px;
+    padding-bottom: 13px;
+    color: var(--grey-light);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .included-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .not-included li::before { background: var(--grey-mid); }
+
+  .faq-list { max-width: 790px; margin: 36px auto 0; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 0;
+  }
+  .faq-item:first-child { padding-top: 0; }
+  .faq-question {
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 11px;
+  }
+  .faq-answer {
+    color: var(--grey-light);
+    font-size: 15px;
+    line-height: 1.68;
+  }
+
+  .pricing { text-align: center; }
+  .price-card {
+    width: min(720px, 100%);
+    margin: 34px auto 0;
+    padding: 38px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .price {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .price-note {
+    color: var(--grey-light);
+    font-size: 15px;
+    line-height: 1.62;
+  }
+  .date-pill {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 24px;
+    border: 1px solid rgba(212,168,83,0.45);
+    border-radius: 999px;
+    color: var(--sand);
+    background: var(--gold-soft);
+    font-weight: 800;
+  }
+  .spots-note {
+    color: var(--grey-light);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 20px;
+  }
+  .spots-note strong { color: var(--white); }
+
+  .cta {
+    text-align: center;
+  }
+  .cta .section-title { max-width: 760px; margin-left: auto; margin-right: auto; }
+  .cta-sub {
+    color: var(--grey-light);
+    font-size: 18px;
+    line-height: 1.62;
+    max-width: 620px;
+    margin: 0 auto 34px;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--deep);
+    font-size: 15px;
+    font-weight: 800;
+    padding: 17px 42px;
+    border-radius: 999px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .contact-item {
+    color: var(--grey-light);
+    font-size: 14px;
+  }
+  .contact-item span {
+    display: block;
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .contact-item a { color: var(--white); text-decoration: none; }
+
+  .footer {
+    color: var(--grey-light);
+    text-align: center;
+    font-size: 12px;
+    padding: 34px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer a { color: var(--sand); text-decoration: none; }
+
+  .page-break { break-before: page; }
+  .hero { break-after: page; }
+  .gallery-strip { break-before: page; break-after: page; }
+  .split, .highlight-card, .itin-day, .faq-item, .price-card, .crew-card { break-inside: avoid; }
+
+  @page { size: A4; margin: 0; }
+
+  @media (max-width: 860px) {
+    .hero { min-height: 700px; padding: 40px 24px; }
+    .hero-logo { top: 24px; left: 24px; }
+    .hero-meta { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+    section { padding: 64px 24px; }
+    .highlights-grid, .split, .split.reverse, .guide-grid, .included-grid, .crew-grid { grid-template-columns: 1fr; gap: 30px; }
+    .gallery-strip, .accom-grid { grid-template-columns: repeat(2, 1fr); }
+    .itin-day { grid-template-columns: 68px 1fr; }
+  }
+
+  @media print {
+    body, * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { width: 210mm; background: var(--deep); }
+    section {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 17mm 14mm;
+      display: flex;
+      align-items: center;
+      break-before: page;
+      break-after: page;
+      page-break-before: always;
+      page-break-after: always;
+      overflow: hidden;
+    }
+    .container { width: 100%; max-width: none; }
+    .hero {
+      width: 210mm;
+      height: 297mm;
+      min-height: 0;
+      padding: 18mm 14mm;
+      break-before: auto;
+      page-break-before: auto;
+    }
+    .hero-logo { top: 16mm; left: 14mm; }
+    .hero-logo img { height: 27px; }
+    .hero h1 { font-size: 54px; max-width: 690px; }
+    .hero-sub { font-size: 14px; line-height: 1.52; max-width: 610px; }
+    .hero-meta { grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; max-width: none; }
+    .meta-value { font-size: 12px; }
+    .section-title { font-size: 34px; margin-bottom: 14px; }
+    .section-label { font-size: 10px; margin-bottom: 10px; }
+    .lead { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+    .copy p { font-size: 11px; line-height: 1.43; margin-bottom: 8px; }
+    .highlights-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .highlight-card { min-height: 134px; padding: 18px; }
+    .highlight-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .highlight-card p { font-size: 10px; line-height: 1.42; }
+    .highlight-kicker { font-size: 9px; margin-bottom: 9px; }
+    .split { grid-template-columns: 1.04fr 0.96fr; gap: 34px; align-items: center; }
+    .split.reverse { grid-template-columns: 0.94fr 1.06fr; }
+    .image-frame.tall { aspect-ratio: 4/4.65; }
+    .image-frame.wide { aspect-ratio: 16/8.9; }
+    .caption { font-size: 9px; margin-top: 7px; }
+    .testimonial blockquote { font-size: 25px; line-height: 1.42; }
+    .testimonial cite { font-size: 12px; }
+    .supporting-quote { font-size: 11px; line-height: 1.45; margin-top: 20px; }
+    .guide-grid { grid-template-columns: 0.82fr 1.18fr; gap: 34px; }
+    .guide-role { font-size: 9px; margin-bottom: 9px; }
+    .why-inner p { font-size: 11px; line-height: 1.5; margin-bottom: 8px; }
+    .why-inner p:first-of-type { font-size: 14px; line-height: 1.5; }
+    .gallery-strip {
+      width: 210mm;
+      height: 297mm;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2mm;
+      padding: 2mm;
+    }
+    .gallery-strip img { height: calc((297mm - 6mm) / 2); aspect-ratio: auto; object-fit: cover; }
+    .itin-day { grid-template-columns: 62px 1fr; gap: 18px; padding: 18px 0; }
+    .itin-value { font-size: 25px; }
+    .itin-label { font-size: 8px; }
+    .itin-content h3 { font-size: 18px; }
+    .itin-subtitle { font-size: 10px; margin-bottom: 7px; }
+    .itin-content p { font-size: 10.5px; line-height: 1.43; }
+    .full-image { width: 210mm; height: 297mm; min-height: 0; }
+    .accom-grid { gap: 2mm; margin-top: 24px; }
+    .accom-grid img { height: 42mm; aspect-ratio: auto; }
+    .crew-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .crew-card { padding: 16px; }
+    .crew-photo { width: 82px; height: 82px; }
+    .crew-card h3 { font-size: 17px; }
+    .crew-role { font-size: 8px; }
+    .crew-card p { font-size: 9.3px; line-height: 1.38; }
+    .included-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 24px; }
+    .included-col { padding: 20px; }
+    .included-col h3 { font-size: 21px; }
+    .included-col li { font-size: 10.2px; line-height: 1.38; padding-bottom: 8px; }
+    .faq-list { margin-top: 24px; }
+    .faq-item { padding: 14px 0; }
+    .faq-question { font-size: 17px; margin-bottom: 6px; }
+    .faq-answer { font-size: 10.5px; line-height: 1.45; }
+    .price-card { padding: 26px; }
+    .price { font-size: 52px; }
+    .price-note, .spots-note { font-size: 11px; }
+    .date-pill { font-size: 12px; margin-top: 20px; }
+    .cta-sub { font-size: 13px; }
+    .contact-item { font-size: 11px; }
+    .footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="kenya-elephants-of-amboseli/hero-elephant.jpg" alt="Two Amboseli elephants at sunset">
+  </div>
+  <div class="hero-logo">
+    <img src="kenya-elephants-of-amboseli/airguides-logo-white.png" alt="Airguides">
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Kenya Safari Expedition</div>
+    <h1>Elephants of Amboseli</h1>
+    <p class="hero-sub">Ten days in Kenya with Chris Fallows, photographing Amboseli's elephant herds beneath Kilimanjaro and learning the fieldcraft behind a lifetime of wildlife storytelling.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">Duration</div>
+      <div class="meta-value">10 Days / 9 Nights</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Dates</div>
+      <div class="meta-value">25 May - 05 June 2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Group Size</div>
+      <div class="meta-value">Limited to 8 Guests</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">From</div>
+      <div class="meta-value">US$12,750</div>
+    </div>
+  </div>
+</section>
+
+<section class="highlights page-break">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">Amboseli at field level</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-kicker">Wildlife</div>
+        <h3>Elephants beneath Kilimanjaro</h3>
+        <p>Track Amboseli's ancient elephant families across open plains, seasonal swamps and golden dust with the mountain as your backdrop.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Guide</div>
+        <h3>Chris Fallows in the field</h3>
+        <p>Learn from a photographer and conservationist with more than 30 years of experience reading wild behaviour and light.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Access</div>
+        <h3>Private safari vehicles</h3>
+        <p>Daily guided drives in private 4x4 Land Cruisers give the group space, flexibility and a stronger chance to work a scene properly.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Local Knowledge</div>
+        <h3>Expert Maasai guides</h3>
+        <p>Travel with guides who know Amboseli's animals, weather, routes and community stories from a lifetime on the land.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Learning</div>
+        <h3>Photography masterclasses</h3>
+        <p>Field technique, image selection, editing and conservation storytelling with Chris over sundowners and camp sessions.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Stay</div>
+        <h3>Seven nights at Osero Sopia</h3>
+        <p>A boutique base near Amboseli with views toward Mount Kilimanjaro and space to reset after long days on safari.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story page-break">
+  <div class="container">
+    <div class="split">
+      <div class="copy">
+        <div class="section-label">The Experience</div>
+        <div class="section-title">The stage is Amboseli. The story is elephants.</div>
+        <p class="lead">Amboseli is one of Africa's great wildlife stages: vast open plains, elephant herds moving through dust, and Kilimanjaro rising behind it all.</p>
+        <p>Your journey begins in Nairobi with a welcome dinner where Chris shares what drew him to Africa and how he uses photography as a tool for conservation. From there, the group travels by private transfer to Osero Sopia Mt. Kili Camp, your base for seven safari days.</p>
+        <p>Each morning you head into Amboseli in private vehicles with Chris and expert Maasai guides. The focus is elephants, but the park's supporting cast is strong: zebras, cheetahs, giraffes, raptors, waterbirds and the changing mood of the plains.</p>
+        <p>Afternoons bring sundowner drinks, image reviews and masterclasses that go beyond camera settings. Chris will push your eye, your timing and your understanding of the animals you are photographing.</p>
+      </div>
+      <div>
+        <div class="image-frame tall">
+          <img src="kenya-elephants-of-amboseli/kilimanjaro-wildlife.jpg" alt="Elephant walking across Amboseli">
+        </div>
+        <p class="caption">Amboseli gives photographers scale, behaviour and atmosphere in the same frame.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"Airguides were exceptional hosts for our Raja Ampat liveaboard dive trip. Seamless, professional and incredibly well organised from start to finish. They truly made the experience unforgettable."</blockquote>
+    <cite><strong>Adam McKnight</strong>, Raja 2025</cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="guide-grid">
+      <div class="guide-photo">
+        <img src="kenya-elephants-of-amboseli/chris-fallows.jpg" alt="Chris Fallows">
+      </div>
+      <div class="copy">
+        <div class="section-label">Your Guide</div>
+        <div class="section-title">Chris Fallows</div>
+        <div class="guide-role">Storyteller Guide</div>
+        <p class="lead">Chris Fallows is a South African wildlife photographer and conservationist whose career has been built in the field, not from the sidelines.</p>
+        <p>For more than 30 years, Chris has documented wild places and the animals that define them. In 1996, he became the first person to photograph a great white shark breaching near Seal Island, South Africa, creating one of modern wildlife photography's iconic moments.</p>
+        <p>His work has appeared in Planet Earth, Shark Week and more than 500 publications worldwide. He has contributed to more than 60 international documentaries and is known for blending technical mastery with deep respect for his subjects.</p>
+        <p>On this journey, Chris brings the same patience, fieldcraft and conservation perspective to elephants, big skies and the daily rhythm of Amboseli.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why page-break">
+  <div class="container">
+    <div class="why-inner">
+      <div class="section-label">Why Book This Experience</div>
+      <div class="section-title">This is not a standard safari with a famous name attached</div>
+      <p>It is a small-field learning environment built around one of Africa's most photogenic elephant landscapes and a guide who understands how conservation, story and image-making connect.</p>
+      <p>With only eight guests, the group can move with purpose. Private vehicles mean less compromise in the field. Maasai guides bring local knowledge of Amboseli's animals, routes and communities. Chris brings the long view: how to anticipate behaviour, when to wait, when to move, and how to turn an encounter into a photograph that carries meaning.</p>
+      <p>The masterclasses are woven into the safari rather than bolted on at the end. You will work in the field, review what happened, refine your approach, and return with a clearer eye the next morning.</p>
+      <p>Amboseli is famous for elephants, but the real value is the depth: seven safari days to slow down, read the landscape and photograph with intention.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-strip">
+  <img src="kenya-elephants-of-amboseli/hero-elephant.jpg" alt="Amboseli elephants at sunset">
+  <img src="kenya-elephants-of-amboseli/elephants-plains.jpg" alt="Elephant herd on the plains">
+  <img src="kenya-elephants-of-amboseli/amboseli-safari.jpg" alt="Zebras under acacia trees">
+  <img src="kenya-elephants-of-amboseli/osero-sopia-camp.jpg" alt="Elephant bull at golden hour">
+</section>
+
+<section class="itinerary page-break">
+  <div class="container">
+    <div class="section-label">Itinerary</div>
+    <div class="section-title">10 days, paced for the field</div>
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Day</span><span class="itin-value">1</span></div>
+        <div class="itin-content">
+          <h3>Arrive in Nairobi</h3>
+          <div class="itin-subtitle">Welcome to Kenya</div>
+          <p>Arrive at Nairobi airport, meet the Airguides team and transfer privately to your pre-trip accommodation. This evening, meet Chris Fallows and the group over a welcome dinner and Q&amp;A focused on conservation, fieldcraft and the days ahead.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Day</span><span class="itin-value">2</span></div>
+        <div class="itin-content">
+          <h3>Transfer to Amboseli</h3>
+          <div class="itin-subtitle">Osero Sopia Mt. Kili Camp</div>
+          <p>After breakfast, travel by private road transfer to Amboseli. Settle into Osero Sopia Mt. Kili Camp, with seven nights here as your base. Spend the first evening watching the light move across the plains and sharing dinner with Chris.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Days</span><span class="itin-value">3-9</span></div>
+        <div class="itin-content">
+          <h3>Seven safari days in Amboseli</h3>
+          <div class="itin-subtitle">Private vehicles, Maasai guides and daily masterclasses</div>
+          <p>Each day begins with breakfast before heading into Amboseli National Park in private vehicles. Search for elephants, zebras, cheetahs, giraffes and birdlife while Chris and the Maasai guiding team help you read the scene. Additional experiences include sundowners, village and community visits, and an optional balloon safari at extra cost. Afternoon sessions cover photography, editing and conservation storytelling.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Day</span><span class="itin-value">10</span></div>
+        <div class="itin-content">
+          <h3>Return to Nairobi</h3>
+          <div class="itin-subtitle">Farewell and onward flights</div>
+          <p>After a final breakfast, transfer back to Nairobi for onward flights. Departure timing is coordinated by the Airguides team so the close of the journey is smooth, unhurried and properly planned.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="full-image">
+  <img src="kenya-elephants-of-amboseli/elephants-plains.jpg" alt="Elephant herd across the Amboseli plains">
+</section>
+
+<section class="accommodation page-break">
+  <div class="container">
+    <div class="split reverse">
+      <div>
+        <div class="image-frame wide">
+          <img src="kenya-elephants-of-amboseli/accommodation-pool.jpg" alt="Osero Sopia Mt. Kili Camp pool and grounds">
+        </div>
+      </div>
+      <div class="copy">
+        <div class="section-label">Accommodation</div>
+        <div class="section-title">Osero Sopia Mt. Kili Camp</div>
+        <p class="lead">Seven nights at a boutique Amboseli camp with views toward Mount Kilimanjaro and easy access to the safari days.</p>
+        <p>Osero Sopia Mt. Kili Camp blends comfort with safari character, giving the group a quiet base after long days in the field. Spacious tented suites feature private verandas, comfortable furnishings and thoughtful touches that make the stay feel personal.</p>
+        <p>The camp's lounge and dining areas are designed for connection, whether sharing the day's strongest frames over dinner or sitting by the fire after a sundowner session.</p>
+        <p>Shared twin rooms or private rooms are available, with a single supplement where applicable.</p>
+      </div>
+    </div>
+    <div class="accom-grid">
+      <img src="kenya-elephants-of-amboseli/accommodation-pool.jpg" alt="Camp pool">
+      <img src="kenya-elephants-of-amboseli/accommodation-hosts.jpg" alt="Camp hosts">
+      <img src="kenya-elephants-of-amboseli/accommodation-veranda.jpg" alt="Camp veranda view">
+      <img src="kenya-elephants-of-amboseli/accommodation-room.jpg" alt="Camp bedroom">
+    </div>
+  </div>
+</section>
+
+<section class="vehicle page-break">
+  <div class="container">
+    <div class="split">
+      <div class="copy">
+        <div class="section-label">In The Field</div>
+        <div class="section-title">Private vehicles, better decisions</div>
+        <p class="lead">The safari days use private 4x4 Land Cruiser vehicles, giving the group flexibility to work with light, animal behaviour and local conditions.</p>
+        <p>That matters in Amboseli. A strong elephant encounter can unfold slowly, and a rushed vehicle can break the rhythm. Private vehicles let Chris and the Maasai guides make field decisions around the group's photographic goals instead of a generic sightseeing timetable.</p>
+        <p>Expect early starts, long watches, quiet patience and practical in-field coaching. The goal is not only to see the animals, but to understand what is happening before pressing the shutter.</p>
+      </div>
+      <div class="image-frame wide">
+        <img src="kenya-elephants-of-amboseli/amboseli-safari.jpg" alt="Amboseli safari landscape with zebras">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"A truly unique experience that you will cherish for the rest of your life. You are being given a unique opportunity to go to a place that will only be accessible to a handful of mere mortals."</blockquote>
+    <cite><strong>Anne Prather</strong>, Fireweeds 2025</cite>
+    <p class="supporting-quote">"The Airguides trip to Tonga to swim with humpback whales was the experience of a lifetime."</p>
+    <cite><strong>Mb Myers</strong>, Tonga 2024</cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="section-label">Your Crew</div>
+    <div class="section-title">A small team built around the field</div>
+    <div class="crew-grid">
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="kenya-elephants-of-amboseli/chris-fallows.jpg" alt="Chris Fallows">
+        </div>
+        <h3>Chris Fallows</h3>
+        <div class="crew-role">Storyteller Guide</div>
+        <p>Wildlife photographer and conservationist with more than 30 years in the field, guiding the photographic and conservation arc of the trip.</p>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="kenya-elephants-of-amboseli/paul-rowsthorn.jpg" alt="Paul Rowsthorn">
+        </div>
+        <h3>Paul Rowsthorn</h3>
+        <div class="crew-role">Expedition Director</div>
+        <p>Founder of Airguides and expert expedition leader with over 10 years experience.</p>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="kenya-elephants-of-amboseli/accommodation-hosts.jpg" alt="Maasai guiding team">
+        </div>
+        <h3>Maasai Guides</h3>
+        <div class="crew-role">Local Field Team</div>
+        <p>Expert local guides and hosts bringing deep knowledge of Amboseli's wildlife, communities and changing conditions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="included page-break">
+  <div class="container">
+    <div class="section-label">Inclusions</div>
+    <div class="section-title">What is covered</div>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Included</h3>
+        <ul>
+          <li>Two nights pre and post-trip accommodation in Nairobi</li>
+          <li>Seven nights at Osero Sopia Mt. Kili Camp, Amboseli</li>
+          <li>Welcome and farewell experiences in Nairobi</li>
+          <li>Private airport, ground and Nairobi to Amboseli transfers</li>
+          <li>Exclusive use of private 4x4 Land Cruiser safari vehicles</li>
+          <li>Seven safari days with expert Maasai guides and local hosts</li>
+          <li>Daily private guided photography safaris</li>
+          <li>Photography, editing and conservation masterclasses with Chris Fallows</li>
+          <li>Masai village and community experiences</li>
+          <li>Breakfasts, lunches, dinners and house beverages, excluding champagne</li>
+          <li>Airguides Expedition Leader throughout</li>
+          <li>Professional trip photography by Chris Fallows where available</li>
+        </ul>
+      </div>
+      <div class="included-col not-included">
+        <h3>Not Included</h3>
+        <ul>
+          <li>Domestic and international flights</li>
+          <li>Visa costs, passport fees and travel insurance</li>
+          <li>Gratuities and personal expenses</li>
+          <li>Champagne and premium beverages</li>
+          <li>Optional balloon safari</li>
+          <li>Single supplement, if a private room is requested or required</li>
+          <li>Any services not listed as included in final booking terms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq page-break">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">What guests usually need to know</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Do I need to be an advanced photographer?</div>
+        <div class="faq-answer">No. The trip is built for wildlife lovers and photographers who want to improve. Chris will adapt guidance to the group, from field technique to storytelling and editing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What camera gear should I bring?</div>
+        <div class="faq-answer">A camera with a telephoto lens is ideal for wildlife. A recommended gear list will be shared before departure, including practical guidance for dust, storage and field workflow.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is the balloon safari included?</div>
+        <div class="faq-answer">No. The balloon safari is optional and can be arranged separately, subject to availability, weather, safety and local operating conditions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How physical is the trip?</div>
+        <div class="faq-answer">Most safari time is spent in vehicles, with some camp walking, village visits and uneven ground. Guests should be comfortable with early starts and long days outdoors.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What wildlife will we see?</div>
+        <div class="faq-answer">Amboseli is famous for elephants, with strong chances for zebra, giraffe, cheetah, hyena, raptors and rich birdlife. Wildlife is wild, so sightings cannot be guaranteed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing page-break">
+  <div class="container">
+    <div class="section-label">Pricing &amp; Dates</div>
+    <div class="section-title">Reserve one of 8 places</div>
+    <div class="price-card">
+      <div class="price">US$12,750</div>
+      <p class="price-note">Per person in USD when paid in full. Shopify deposit option shown as US$6,375. Balance and final payment timing are confirmed in booking terms.</p>
+    </div>
+    <div class="date-pill">25 May - 05 June 2026, Confirmed</div>
+    <p class="spots-note"><strong>Limited to 8 guests.</strong> Pricing, availability and inclusions should be confirmed with Airguides at the time of booking.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Photograph Amboseli with Chris Fallows</div>
+    <p class="cta-sub">Spaces are limited to 8 guests. Get in touch to check availability, confirm inclusions and secure your place.</p>
+    <a class="cta-button" href="https://airguides.com/products/kenya-elephants-of-amboseli">Secure Your Spot</a>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:hello@airguides.com">hello@airguides.com</a>
+      </div>
+      <div class="contact-item">
+        <span>Phone / WhatsApp</span>
+        <a href="tel:+61402552918">(+61) 402 552 918</a>
+      </div>
+      <div class="contact-item">
+        <span>Website</span>
+        <a href="https://www.airguides.com">airguides.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="https://www.airguides.com">airguides.com</a> | Kenya: Elephants of Amboseli | Copyright Airguides
+</footer>
+
+</body>
+</html>
