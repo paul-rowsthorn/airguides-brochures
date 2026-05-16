@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raja Ampat with Brooke Pyke | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #032635;
+    --reef: #06485a;
+    --lagoon: #0f7d90;
+    --aqua: #5ee1e7;
+    --foam: #eefbfb;
+    --mist: #a9c9cd;
+    --sand: #ecd2a6;
+    --sunset: #f07f5f;
+    --white: #ffffff;
+    --ink: #09222b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--white);
+    background: var(--deep);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 58px 42px;
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(3,38,53,0.08) 0%, rgba(3,38,53,0.16) 32%, rgba(3,38,53,0.68) 70%, rgba(3,38,53,0.98) 100%),
+      linear-gradient(to right, rgba(3,38,53,0.72) 0%, rgba(3,38,53,0.32) 48%, rgba(3,38,53,0.06) 100%);
+  }
+  .hero-logo { position: absolute; top: 38px; left: 42px; z-index: 2; }
+  .hero-logo img { height: 36px; width: auto; opacity: 0.96; }
+  .hero-content { position: relative; z-index: 2; max-width: 760px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 6.5vw, 82px);
+    line-height: 1.02;
+    letter-spacing: 0;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.62;
+    max-width: 650px;
+  }
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 18px;
+    margin-top: 38px;
+    max-width: 850px;
+  }
+  .meta-item {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 14px;
+  }
+  .meta-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .meta-value { color: var(--white); font-size: 15px; font-weight: 700; line-height: 1.32; }
+
+  section { padding: 96px 42px; }
+  .container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-label {
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(33px, 4vw, 50px);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+  .lead {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.72;
+    margin-bottom: 18px;
+  }
+  .copy p {
+    color: var(--mist);
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 16px;
+  }
+
+  .highlights, .testimonial, .why, .faq, .cta { background: var(--reef); }
+  .story, .guide, .itinerary, .included, .pricing, .vessel { background: var(--deep); }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 34px;
+  }
+  .highlight-card {
+    min-height: 176px;
+    padding: 24px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px;
+  }
+  .highlight-kicker {
+    color: var(--sunset);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .highlight-card h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .highlight-card p {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .split.reverse { grid-template-columns: 0.95fr 1.05fr; }
+  .image-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .image-frame.tall { aspect-ratio: 4/5; }
+  .image-frame.wide { aspect-ratio: 16/10; }
+  .image-frame.square { aspect-ratio: 1; }
+  .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .caption {
+    color: var(--mist);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+
+  .testimonial { text-align: center; }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.1vw, 34px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--sand);
+    max-width: 900px;
+    margin: 0 auto 28px;
+  }
+  .testimonial cite { color: var(--mist); font-size: 14px; font-style: normal; }
+  .testimonial strong { color: var(--white); }
+
+  .guide-card {
+    display: grid;
+    grid-template-columns: 0.88fr 1.12fr;
+    gap: 44px;
+    align-items: center;
+  }
+  .guide-photo { aspect-ratio: 4/5; overflow: hidden; border-radius: 8px; }
+  .guide-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .quote-note {
+    margin-top: 28px;
+    padding: 24px 28px;
+    border-left: 3px solid var(--sunset);
+    background: rgba(255,255,255,0.04);
+    color: var(--foam);
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 0;
+    background: var(--deep);
+  }
+  .gallery-strip img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+  .mini-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-top: 34px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .mini-gallery img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .itinerary-list { display: grid; gap: 14px; margin-top: 30px; }
+  .itin-day {
+    display: grid;
+    grid-template-columns: 84px 1fr 118px;
+    gap: 22px;
+    align-items: start;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .itin-day:first-child { border-top: 0; padding-top: 0; }
+  .day-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .day-number {
+    color: var(--aqua);
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    line-height: 1.15;
+    margin-bottom: 7px;
+  }
+  .itin-content p { color: var(--mist); font-size: 14px; line-height: 1.62; }
+  .itin-tag {
+    color: var(--sand);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: right;
+    padding-top: 8px;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .stat { padding: 20px; border-top: 1px solid rgba(255,255,255,0.15); }
+  .stat-number {
+    color: var(--sand);
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label { color: var(--mist); font-size: 12px; line-height: 1.45; font-weight: 700; }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    margin-top: 34px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative;
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 0 11px 22px;
+  }
+  .included-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--aqua);
+  }
+  .not-included li::before { background: var(--sunset); }
+  .field-note { color: var(--mist); font-size: 12px; line-height: 1.55; margin-top: 14px; }
+
+  .faq-list { max-width: 900px; margin: 36px auto 0; }
+  .faq-item {
+    padding: 21px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .faq-item:first-child { border-top: 0; padding-top: 0; }
+  .faq-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    line-height: 1.2;
+    margin-bottom: 9px;
+  }
+  .faq-answer { color: var(--mist); font-size: 14px; line-height: 1.62; }
+
+  .price-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    margin-top: 34px;
+  }
+  .price-card {
+    padding: 32px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px;
+  }
+  .price-card h3 {
+    color: var(--mist);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .price-note { color: var(--mist); font-size: 14px; line-height: 1.55; }
+  .date-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+  }
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    color: var(--sand);
+    border: 1px solid rgba(236,210,166,0.35);
+    border-radius: 999px;
+    padding: 12px 18px;
+    font-weight: 800;
+  }
+
+  .cta { text-align: center; }
+  .cta .section-title { max-width: 820px; margin-left: auto; margin-right: auto; }
+  .cta-sub {
+    color: var(--mist);
+    font-size: 18px;
+    line-height: 1.65;
+    max-width: 660px;
+    margin: 0 auto 34px;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--aqua);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 17px 42px;
+    border-radius: 999px;
+  }
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .contact-item { color: var(--mist); font-size: 14px; }
+  .contact-item span {
+    display: block;
+    color: var(--aqua);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .contact-item a { color: var(--white); text-decoration: none; }
+  .footer {
+    color: var(--mist);
+    text-align: center;
+    font-size: 12px;
+    padding: 34px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer a { color: var(--foam); text-decoration: none; }
+
+  .page-break { break-before: page; }
+  .hero { break-after: page; }
+  .gallery-strip { break-before: page; break-after: page; }
+  .split, .guide-card, .highlight-card, .itin-day, .faq-item, .price-card { break-inside: avoid; }
+
+  @page { size: A4; margin: 0; }
+
+  @media (max-width: 860px) {
+    .hero { min-height: 720px; padding: 40px 24px; }
+    .hero-logo { top: 24px; left: 24px; }
+    .hero-meta { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+    section { padding: 64px 24px; }
+    .highlights-grid, .split, .split.reverse, .guide-card, .included-grid, .price-layout { grid-template-columns: 1fr; gap: 30px; }
+    .gallery-strip, .mini-gallery { grid-template-columns: repeat(2, 1fr); }
+    .itin-day { grid-template-columns: 68px 1fr; }
+    .itin-tag { grid-column: 2; text-align: left; padding-top: 0; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print {
+    body, * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { width: 210mm; background: var(--deep); }
+    section {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 17mm 14mm;
+      display: flex;
+      align-items: center;
+      break-before: page;
+      break-after: page;
+      page-break-before: always;
+      page-break-after: always;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+    .container { width: 100%; max-width: none; }
+    .hero {
+      width: 210mm;
+      height: 297mm;
+      min-height: 0;
+      padding: 18mm 14mm;
+      break-before: auto;
+      page-break-before: auto;
+      box-shadow: none;
+    }
+    .hero-logo { top: 16mm; left: 14mm; }
+    .hero-logo img { height: 28px; }
+    .hero h1 { font-size: 48px; max-width: 690px; }
+    .hero-sub { font-size: 14px; line-height: 1.52; max-width: 610px; }
+    .hero-meta { grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; max-width: none; }
+    .meta-value { font-size: 12px; }
+    .section-title { font-size: 33px; margin-bottom: 14px; }
+    .section-label { font-size: 10px; margin-bottom: 10px; }
+    .lead { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+    .copy p { font-size: 11px; line-height: 1.43; margin-bottom: 8px; }
+    .highlights-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .highlight-card { min-height: 134px; padding: 18px; }
+    .highlight-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .highlight-card p { font-size: 10px; line-height: 1.42; }
+    .highlight-kicker { font-size: 9px; margin-bottom: 9px; }
+    .split { grid-template-columns: 1.05fr 0.95fr; }
+    .split.reverse { grid-template-columns: 0.95fr 1.05fr; }
+    .split, .split.reverse { gap: 34px; align-items: center; }
+    .image-frame.tall { aspect-ratio: 4/4.55; }
+    .image-frame.wide { aspect-ratio: 16/8.7; }
+    .caption { font-size: 9px; margin-top: 7px; }
+    .testimonial blockquote { font-size: 25px; line-height: 1.42; }
+    .testimonial cite { font-size: 12px; }
+    .guide-card { grid-template-columns: 0.88fr 1.12fr; gap: 34px; }
+    .quote-note { font-size: 17px; line-height: 1.42; padding: 20px 22px; margin-top: 20px; }
+    .gallery-strip {
+      width: 210mm;
+      height: 297mm;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0;
+    }
+    .gallery-strip img { aspect-ratio: auto; height: 100%; }
+    .mini-gallery { grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 22px; }
+    .mini-gallery img { aspect-ratio: 1; height: auto; }
+    .itinerary-list { gap: 0; margin-top: 18px; }
+    .itin-day { grid-template-columns: 64px 1fr 90px; gap: 14px; padding: 10px 0; }
+    .day-number { font-size: 25px; }
+    .itin-content h3 { font-size: 17px; margin-bottom: 4px; }
+    .itin-content p { font-size: 9.8px; line-height: 1.32; }
+    .itin-tag { grid-column: auto; text-align: right; font-size: 8.5px; }
+    .stat-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 18px; }
+    .stat { padding: 12px; }
+    .stat-number { font-size: 28px; }
+    .stat-label { font-size: 9.5px; }
+    .included-grid { grid-template-columns: 1.05fr 0.95fr; gap: 34px; margin-top: 22px; }
+    .included-col h3 { font-size: 20px; margin-bottom: 12px; }
+    .included-col li { font-size: 10px; line-height: 1.32; padding-bottom: 7px; }
+    .included-col li::before { width: 6px; height: 6px; top: 5px; }
+    .field-note { font-size: 9px; }
+    .faq-list { margin-top: 20px; max-width: none; }
+    .faq-item { padding: 11px 0; }
+    .faq-question { font-size: 16px; margin-bottom: 4px; }
+    .faq-answer { font-size: 9.8px; line-height: 1.32; }
+    .price-layout { grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 22px; }
+    .price-card { padding: 24px; }
+    .price { font-size: 39px; }
+    .price-note { font-size: 11px; line-height: 1.42; }
+    .date-pill { font-size: 12px; padding: 10px 14px; }
+    .cta-sub { font-size: 14px; }
+    .footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="raja-ampat-with-brooke-pyke/hero.jpg" alt="Raja Ampat limestone islands and turquoise water">
+  </div>
+  <div class="hero-logo">
+    <img src="raja-ampat-with-brooke-pyke/airguides-logo-white.png" alt="Airguides">
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Liveaboard Dive Expedition</div>
+    <h1>Raja Ampat with Brooke Pyke</h1>
+    <p class="hero-sub">A 10-day private liveaboard expedition through the Coral Triangle with award-winning underwater photographer Brooke Pyke. Damai II, around 30 dives, marine biology sessions, photography mentoring and a group capped at 12 guests.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">Dates</div>
+      <div class="meta-value">Future dates TBC</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Duration</div>
+      <div class="meta-value">10 Days / 9 Nights</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Group Size</div>
+      <div class="meta-value">Max 12 Guests</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Past Price</div>
+      <div class="meta-value">US$8,950</div>
+    </div>
+  </div>
+</section>
+
+<section class="highlights page-break">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">Raja Ampat done slowly, privately and with real underwater guidance</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-kicker">01</div>
+        <h3>Private Damai II Charter</h3>
+        <p>Nine nights aboard a luxury Indonesian liveaboard with generous deck space, ensuite cabins and a 12-guest cap.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">02</div>
+        <h3>Around 30 Dives</h3>
+        <p>Dampier Strait, Aljui Bay, Penemu, Wayilbatan, Boo, Fiabacet, Farondi and Balbulol, with night dives included when conditions allow.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">03</div>
+        <h3>Brooke Pyke</h3>
+        <p>Underwater photography, editing, field mentoring and visual storytelling support from an award-winning ocean photographer.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">04</div>
+        <h3>Marine Science</h3>
+        <p>Guest scientist Dr. Amelia Armstrong brings manta ray expertise, marine biology presentations and interactive Q&A sessions.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">05</div>
+        <h3>Coral Triangle Wildlife</h3>
+        <p>Oceanic mantas, reef mantas, turtles, wobbegongs, walking sharks, pygmy seahorses, sea fans and soft coral gardens.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">06</div>
+        <h3>All-Inclusive Ease</h3>
+        <p>Gourmet meals, beverages, nitrox for certified divers, full rental equipment, massages, laundry and Airguides expedition support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story page-break">
+  <div class="container">
+    <div class="split">
+      <div class="copy">
+        <div class="section-label">About the Experience</div>
+        <div class="section-title">The ocean's crown jewel, explored properly</div>
+        <p class="lead">Raja Ampat sits in Indonesia's remote West Papua, at the heart of the Coral Triangle. It is one of the most biodiverse marine ecosystems on earth, with reefs that feel impossibly full of colour, movement and life.</p>
+        <p>This expedition is designed for divers who want more than a quick visit. The route begins in Sorong, then moves through Dampier Strait, Wayag, Aljui Bay, Misool and back through the islands, balancing big coral landscapes, macro dives, lagoons, viewpoints and night dives.</p>
+        <p>The source itinerary includes around 30 dives across 10 days, plus snorkelling, lagoon cruises, beach visits, hikes, workshops and marine biology sessions. The pace gives you time to settle into the reef rather than chase a checklist.</p>
+        <p>Certified divers are the natural fit, and the source file notes Open Water level or equivalent as the minimum. Snorkellers can also join the adventure, subject to final trip terms and route planning.</p>
+      </div>
+      <div>
+        <div class="image-frame tall">
+          <img src="raja-ampat-with-brooke-pyke/about-diver.jpg" alt="Diver in Raja Ampat reef with schooling fish">
+        </div>
+        <p class="caption">Raja Ampat rewards patience: currents, reef walls, macro life, mantas, sharks and coral gardens all shift with the conditions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"Airguides were exceptional hosts for our Raja Ampat liveaboard dive trip. Seamless, professional and incredibly well organised from start to finish. A special mention to Brooke and Prashanti Pyke for their warmth, expertise and attention to detail."</blockquote>
+    <cite><strong>Adam McKnight</strong>, Raja 2025</cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="guide-card">
+      <div class="guide-photo">
+        <img src="raja-ampat-with-brooke-pyke/brooke-pyke.jpg" alt="Brooke Pyke">
+      </div>
+      <div class="copy">
+        <div class="section-label">Your Storyteller Guide</div>
+        <div class="section-title">Brooke Pyke</div>
+        <p class="lead">Brooke is a multi award-winning Australian underwater photographer, dive instructor and marine expedition guide whose work is grounded in ocean conservation and thoughtful storytelling.</p>
+        <p>Originally from Melbourne, Brooke found her way back to photography through scuba diving, then spent years working as a dive professional across Thailand, Indonesia and Australia. Her first professional underwater photography role came on Ningaloo Reef, where she now lives and works.</p>
+        <p>Raja Ampat is personal for Brooke. She has led small-group diving expeditions here since 2019, shaped around slower dives, private charters, respectful wildlife encounters and hands-on image mentoring in one of the most visually rich ocean environments on the planet.</p>
+        <div class="quote-note">"Photography and art have the power to ignite a passion for conservation in the next generation." - Brooke Pyke</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <div class="split reverse">
+      <div>
+        <div class="image-frame wide">
+          <img src="raja-ampat-with-brooke-pyke/reef-garden.jpg" alt="Colourful Raja Ampat coral reef">
+        </div>
+      </div>
+      <div class="copy">
+        <div class="section-label">Why Book This Experience?</div>
+        <div class="section-title">Because Raja Ampat is too good to skim</div>
+        <p class="lead">Many visitors come to Raja Ampat to tick off mantas, pygmy seahorses or famous dive sites. Brooke's approach is different: stay longer, go deeper and build enough context to understand what you are seeing.</p>
+        <p>With a private charter, a 12-guest group and Damai II's experienced captain and dive crew, the route can respond to weather, current and guest needs while still aiming for the quieter corners that make the region feel wild.</p>
+        <p>For photographers, the value is not just access to subjects. Brooke is there for camera decisions, field support, editing, one-on-one feedback and the practical craft of making images that tell a meaningful ocean story.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gallery-strip">
+  <img src="raja-ampat-with-brooke-pyke/soft-coral.jpg" alt="Raja Ampat soft coral">
+  <img src="raja-ampat-with-brooke-pyke/manta.jpg" alt="Manta ray in blue water">
+  <img src="raja-ampat-with-brooke-pyke/jellyfish-lake.jpg" alt="Jellyfish Lake in Raja Ampat">
+  <img src="raja-ampat-with-brooke-pyke/turtle.jpg" alt="Sea turtle above the reef">
+</div>
+
+<section class="itinerary page-break">
+  <div class="container">
+    <div class="section-label">Day by Day</div>
+    <div class="section-title">Your Raja Ampat liveaboard route</div>
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">1</div>
+        </div>
+        <div class="itin-content">
+          <h3>Arrival in Sorong</h3>
+          <p>Arrive in Sorong, transfer to the Swiss-Belhotel and settle in after your journey. That evening, meet Brooke, your hosts and fellow travellers for a welcome dinner before the liveaboard begins.</p>
+        </div>
+        <div class="itin-tag">Arrival</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">2</div>
+        </div>
+        <div class="itin-content">
+          <h3>Board Damai II</h3>
+          <p>The Damai II crew collects the group for boarding. After introductions, cabin allocation and light refreshments, set sail west toward Matan for the check-out dive.</p>
+        </div>
+        <div class="itin-tag">Boarding</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">3</div>
+        </div>
+        <div class="itin-content">
+          <h3>Kri and Dampier Strait</h3>
+          <p>Explore Cape Kri, Blue Magic, Sardine Reef and Mioskon, with healthy coral gardens, schooling fish, reef sharks, wobbegong sharks and pygmy seahorses possible.</p>
+        </div>
+        <div class="itin-tag">Reefs</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">4</div>
+        </div>
+        <div class="itin-content">
+          <h3>Aljui Bay</h3>
+          <p>Spend time in sheltered macro sites known for nudibranchs, seahorses, walking sharks and octopus. The source itinerary notes one of Brooke's favourite night dives here.</p>
+        </div>
+        <div class="itin-tag">Macro</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">5</div>
+        </div>
+        <div class="itin-content">
+          <h3>Penemu</h3>
+          <p>Dive Barracuda Point, Melissa's Garden and Keruo Channel, then explore turquoise lagoons by tender. A short hike gives one of Raja Ampat's classic limestone island views.</p>
+        </div>
+        <div class="itin-tag">Lagoons</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">6</div>
+        </div>
+        <div class="itin-content">
+          <h3>Wayilbatan</h3>
+          <p>The Four Kings pinnacles rise from the blue with reef fish, soft corals and schools of fusiliers. Later dives may include Neptune Fan Sea, Wedding Cake Wall and Barracuda Rock.</p>
+        </div>
+        <div class="itin-tag">Pinnacles</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Days</div>
+          <div class="day-number">7-8</div>
+        </div>
+        <div class="itin-content">
+          <h3>Boo and Fiabacet</h3>
+          <p>Dive photogenic sites such as Boo Windows, Nudi Rock, Tank Rock and Whale Rock. Weather permitting, visit Magic Mountain for mantas, sharks and vast schools of fish.</p>
+        </div>
+        <div class="itin-tag">Misool</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">9</div>
+        </div>
+        <div class="itin-content">
+          <h3>Farondi and Balbulol</h3>
+          <p>Explore underwater caves at Goa Farondi, search for pygmy seahorses and finish the diving around the current-swept pinnacles of Three Sisters.</p>
+        </div>
+        <div class="itin-tag">Final Dives</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">10</div>
+        </div>
+        <div class="itin-content">
+          <h3>Departure</h3>
+          <p>After breakfast, transfer to Sorong Airport with help for check-in and a head full of reef walls, mantas, coral gardens and late-night photo notes.</p>
+        </div>
+        <div class="itin-tag">Farewell</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vessel">
+  <div class="container">
+    <div class="split">
+      <div>
+        <div class="image-frame wide">
+          <img src="raja-ampat-with-brooke-pyke/damai-ii.jpg" alt="Damai II liveaboard in Indonesia">
+        </div>
+      </div>
+      <div class="copy">
+        <div class="section-label">Your Liveaboard</div>
+        <div class="section-title">Nine nights aboard Damai II</div>
+        <p class="lead">Damai II is a 40-metre Indonesian phinisi built for serious diving, with spacious outside decks, outdoor dining, massage and spa areas, a large dive deck, camera room and high-speed tenders.</p>
+        <p>The source file lists twin or double ensuite accommodation, all-inclusive dining, tea, coffee, soft drinks, mineral water, selected beer and wine, complimentary massages, laundry service and all harbour fees.</p>
+        <p>For divers, Damai II brings experienced divemasters, a 4:1 diver-to-guide ratio, nitrox for certified divers and full dive equipment rental included in the source trip terms.</p>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-number">9</div>
+        <div class="stat-label">nights aboard the private Damai II charter</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">12</div>
+        <div class="stat-label">guest maximum for an intimate expedition</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">30</div>
+        <div class="stat-label">approximate planned dives, including select night dives</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">4:1</div>
+        <div class="stat-label">listed diver-to-guide ratio aboard Damai II</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="container">
+    <div class="split reverse">
+      <div class="copy">
+        <div class="section-label">Life On Board</div>
+        <div class="section-title">Built for long dive days, image review and real downtime</div>
+        <p class="lead">Between dives, the source itinerary includes beach visits, lagoon cruises, short hikes, snorkelling, photo workshops, marine life presentations and evening chats with Brooke and the expedition team.</p>
+        <p>A typical day starts with coffee and a morning dive, then rolls through breakfast, more diving, lunch, rest, an afternoon dive, possible night dive, dinner and relaxed learning sessions on deck.</p>
+        <p>The ship's cabin, lounge and deck spaces matter on this route. Raja Ampat is remote, and the liveaboard is not just transport. It becomes the expedition base, classroom, camera room and quiet place to absorb what happened underwater.</p>
+      </div>
+      <div>
+        <div class="image-frame wide">
+          <img src="raja-ampat-with-brooke-pyke/damai-scenic.jpg" alt="Damai II liveaboard in calm Raja Ampat water">
+        </div>
+      </div>
+    </div>
+    <div class="mini-gallery">
+      <img src="raja-ampat-with-brooke-pyke/cabin.jpg" alt="Damai II cabin">
+      <img src="raja-ampat-with-brooke-pyke/deck-lounge.jpg" alt="Damai II deck lounge">
+      <img src="raja-ampat-with-brooke-pyke/dining.jpg" alt="Damai II dining space">
+      <img src="raja-ampat-with-brooke-pyke/islands.jpg" alt="Raja Ampat islands">
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"They truly made the experience unforgettable. Highly recommend Airguides to anyone looking for a unique, authentic and expertly curated adventure."</blockquote>
+    <cite><strong>Adam McKnight</strong>, Raja 2025</cite>
+  </div>
+</section>
+
+<section class="included page-break">
+  <div class="container">
+    <div class="section-label">The Details</div>
+    <div class="section-title">What's included</div>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Included</h3>
+        <ul>
+          <li>Nine nights aboard Damai II private liveaboard</li>
+          <li>One-night pre-trip stay in Sorong</li>
+          <li>Airport and hotel transfers in Sorong</li>
+          <li>Twin or double ensuite accommodation</li>
+          <li>All-inclusive dining, tea, coffee, soft drinks and mineral water</li>
+          <li>Selected beer and wine</li>
+          <li>Complimentary massages and laundry service</li>
+          <li>All harbour fees listed in the source file</li>
+          <li>Full dive equipment rental</li>
+          <li>Nitrox for certified divers</li>
+          <li>Expert divemaster dive guides</li>
+          <li>Two to four dives per day, including selected night dives</li>
+          <li>Photography and editing masterclasses with Brooke</li>
+          <li>One-on-one photo feedback session</li>
+          <li>Marine biology presentations and Q&A sessions</li>
+          <li>Trip gallery with professional photos and video by Brooke</li>
+        </ul>
+        <p class="field-note">Exact inclusions should be reconfirmed when new future dates are released.</p>
+      </div>
+      <div class="included-col not-included">
+        <h3>Not Included</h3>
+        <ul>
+          <li>International and domestic flights</li>
+          <li>Post-trip hotel accommodation if required</li>
+          <li>Travel and dive insurance, mandatory</li>
+          <li>Raja Ampat National Park fee, listed as US$150 in the source file</li>
+          <li>Tips and gratuities</li>
+          <li>Personal expenses</li>
+          <li>Camera gear and camera insurance</li>
+          <li>Laptop, Lightroom subscription and backup drives</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq page-break">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">What guests usually need to know</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Can you guarantee what we will see?</div>
+        <div class="faq-answer">No. Raja Ampat is wild, and nature writes the script. The experienced captain, dive team and small-group liveaboard structure help create the best possible chances while keeping safety and animal welfare first.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need to be a photographer?</div>
+        <div class="faq-answer">No. Photography is optional. The trip suits divers who want world-class reefs, thoughtful guiding and a deeper connection to the ocean. Guests with cameras receive direct support from Brooke.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What certification is needed?</div>
+        <div class="faq-answer">The source file says Open Water level or equivalent is the minimum. It also recommends Deep Diver specialty or Advanced Open Water, since some sites are best below 18 metres and current experience is useful.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need insurance?</div>
+        <div class="faq-answer">Yes. Comprehensive travel and dive insurance is essential, including scuba diving, medical emergencies, cancellations and other unexpected events.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What wildlife might we see?</div>
+        <div class="faq-answer">Possibilities include oceanic mantas, reef mantas, turtles, octopus, sea snakes, wobbegong sharks, walking sharks, reef sharks, eagle rays, pygmy seahorses, nudibranchs, schooling jacks and soft coral gardens.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What camera should I bring?</div>
+        <div class="faq-answer">A GoPro is a useful entry point. For more control, the source file recommends a compact or full-frame camera with manual controls, wide-angle or fisheye lens, underwater housing, spare batteries, SD cards and backup storage.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What is the water temperature?</div>
+        <div class="faq-answer">The source FAQ lists typical water temperatures of 25 to 29 degrees Celsius. A full-length 3 mm wetsuit is recommended for warmth across multiple dives and protection from jellyfish or fire coral.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing page-break">
+  <div class="container">
+    <div class="section-label">Pricing & Dates</div>
+    <div class="section-title">Register interest for the next Raja Ampat departure</div>
+    <div class="price-layout">
+      <div class="price-card">
+        <h3>Future Departures</h3>
+        <div class="price">TBC</div>
+        <p class="price-note">The supplied brochure lists 31 January to 9 February 2026, which has already passed as of 16 May 2026. Current future dates were not visible on the Airguides site, so this brochure does not use stale book-now language.</p>
+      </div>
+      <div class="price-card">
+        <h3>Past Source Price</h3>
+        <div class="price">US$8,950</div>
+        <p class="price-note">The source file listed this price per person, with a US$2,000 deposit and balance due 90 days before arrival. Final future pricing should be confirmed by Airguides.</p>
+      </div>
+    </div>
+    <div class="date-row">
+      <div class="date-pill">Future dates to be confirmed</div>
+      <div class="date-pill">Indicative 10-day / 9-night format</div>
+    </div>
+    <p class="field-note">This page is intended for post-lead-capture follow-up. Use it to build intent, then confirm dates, cabin availability, final price and current terms before taking payment.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Register interest in the next Raja Ampat expedition with Brooke</div>
+    <p class="cta-sub">If Raja Ampat is the ocean trip you keep thinking about, get on the list now. Airguides will confirm future dates, price, cabin options and availability before asking for a deposit.</p>
+    <a class="cta-button" href="mailto:hello@airguides.com?subject=Raja%20Ampat%20with%20Brooke%20Pyke%20interest">Register Your Interest</a>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:hello@airguides.com">hello@airguides.com</a>
+      </div>
+      <div class="contact-item">
+        <span>Phone / WhatsApp</span>
+        <a href="tel:+61402552918">(+61) 402 552 918</a>
+      </div>
+      <div class="contact-item">
+        <span>Website</span>
+        <a href="https://www.airguides.com">airguides.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="https://www.airguides.com">airguides.com</a> | Raja Ampat with Brooke Pyke | Copyright Airguides
+</footer>
+
+</body>
+</html>
