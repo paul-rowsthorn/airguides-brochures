@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himalayas: Snow Leopards on the Roof of the World | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #10150f;
+    --ridge: #1f261a;
+    --pine: #303823;
+    --snow: #f4f0e8;
+    --mist: #c5c0b4;
+    --stone: #8f8878;
+    --gold: #d6a84f;
+    --gold-soft: rgba(214, 168, 79, 0.14);
+    --ice: #dbe6ea;
+    --white: #ffffff;
+    --ink: #17140f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--white);
+    background: var(--deep);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 58px 42px;
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(16,21,15,0.10) 0%, rgba(16,21,15,0.18) 32%, rgba(16,21,15,0.66) 70%, rgba(16,21,15,0.98) 100%),
+      linear-gradient(to right, rgba(16,21,15,0.78) 0%, rgba(16,21,15,0.38) 50%, rgba(16,21,15,0.06) 100%);
+  }
+  .hero-logo { position: absolute; top: 38px; left: 42px; z-index: 2; }
+  .hero-logo img { height: 36px; width: auto; opacity: 0.96; }
+  .hero-content { position: relative; z-index: 2; max-width: 790px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 6.3vw, 82px);
+    line-height: 1.02;
+    letter-spacing: 0;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    color: var(--snow);
+    font-size: 18px;
+    line-height: 1.62;
+    max-width: 660px;
+  }
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 18px;
+    margin-top: 38px;
+    max-width: 880px;
+  }
+  .meta-item {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 14px;
+  }
+  .meta-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .meta-value { color: var(--white); font-size: 15px; font-weight: 700; line-height: 1.32; }
+
+  section { padding: 96px 42px; }
+  .container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-label {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(33px, 4vw, 50px);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+  .lead {
+    color: var(--snow);
+    font-size: 18px;
+    line-height: 1.72;
+    margin-bottom: 18px;
+  }
+  .copy p {
+    color: var(--mist);
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 16px;
+  }
+
+  .highlights, .testimonial, .why, .faq, .cta { background: var(--ridge); }
+  .story, .guide, .itinerary, .included, .pricing, .accommodation, .tracking { background: var(--deep); }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 34px;
+  }
+  .highlight-card {
+    min-height: 176px;
+    padding: 24px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .highlight-kicker {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .highlight-card h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .highlight-card p {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.04fr 0.96fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .split.reverse { grid-template-columns: 0.94fr 1.06fr; }
+  .image-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .image-frame.tall { aspect-ratio: 4/5; }
+  .image-frame.wide { aspect-ratio: 16/10; }
+  .image-frame.square { aspect-ratio: 1; }
+  .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .image-frame img.align-top { object-position: center top; }
+  .caption {
+    color: var(--stone);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+
+  .testimonial {
+    text-align: center;
+  }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.1vw, 34px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--snow);
+    max-width: 920px;
+    margin: 0 auto 28px;
+  }
+  .testimonial cite {
+    color: var(--mist);
+    font-size: 14px;
+    font-style: normal;
+  }
+  .testimonial strong { color: var(--white); }
+  .supporting-quote {
+    color: var(--mist);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 760px;
+    margin: 28px auto 10px;
+  }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 54px;
+    align-items: center;
+  }
+  .guide-photo {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+  }
+  .guide-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .guide-role {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .stat {
+    padding: 18px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat strong {
+    display: block;
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat span {
+    color: var(--mist);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+
+  .why-inner { max-width: 790px; margin: 0 auto; }
+  .why-inner p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--mist);
+    margin-bottom: 18px;
+  }
+  .why-inner p:first-of-type {
+    color: var(--snow);
+    font-size: 19px;
+    line-height: 1.7;
+  }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 0;
+    background: var(--deep);
+  }
+  .gallery-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+  .itinerary-list { margin-top: 44px; }
+  .itin-day {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    gap: 30px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .itin-day:first-child { padding-top: 0; }
+  .itin-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .itin-label {
+    color: var(--stone);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .itin-value {
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .itin-subtitle {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .itin-content p {
+    color: var(--mist);
+    font-size: 14.5px;
+    line-height: 1.68;
+  }
+
+  .full-image {
+    height: 62vh;
+    min-height: 430px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .full-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  .accommodation .split { align-items: start; }
+  .accom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-top: 42px;
+  }
+  .accom-grid img { width: 100%; aspect-ratio: 1.12; object-fit: cover; }
+
+  .crew-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 38px;
+  }
+  .crew-card {
+    padding: 26px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+  }
+  .crew-photo {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 16px;
+    border: 2px solid rgba(214,168,79,0.35);
+  }
+  .crew-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .crew-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  .crew-role {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .crew-card p {
+    color: var(--mist);
+    font-size: 13px;
+    line-height: 1.58;
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+  }
+  .included-col {
+    padding: 30px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative;
+    padding-left: 22px;
+    padding-bottom: 13px;
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .included-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .not-included li::before { background: var(--stone); }
+
+  .faq-list { max-width: 790px; margin: 36px auto 0; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 0;
+  }
+  .faq-item:first-child { padding-top: 0; }
+  .faq-question {
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 11px;
+  }
+  .faq-answer {
+    color: var(--mist);
+    font-size: 15px;
+    line-height: 1.68;
+  }
+
+  .pricing { text-align: center; }
+  .price-card {
+    width: min(720px, 100%);
+    margin: 34px auto 0;
+    padding: 38px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .price {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .price-note {
+    color: var(--mist);
+    font-size: 15px;
+    line-height: 1.62;
+  }
+  .date-pill {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 24px;
+    border: 1px solid rgba(214,168,79,0.45);
+    border-radius: 999px;
+    color: var(--snow);
+    background: var(--gold-soft);
+    font-weight: 800;
+  }
+  .spots-note {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 20px;
+  }
+  .spots-note strong { color: var(--white); }
+
+  .cta {
+    text-align: center;
+  }
+  .cta .section-title { max-width: 760px; margin-left: auto; margin-right: auto; }
+  .cta-sub {
+    color: var(--mist);
+    font-size: 18px;
+    line-height: 1.62;
+    max-width: 620px;
+    margin: 0 auto 34px;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--deep);
+    font-size: 15px;
+    font-weight: 800;
+    padding: 17px 42px;
+    border-radius: 999px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .contact-item {
+    color: var(--mist);
+    font-size: 14px;
+  }
+  .contact-item span {
+    display: block;
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .contact-item a { color: var(--white); text-decoration: none; }
+
+  .footer {
+    color: var(--mist);
+    text-align: center;
+    font-size: 12px;
+    padding: 34px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer a { color: var(--snow); text-decoration: none; }
+
+  .page-break { break-before: page; }
+  .hero { break-after: page; }
+  .gallery-strip { break-before: page; break-after: page; }
+  .split, .highlight-card, .itin-day, .faq-item, .price-card, .crew-card { break-inside: avoid; }
+
+  @page { size: A4; margin: 0; }
+
+  @media (max-width: 860px) {
+    .hero { min-height: 700px; padding: 40px 24px; }
+    .hero-logo { top: 24px; left: 24px; }
+    .hero-meta { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+    section { padding: 64px 24px; }
+    .highlights-grid, .split, .split.reverse, .guide-grid, .included-grid, .crew-grid, .stats-row { grid-template-columns: 1fr; gap: 30px; }
+    .gallery-strip, .accom-grid { grid-template-columns: repeat(2, 1fr); }
+    .itin-day { grid-template-columns: 68px 1fr; }
+  }
+
+  @media print {
+    body, * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { width: 210mm; background: var(--deep); }
+    section {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 17mm 14mm;
+      display: flex;
+      align-items: center;
+      break-before: page;
+      break-after: page;
+      page-break-before: always;
+      page-break-after: always;
+      overflow: hidden;
+    }
+    .container { width: 100%; max-width: none; }
+    .hero {
+      width: 210mm;
+      height: 297mm;
+      min-height: 0;
+      padding: 18mm 14mm;
+      break-before: auto;
+      page-break-before: auto;
+    }
+    .hero-logo { top: 16mm; left: 14mm; }
+    .hero-logo img { height: 27px; }
+    .hero-bg img { object-position: center 66%; }
+    .hero-bg::after {
+      background:
+        linear-gradient(to bottom, rgba(16,21,15,0.05) 0%, rgba(16,21,15,0.12) 42%, rgba(16,21,15,0.42) 74%, rgba(16,21,15,0.76) 100%),
+        linear-gradient(to right, rgba(16,21,15,0.42) 0%, rgba(16,21,15,0.18) 54%, rgba(16,21,15,0.02) 100%);
+    }
+    .hero h1 { font-size: 50px; max-width: 710px; }
+    .hero-sub { font-size: 14px; line-height: 1.52; max-width: 610px; }
+    .hero-meta { grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; max-width: none; }
+    .meta-value { font-size: 12px; }
+    .section-title { font-size: 34px; margin-bottom: 14px; }
+    .section-label { font-size: 10px; margin-bottom: 10px; }
+    .lead { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+    .copy p { font-size: 11px; line-height: 1.43; margin-bottom: 8px; }
+    .highlights-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .highlight-card { min-height: 134px; padding: 18px; }
+    .highlight-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .highlight-card p { font-size: 10px; line-height: 1.42; }
+    .highlight-kicker { font-size: 9px; margin-bottom: 9px; }
+    .split { grid-template-columns: 1.04fr 0.96fr; gap: 34px; align-items: center; }
+    .split.reverse { grid-template-columns: 0.94fr 1.06fr; }
+    .image-frame.tall { aspect-ratio: 4/4.65; }
+    .image-frame.wide { aspect-ratio: 16/8.9; }
+    .caption { font-size: 9px; margin-top: 7px; }
+    .testimonial blockquote { font-size: 25px; line-height: 1.42; }
+    .testimonial cite { font-size: 12px; }
+    .supporting-quote { font-size: 11px; line-height: 1.45; margin-top: 20px; }
+    .guide-grid { grid-template-columns: 0.82fr 1.18fr; gap: 34px; }
+    .guide-role { font-size: 9px; margin-bottom: 9px; }
+    .stats-row { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+    .stat { padding: 12px; }
+    .stat strong { font-size: 25px; }
+    .stat span { font-size: 8px; }
+    .why-inner p { font-size: 11px; line-height: 1.5; margin-bottom: 8px; }
+    .why-inner p:first-of-type { font-size: 14px; line-height: 1.5; }
+    .gallery-strip {
+      width: 210mm;
+      height: 297mm;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2mm;
+      padding: 2mm;
+    }
+    .gallery-strip img { height: calc((297mm - 6mm) / 2); aspect-ratio: auto; object-fit: cover; }
+    .itin-day { grid-template-columns: 62px 1fr; gap: 18px; padding: 13px 0; }
+    .itin-value { font-size: 23px; }
+    .itin-label { font-size: 8px; }
+    .itin-content h3 { font-size: 17px; }
+    .itin-subtitle { font-size: 10px; margin-bottom: 6px; }
+    .itin-content p { font-size: 9.6px; line-height: 1.38; }
+    .full-image { width: 210mm; height: 297mm; min-height: 0; }
+    .accom-grid { gap: 2mm; margin-top: 24px; }
+    .accom-grid img { height: 42mm; aspect-ratio: auto; }
+    .crew-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .crew-card { padding: 16px; }
+    .crew-photo { width: 82px; height: 82px; }
+    .crew-card h3 { font-size: 17px; }
+    .crew-role { font-size: 8px; }
+    .crew-card p { font-size: 9.3px; line-height: 1.38; }
+    .included-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 24px; }
+    .included-col { padding: 20px; }
+    .included-col h3 { font-size: 21px; }
+    .included-col li { font-size: 10.2px; line-height: 1.38; padding-bottom: 8px; }
+    .faq-list { margin-top: 24px; }
+    .faq-item { padding: 14px 0; }
+    .faq-question { font-size: 17px; margin-bottom: 6px; }
+    .faq-answer { font-size: 10.5px; line-height: 1.45; }
+    .price-card { padding: 26px; }
+    .price { font-size: 52px; }
+    .price-note, .spots-note { font-size: 11px; }
+    .date-pill { font-size: 12px; margin-top: 20px; }
+    .cta-sub { font-size: 13px; }
+    .contact-item { font-size: 11px; }
+    .footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="himalayas-snow-leopards-on-the-roof-of-the-world/snow-leopard-vertical.jpg" alt="Snow leopard in the Himalayas">
+  </div>
+  <div class="hero-logo">
+    <img src="himalayas-snow-leopards-on-the-roof-of-the-world/airguides-logo-white.png" alt="Airguides">
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Himalayan Wildlife Expedition</div>
+    <h1>Snow Leopards on the Roof of the World</h1>
+    <p class="hero-sub">Fifteen days in Ladakh with Martin Gregus, tracking snow leopards, Pallas's cats and high-altitude wildlife with expert spotters, remote camp access and field-based photography masterclasses.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">Duration</div>
+      <div class="meta-value">15 Days / 14 Nights</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Dates</div>
+      <div class="meta-value">25 March - 09 April 2027</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Group Size</div>
+      <div class="meta-value">Limited to 8 Guests</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Price</div>
+      <div class="meta-value">US$15,750</div>
+    </div>
+  </div>
+</section>
+
+<section class="highlights page-break">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">Rare cats, remote access and patient fieldcraft</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-kicker">Wildlife</div>
+        <h3>Prime snow leopard terrain</h3>
+        <p>Base out of Lungmar Remote Camp with direct access to Hemis National Park and live updates from expert trackers in the valleys.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Rarity</div>
+        <h3>Pallas's cat country</h3>
+        <p>Travel onto the Changthang region of the Tibetan Plateau in search of Pallas's cats, Tibetan wolves, sand foxes and gazelles.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Guide</div>
+        <h3>Martin Gregus in the field</h3>
+        <p>Learn from an award-winning wildlife photographer with nearly two decades of snow leopard expedition experience.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Access</div>
+        <h3>Expert trackers and 4x4 support</h3>
+        <p>Each day is shaped by spotters scanning ridgelines before first light, with vehicles ready to move when the radio call comes in.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Culture</div>
+        <h3>Monasteries and Ladakhi homes</h3>
+        <p>Explore Tibetan Buddhist monasteries, mountain villages and the lived reality of communities sharing space with wild cats.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">Impact</div>
+        <h3>Positive Impact Contribution</h3>
+        <p>US$350 per person is included, supporting a stronger connection between the expedition and the landscape it depends on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story page-break">
+  <div class="container">
+    <div class="split">
+      <div class="copy">
+        <div class="section-label">The Experience</div>
+        <div class="section-title">One of the rarest cats on earth, on its own terms</div>
+        <p class="lead">Snow leopards are among the hardest animals on earth to find, let alone photograph. This journey is built around doing the search properly.</p>
+        <p>The expedition begins in New Delhi before flying into Leh, where the group takes time to acclimatise and explore the cultural edge of the Himalayas. From there, you move into snow leopard country with expert trackers, 4x4 support and Martin Gregus working alongside the group in the field.</p>
+        <p>Some days may deliver a direct encounter. Other days may bring tracks, calls from distant valleys, a kill site, or the ghost of movement across a ridgeline. That is the point. This is real wildlife work in high mountain terrain, with patience and preparation at the centre of the experience.</p>
+        <p>The expedition also moves east into Changthang, part of the Tibetan Plateau, where Pallas's cats, Tibetan wolves, Tibetan sand foxes and Tibetan gazelles shape a different kind of photographic challenge.</p>
+      </div>
+      <div>
+        <div class="image-frame tall">
+          <img src="himalayas-snow-leopards-on-the-roof-of-the-world/leopard-rocks.jpg" alt="Snow leopard camouflaged on a rocky slope">
+        </div>
+        <p class="caption">Snow leopards disappear into this terrain. Finding them takes local knowledge, time and a disciplined eye.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"I have had the almost unparalleled privilege to experience iconic wildlife in a way few people have ever had."</blockquote>
+    <cite><strong>Martin Gregus</strong>, Storyteller Guide</cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="guide-grid">
+      <div class="guide-photo">
+        <img src="himalayas-snow-leopards-on-the-roof-of-the-world/martin-gregus.jpg" alt="Martin Gregus">
+      </div>
+      <div class="copy">
+        <div class="section-label">Your Guide</div>
+        <div class="section-title">Martin Gregus</div>
+        <div class="guide-role">Storyteller Guide</div>
+        <p class="lead">Martin Gregus grew up in a family of artists, learned photography from his father and began exploring wildlife with a camera before most kids had settled on a direction.</p>
+        <p>Nineteen years later, his work has taken him across all seven continents and into some of the most remote ecosystems on the planet. He has earned two wins and two nominations at Wildlife Photographer of the Year, and his polar bear project, 33 Days Among the Bears, became an international story after National Geographic coverage.</p>
+        <p>His cinematography has contributed to productions for Disney, BBC and Netflix. On this expedition, Martin brings the patience, technical control and field awareness required to make meaningful images in one of the world's most demanding wildlife environments.</p>
+        <div class="stats-row">
+          <div class="stat"><strong>20+</strong><span>Years Experience</span></div>
+          <div class="stat"><strong>200+</strong><span>Global Expeditions</span></div>
+          <div class="stat"><strong>730k+</strong><span>Followers</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why page-break">
+  <div class="container">
+    <div class="why-inner">
+      <div class="section-label">Why Book This Experience</div>
+      <div class="section-title">This is not a distant sighting trip</div>
+      <p>The difference is structure: a small group, the right camp position, local trackers already scanning the ground, and Martin working with you before, during and after the field days.</p>
+      <p>Snow leopard photography asks for discipline. You need to read rock, snow, tracks, weather and silence. The expedition is designed around that reality. Each day begins with spotters moving early into the valleys, the camp waiting on live updates, and the group ready to respond when conditions change.</p>
+      <p>Martin's masterclasses are woven into the rhythm of the expedition. You will work on field technique, long-lens discipline, image review, editing decisions and the patience required to create work that carries more than proof of sighting.</p>
+      <p>Then the journey shifts to the Tibetan Plateau, where the target species change and the landscape opens out. Pallas's cats and plateau wildlife add depth to the trip, turning it from a single-species search into a broader Himalayan field story.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-strip">
+  <img src="himalayas-snow-leopards-on-the-roof-of-the-world/hero.jpg" alt="Snow leopard in winter grass">
+  <img src="himalayas-snow-leopards-on-the-roof-of-the-world/pallas-cat.jpg" alt="Pallas's cat on rock">
+  <img src="himalayas-snow-leopards-on-the-roof-of-the-world/ladakh.jpg" alt="Ladakh winter landscape">
+  <img src="himalayas-snow-leopards-on-the-roof-of-the-world/snow-leopard-perch.jpg" alt="Snow leopard perched on rock">
+</section>
+
+<section class="itinerary page-break">
+  <div class="container">
+    <div class="section-label">Itinerary</div>
+    <div class="section-title">15 days across Ladakh and the Tibetan Plateau</div>
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Day</span><span class="itin-value">1</span></div>
+        <div class="itin-content">
+          <h3>Where India Begins</h3>
+          <div class="itin-subtitle">Arrive in New Delhi</div>
+          <p>Land in New Delhi, meet the Airguides team at the airport and transfer to The Roseate House. Tonight is for settling in, getting your bearings and letting the anticipation build.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Days</span><span class="itin-value">2-3</span></div>
+        <div class="itin-content">
+          <h3>Tibetan Monasteries of Leh</h3>
+          <div class="itin-subtitle">Acclimatisation and cultural depth</div>
+          <p>Fly with the group to Leh, gateway to the Himalayas. The first day is kept deliberately slow so your body can adjust to altitude. The following day opens the story of Ladakh through monasteries, lanes, mountain views and local context.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Days</span><span class="itin-value">4-10</span></div>
+        <div class="itin-content">
+          <h3>Lungmar Remote Camp, Hemis National Park</h3>
+          <div class="itin-subtitle">Snow leopard tracking days</div>
+          <p>Expert spotters leave before first light, scanning ridgelines and slopes from strategic points across the valleys. You wake to hot coffee, tea and breakfast, then the radio call shapes the day. Field time combines driving, walking, packed meals, village visits, image review and photography masterclasses with Martin.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Days</span><span class="itin-value">11-13</span></div>
+        <div class="itin-content">
+          <h3>The Tibetan Plateau</h3>
+          <div class="itin-subtitle">Pallas's cats and Changthang wildlife</div>
+          <p>The expedition shifts east into the Changthang region, one of the most remote corners of Ladakh. Search for Pallas's cats, Tibetan wolves, Tibetan sand foxes and Tibetan gazelles from a simple local guesthouse base in Hanle.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Day</span><span class="itin-value">14</span></div>
+        <div class="itin-content">
+          <h3>Return to Leh</h3>
+          <div class="itin-subtitle">Grand Dragon Hotel</div>
+          <p>Drive back through the mountains to Leh. This is a decompression day: download images, rest properly and sleep somewhere soft after the remote section of the expedition.</p>
+        </div>
+      </div>
+      <div class="itin-day">
+        <div class="itin-number"><span class="itin-label">Day</span><span class="itin-value">15</span></div>
+        <div class="itin-content">
+          <h3>Goodbye India</h3>
+          <div class="itin-subtitle">Fly to New Delhi</div>
+          <p>Fly back to New Delhi and transfer to The Roseate House in Aerocity. International departures can be arranged for later tonight or the following morning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="full-image">
+  <img src="himalayas-snow-leopards-on-the-roof-of-the-world/ladakh.jpg" alt="Ladakh mountain landscape">
+</section>
+
+<section class="accommodation page-break">
+  <div class="container">
+    <div class="split reverse">
+      <div>
+        <div class="image-frame wide">
+          <img src="himalayas-snow-leopards-on-the-roof-of-the-world/grand-dragon-hotel.jpg" alt="Grand Dragon Hotel in Leh">
+        </div>
+      </div>
+      <div class="copy">
+        <div class="section-label">Accommodation</div>
+        <div class="section-title">Remote where it matters, comfortable where it counts</div>
+        <p class="lead">The trip balances serious field access with carefully planned recovery nights before and after the remote sections.</p>
+        <p>Your journey includes one pre-trip night and one post-trip night at The Roseate House in New Delhi, two nights at the Grand Dragon Hotel in Leh, seven nights at Lungmar Remote Camp and three nights in a local guesthouse in Hanle.</p>
+        <p>Lungmar Remote Camp is the centre of the snow leopard search, positioned for access to prime terrain and tracker updates. Hanle is simpler and more adventurous, because that is what the Tibetan Plateau section requires.</p>
+        <p>Shared rooms are included. Private rooms may be available with a single supplement, subject to final confirmation and local availability.</p>
+      </div>
+    </div>
+    <div class="accom-grid">
+      <img src="himalayas-snow-leopards-on-the-roof-of-the-world/roseate-house.jpg" alt="The Roseate House in New Delhi">
+      <img src="himalayas-snow-leopards-on-the-roof-of-the-world/grand-dragon-hotel.jpg" alt="The Grand Dragon Hotel in Leh">
+      <img src="himalayas-snow-leopards-on-the-roof-of-the-world/ladakh.jpg" alt="Ladakh landscape near Leh">
+      <img src="himalayas-snow-leopards-on-the-roof-of-the-world/leopard-rocks.jpg" alt="Snow leopard terrain">
+    </div>
+  </div>
+</section>
+
+<section class="tracking page-break">
+  <div class="container">
+    <div class="split">
+      <div class="copy">
+        <div class="section-label">In The Field</div>
+        <div class="section-title">The radio call changes everything</div>
+        <p class="lead">The rhythm is simple: trackers move first, the group stays ready, and the day follows the best information available.</p>
+        <p>Snow leopards do not operate on a tour schedule. Each morning, spotters position themselves across valleys and scan for movement, tracks and behaviour. When a credible update comes through, the group moves by 4x4 and on foot as conditions allow.</p>
+        <p>Some days will be about distance and patience. Some will be about being ready quickly. Quieter periods become part of the learning, with Martin working through long-lens choices, exposure in snow and rock, composition, behaviour and editing decisions.</p>
+        <p>This is fieldcraft as much as photography: knowing when to wait, when to move and how to stay calm when one of the world's rarest cats finally appears.</p>
+      </div>
+      <div class="image-frame wide">
+        <img src="himalayas-snow-leopards-on-the-roof-of-the-world/snow-leopard-walking.jpg" alt="Snow leopard moving across dark rock">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"To be in the presence of a unique visionary like Martin Gregus and be welcomed into his home away from home in the middle of nowhere is truly a once in a lifetime event."</blockquote>
+    <cite><strong>Anne Prather</strong>, United States</cite>
+    <p class="supporting-quote">"Airguides were exceptional hosts. Seamless, professional and incredibly well organised from start to finish."</p>
+    <cite><strong>Adam McKnight</strong>, Raja 2025</cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="section-label">Your Crew</div>
+    <div class="section-title">A small team built around remote wildlife work</div>
+    <div class="crew-grid">
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="himalayas-snow-leopards-on-the-roof-of-the-world/martin-gregus.jpg" alt="Martin Gregus">
+        </div>
+        <h3>Martin Gregus</h3>
+        <div class="crew-role">Storyteller Guide</div>
+        <p>Award-winning wildlife photographer, filmmaker and expedition guide bringing deep snow leopard experience and hands-on masterclasses.</p>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="himalayas-snow-leopards-on-the-roof-of-the-world/paul-rowsthorn.jpg" alt="Paul Rowsthorn">
+        </div>
+        <h3>Paul Rowsthorn</h3>
+        <div class="crew-role">Expedition Director</div>
+        <p>Founder of Airguides and expert expedition leader with over 10 years experience.</p>
+      </div>
+      <div class="crew-card">
+        <div class="crew-photo">
+          <img src="himalayas-snow-leopards-on-the-roof-of-the-world/leopard-rocks.jpg" alt="Snow leopard tracking terrain">
+        </div>
+        <h3>Local Trackers</h3>
+        <div class="crew-role">Field Team</div>
+        <p>Expert spotters, driver guides and local support teams who understand the ridgelines, routes and realities of high-altitude tracking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="included page-break">
+  <div class="container">
+    <div class="section-label">Inclusions</div>
+    <div class="section-title">What is covered</div>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Included</h3>
+        <ul>
+          <li>One pre-trip night at The Roseate House, New Delhi</li>
+          <li>One post-trip night at The Roseate House, New Delhi</li>
+          <li>Two nights at the Grand Dragon Hotel in Leh</li>
+          <li>Seven nights at Lungmar Remote Camp</li>
+          <li>Three nights at a local guesthouse in Hanle</li>
+          <li>Private transfers with driver guides</li>
+          <li>All-inclusive meals during the expedition</li>
+          <li>All guiding, tracking and expedition services</li>
+          <li>Storyteller guiding and masterclasses with Martin Gregus</li>
+          <li>Wildlife photography and editing masterclasses</li>
+          <li>Airguides Expedition Leader throughout</li>
+          <li>Personal gallery of trip highlights by Martin Gregus</li>
+          <li>Positive Impact Contribution of US$350 per person</li>
+        </ul>
+      </div>
+      <div class="included-col not-included">
+        <h3>Not Included</h3>
+        <ul>
+          <li>International flights</li>
+          <li>Flights not listed under included services</li>
+          <li>Travel insurance</li>
+          <li>Visa costs, passport fees and medical expenses</li>
+          <li>Tips and gratuities</li>
+          <li>Personal expenses, laundry and premium beverages</li>
+          <li>Single supplement, if a private room is requested or required</li>
+          <li>Any services not listed as included in final booking terms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq page-break">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">What guests usually need to know</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Are snow leopard sightings guaranteed?</div>
+        <div class="faq-answer">No. These are wild animals in a vast mountain landscape. The itinerary, camp position and tracker network are designed to give the group the strongest possible chance of a real encounter, but sightings cannot be guaranteed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How physical is the expedition?</div>
+        <div class="faq-answer">Guests should be comfortable with high altitude, cold conditions, uneven ground and long field days. Some tracking involves walking, but movement is shaped by safety, conditions and the group's ability.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need to be an advanced photographer?</div>
+        <div class="faq-answer">No. The trip is built for wildlife lovers and photographers who want to improve. Martin's masterclasses cover field technique, image review and editing, with guidance adapted to the group.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What camera gear should I bring?</div>
+        <div class="faq-answer">A camera body with a reliable telephoto lens is recommended. A detailed gear list will be shared before departure, including cold-weather battery, storage and layering advice.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What makes the Hanle section different?</div>
+        <div class="faq-answer">Hanle and the Changthang region are more remote and simple than Leh or camp. The accommodation is local guesthouse style, chosen because it puts the group in the right landscape for Pallas's cats and plateau wildlife.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing page-break">
+  <div class="container">
+    <div class="section-label">Pricing &amp; Dates</div>
+    <div class="section-title">Reserve one of 8 places</div>
+    <div class="price-card">
+      <div class="price">US$15,750</div>
+      <p class="price-note">Per person in USD. The product page currently shows pay in full and deposit payment options, with availability and final payment terms confirmed at booking.</p>
+    </div>
+    <div class="date-pill">25 March - 09 April 2027, Confirmed</div>
+    <p class="spots-note"><strong>Limited to 8 guests.</strong> Pricing, availability, rooming and inclusions should be confirmed with Airguides at the time of booking.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Track snow leopards with Martin Gregus</div>
+    <p class="cta-sub">Spaces are limited to 8 guests. Get in touch to check availability, confirm inclusions and secure your place on the 2027 Himalayas expedition.</p>
+    <a class="cta-button" href="https://airguides.com/products/india-snow-leopards-on-the-roof-of-the-world">Secure Your Spot</a>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:hello@airguides.com">hello@airguides.com</a>
+      </div>
+      <div class="contact-item">
+        <span>Phone / WhatsApp</span>
+        <a href="tel:+61402552918">(+61) 402 552 918</a>
+      </div>
+      <div class="contact-item">
+        <span>Website</span>
+        <a href="https://www.airguides.com">airguides.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="https://www.airguides.com">airguides.com</a> | Himalayas: Snow Leopards on the Roof of the World | Copyright Airguides
+</footer>
+
+</body>
+</html>
