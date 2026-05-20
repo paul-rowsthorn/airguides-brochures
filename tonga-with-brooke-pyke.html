@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonga with Brooke Pyke: Swim with Humpback Whales | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #041825;
+    --ocean: #082f40;
+    --reef: #0c6470;
+    --aqua: #58d9df;
+    --foam: #eef9f7;
+    --mist: #a8c4c8;
+    --sand: #e8d0a7;
+    --coral: #ec7b5c;
+    --white: #ffffff;
+    --ink: #092028;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--white);
+    background: var(--deep);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 58px 42px;
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(4,24,37,0.10) 0%, rgba(4,24,37,0.18) 32%, rgba(4,24,37,0.66) 70%, rgba(4,24,37,0.98) 100%),
+      linear-gradient(to right, rgba(4,24,37,0.75) 0%, rgba(4,24,37,0.36) 50%, rgba(4,24,37,0.08) 100%);
+  }
+  .hero-logo { position: absolute; top: 38px; left: 42px; z-index: 2; }
+  .hero-logo img { height: 36px; width: auto; opacity: 0.96; }
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 6.2vw, 82px);
+    line-height: 1.02;
+    letter-spacing: 0;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.62;
+    max-width: 660px;
+  }
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(110px, 1fr));
+    gap: 18px;
+    margin-top: 38px;
+    max-width: 1060px;
+  }
+  .meta-item {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 14px;
+  }
+  .meta-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .meta-value { color: var(--white); font-size: 15px; font-weight: 700; line-height: 1.32; }
+
+  section { padding: 96px 42px; }
+  .container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-label {
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(33px, 4vw, 50px);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+  .lead {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.72;
+    margin-bottom: 18px;
+  }
+  .copy p {
+    color: var(--mist);
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 16px;
+  }
+
+  .highlights, .testimonial, .why, .faq, .cta { background: var(--ocean); }
+  .story, .guide, .itinerary, .included, .pricing, .vessel, .island { background: var(--deep); }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 34px;
+  }
+  .highlight-card {
+    min-height: 176px;
+    padding: 24px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px;
+  }
+  .highlight-kicker {
+    color: var(--coral);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .highlight-card h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .highlight-card p {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .split.reverse { grid-template-columns: 0.95fr 1.05fr; }
+  .image-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .image-frame.tall { aspect-ratio: 4/5; }
+  .image-frame.wide { aspect-ratio: 16/10; }
+  .image-frame.square { aspect-ratio: 1; }
+  .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .caption {
+    color: var(--mist);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+
+  .testimonial { text-align: center; }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.1vw, 34px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--sand);
+    max-width: 900px;
+    margin: 0 auto 28px;
+  }
+  .testimonial cite { color: var(--mist); font-size: 14px; font-style: normal; }
+  .testimonial strong { color: var(--white); }
+
+  .guide-card {
+    display: grid;
+    grid-template-columns: 0.88fr 1.12fr;
+    gap: 44px;
+    align-items: center;
+  }
+  .guide-photo { aspect-ratio: 4/5; overflow: hidden; border-radius: 8px; }
+  .guide-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .quote-note {
+    margin-top: 28px;
+    padding: 24px 28px;
+    border-left: 3px solid var(--coral);
+    background: rgba(255,255,255,0.04);
+    color: var(--foam);
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 0;
+    background: var(--deep);
+  }
+  .gallery-strip img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .itinerary-list { display: grid; gap: 14px; margin-top: 30px; }
+  .itin-day {
+    display: grid;
+    grid-template-columns: 84px 1fr 118px;
+    gap: 22px;
+    align-items: start;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .itin-day:first-child { border-top: 0; padding-top: 0; }
+  .day-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .day-number {
+    color: var(--aqua);
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    line-height: 1.15;
+    margin-bottom: 7px;
+  }
+  .itin-content p { color: var(--mist); font-size: 14px; line-height: 1.62; }
+  .itin-tag {
+    color: var(--sand);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: right;
+    padding-top: 8px;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .stat { padding: 20px; border-top: 1px solid rgba(255,255,255,0.15); }
+  .stat-number {
+    color: var(--sand);
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label { color: var(--mist); font-size: 12px; line-height: 1.45; font-weight: 700; }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    margin-top: 34px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative;
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 0 11px 22px;
+  }
+  .included-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--aqua);
+  }
+  .not-included li::before { background: var(--coral); }
+  .field-note { color: var(--mist); font-size: 12px; line-height: 1.55; margin-top: 14px; }
+
+  .faq-list { max-width: 900px; margin: 36px auto 0; }
+  .faq-item {
+    padding: 21px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .faq-item:first-child { border-top: 0; padding-top: 0; }
+  .faq-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    line-height: 1.2;
+    margin-bottom: 9px;
+  }
+  .faq-answer { color: var(--mist); font-size: 14px; line-height: 1.62; }
+
+  .price-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    margin-top: 34px;
+  }
+  .price-card {
+    padding: 32px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px;
+  }
+  .price-card h3 {
+    color: var(--mist);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .price-note { color: var(--mist); font-size: 14px; line-height: 1.55; }
+  .date-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+  }
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    color: var(--sand);
+    border: 1px solid rgba(232,208,167,0.35);
+    border-radius: 999px;
+    padding: 12px 18px;
+    font-weight: 800;
+  }
+
+  .cta { text-align: center; }
+  .cta .section-title { max-width: 820px; margin-left: auto; margin-right: auto; }
+  .cta-sub {
+    color: var(--mist);
+    font-size: 18px;
+    line-height: 1.65;
+    max-width: 660px;
+    margin: 0 auto 34px;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--aqua);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 17px 42px;
+    border-radius: 999px;
+  }
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .contact-item { color: var(--mist); font-size: 14px; }
+  .contact-item span {
+    display: block;
+    color: var(--aqua);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .contact-item a { color: var(--white); text-decoration: none; }
+  .footer {
+    color: var(--mist);
+    text-align: center;
+    font-size: 12px;
+    padding: 34px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer a { color: var(--foam); text-decoration: none; }
+
+  .page-break { break-before: page; }
+  .hero { break-after: page; }
+  .gallery-strip { break-before: page; break-after: page; }
+  .split, .guide-card, .highlight-card, .itin-day, .faq-item, .price-card { break-inside: avoid; }
+
+  @page { size: A4; margin: 0; }
+
+  @media (max-width: 860px) {
+    .hero { min-height: 720px; padding: 40px 24px; }
+    .hero-logo { top: 24px; left: 24px; }
+    .hero-meta { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+    section { padding: 64px 24px; }
+    .highlights-grid, .split, .split.reverse, .guide-card, .included-grid, .price-layout { grid-template-columns: 1fr; gap: 30px; }
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    .itin-day { grid-template-columns: 68px 1fr; }
+    .itin-tag { grid-column: 2; text-align: left; padding-top: 0; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print {
+    body, * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { width: 210mm; background: var(--deep); }
+    section {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 17mm 14mm;
+      display: flex;
+      align-items: center;
+      break-before: page;
+      break-after: page;
+      page-break-before: always;
+      page-break-after: always;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+    .container { width: 100%; max-width: none; }
+    .hero {
+      width: 210mm;
+      height: 297mm;
+      min-height: 0;
+      padding: 18mm 14mm;
+      break-before: auto;
+      page-break-before: auto;
+      box-shadow: none;
+    }
+    .hero-logo { top: 16mm; left: 14mm; }
+    .hero-logo img { height: 28px; }
+    .hero h1 { font-size: 47px; max-width: 690px; }
+    .hero-sub { font-size: 14px; line-height: 1.52; max-width: 610px; }
+    .hero-meta { grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 28px; max-width: none; }
+    .meta-value { font-size: 11px; }
+    .section-title { font-size: 33px; margin-bottom: 14px; }
+    .section-label { font-size: 10px; margin-bottom: 10px; }
+    .lead { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+    .copy p { font-size: 11px; line-height: 1.43; margin-bottom: 8px; }
+    .highlights-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .highlight-card { min-height: 134px; padding: 18px; }
+    .highlight-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .highlight-card p { font-size: 10px; line-height: 1.42; }
+    .highlight-kicker { font-size: 9px; margin-bottom: 9px; }
+    .split { grid-template-columns: 1.05fr 0.95fr; }
+    .split.reverse { grid-template-columns: 0.95fr 1.05fr; }
+    .split, .split.reverse { gap: 34px; align-items: center; }
+    .image-frame.tall { aspect-ratio: 4/4.55; }
+    .image-frame.wide { aspect-ratio: 16/8.7; }
+    .caption { font-size: 9px; margin-top: 7px; }
+    .testimonial blockquote { font-size: 25px; line-height: 1.42; }
+    .testimonial cite { font-size: 12px; }
+    .guide-card { grid-template-columns: 0.88fr 1.12fr; gap: 34px; }
+    .quote-note { font-size: 17px; line-height: 1.42; padding: 20px 22px; margin-top: 20px; }
+    .gallery-strip {
+      width: 210mm;
+      height: 297mm;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0;
+    }
+    .gallery-strip img { aspect-ratio: auto; height: 100%; }
+    .itinerary-list { gap: 0; margin-top: 18px; }
+    .itin-day { grid-template-columns: 64px 1fr 90px; gap: 14px; padding: 10px 0; }
+    .day-number { font-size: 25px; }
+    .itin-content h3 { font-size: 17px; margin-bottom: 4px; }
+    .itin-content p { font-size: 9.8px; line-height: 1.32; }
+    .itin-tag { grid-column: auto; text-align: right; font-size: 8.5px; }
+    .stat-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 18px; }
+    .stat { padding: 12px; }
+    .stat-number { font-size: 28px; }
+    .stat-label { font-size: 9.5px; }
+    .included-grid { grid-template-columns: 1.05fr 0.95fr; gap: 34px; margin-top: 22px; }
+    .included-col h3 { font-size: 20px; margin-bottom: 12px; }
+    .included-col li { font-size: 10px; line-height: 1.32; padding-bottom: 7px; }
+    .included-col li::before { width: 6px; height: 6px; top: 5px; }
+    .field-note { font-size: 9px; }
+    .faq-list { margin-top: 20px; max-width: none; }
+    .faq-item { padding: 11px 0; }
+    .faq-question { font-size: 16px; margin-bottom: 4px; }
+    .faq-answer { font-size: 9.8px; line-height: 1.32; }
+    .price-layout { grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 22px; }
+    .price-card { padding: 24px; }
+    .price { font-size: 39px; }
+    .price-note { font-size: 11px; line-height: 1.42; }
+    .date-pill { font-size: 12px; padding: 10px 14px; }
+    .cta-sub { font-size: 14px; }
+    .footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="tonga-with-brooke-pyke/hero-whale.jpeg" alt="Humpback whale in the blue water of Tonga">
+  </div>
+  <div class="hero-logo">
+    <img src="tonga-with-brooke-pyke/airguides-logo-white.png" alt="Airguides">
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Whale Swim Expedition</div>
+    <h1>Tonga with Brooke Pyke: Swim with Humpback Whales</h1>
+    <p class="hero-sub">Eight days in Vava'u with award-winning underwater photographer Brooke Pyke. A small group of seven guests shares five full private-boat days dedicated to responsible humpback whale swims, ocean confidence, image-making and the slow rhythm of island life.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">Dates</div>
+      <div class="meta-value">Aug - Sep 2027</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Duration</div>
+      <div class="meta-value">8 Days / 7 Nights</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Location</div>
+      <div class="meta-value">Vava'u, Tonga</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Group Size</div>
+      <div class="meta-value">7 guests</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">From</div>
+      <div class="meta-value">US$5,300</div>
+    </div>
+  </div>
+</section>
+
+<section class="highlights page-break">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">An intimate whale week shaped by ocean, culture and craft</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-kicker">01</div>
+        <h3>5 Whale Swim Days</h3>
+        <p>Five full days by private boat focus on humpback whale encounters when conditions, safety and whale behaviour allow.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">02</div>
+        <h3>Private Waterfront Base</h3>
+        <p>Seven nights in private waterfront accommodation for a small group of just seven guests, close to the water and built around a calm expedition rhythm.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">03</div>
+        <h3>Brooke Pyke</h3>
+        <p>In-water guidance, creative direction, ethical wildlife practice and image feedback from an award-winning underwater photographer.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">04</div>
+        <h3>Chef Prepared Meals</h3>
+        <p>Daily meals by a professional chef, plus a traditional Tongan welcome feast to open the week with local warmth.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">05</div>
+        <h3>Blue Caves and Beaches</h3>
+        <p>Between whale days, explore Vava'u's clear caves, remote beaches, coastlines and island viewpoints with local hosts.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">06</div>
+        <h3>Editing Masterclass</h3>
+        <p>Brooke closes the week with a hands-on editing session, helping guests shape their images into a stronger story.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story page-break">
+  <div class="container">
+    <div class="split">
+      <div class="copy">
+        <div class="section-label">About the Experience</div>
+        <div class="section-title">A rare window into the warm waters of Vava'u</div>
+        <p class="lead">Each year, humpback whales travel from Antarctica into Tonga's warmer waters. For a short seasonal window, careful, regulated swim encounters can become possible.</p>
+        <p>This journey is built around that possibility, not a promise. The group heads out each whale day with experienced local operators who read the animals, the weather and the water before any entry is made.</p>
+        <p>Brooke's role is to help you move with intention. She guides water confidence, light, framing, distance and patience, so the goal becomes more than getting close. It becomes understanding what is happening in front of you.</p>
+        <p>Beyond the whales, the week includes blue caves, remote beaches, island viewpoints, shared meals and the warmth of the Tongan community that makes Vava'u feel so different from a standard marine tour.</p>
+      </div>
+      <div>
+        <div class="image-frame tall">
+          <img src="tonga-with-brooke-pyke/swimmer-whale.jpeg" alt="Swimmer near a humpback whale in Tonga">
+        </div>
+        <p class="caption">Every in-water moment is conditional. Weather, visibility, local rules, guide judgement and whale behaviour decide what is possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"The Airguides trip to Tonga to swim with humpback whales was the experience of a lifetime."</blockquote>
+    <cite><strong>Mb Myers</strong> | Airguides Tonga guest</cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="guide-card">
+      <div class="guide-photo">
+        <img src="tonga-with-brooke-pyke/brooke-pyke.jpeg" alt="Brooke Pyke">
+      </div>
+      <div class="copy">
+        <div class="section-label">Your Guide</div>
+        <div class="section-title">Brooke Pyke</div>
+        <p class="lead">Brooke is an award-winning Australian underwater photographer whose work is rooted in conservation, animal-first encounters and calm confidence in the water.</p>
+        <p>Entirely self-taught, Brooke has worked across the reefs of Western Australia, Indonesia, Tonga and the wider Pacific. Her images have earned international recognition and appeared in ocean publications including Oceanographic and EzDive.</p>
+        <p>On this expedition, she brings the field sense of a wildlife photographer and the patience of someone who understands that guests arrive with different levels of confidence. Her guidance is steady, practical and always shaped by respect for the animals.</p>
+        <div class="quote-note">"Photography and art have the power to ignite a passion for conservation in the next generation." - Brooke Pyke</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <div class="split reverse">
+      <div>
+        <div class="image-frame wide">
+          <img src="tonga-with-brooke-pyke/mother-calf.jpeg" alt="Humpback whale mother and calf underwater">
+        </div>
+      </div>
+      <div class="copy">
+        <div class="section-label">Why Book This Experience?</div>
+        <div class="section-title">More patience, more context and more care</div>
+        <p class="lead">A whale swim is not better because it is rushed or crowded. The best moments come when the group, the crew and the guide are patient enough to let the animals lead.</p>
+        <p>Private boat days give the experience room to adapt. If the ocean asks for waiting, you wait. If the whales are moving, the team makes measured decisions. If the right encounter does not present itself, the animal-first call is still the right call.</p>
+        <p>That is where Brooke changes the trip. She helps guests see beyond the obvious frame: behaviour, light, movement, emotion and the responsibility that comes with entering another animal's world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gallery-strip">
+  <img src="tonga-with-brooke-pyke/humpback-underwater.jpeg" alt="Humpback whale near the surface">
+  <img src="tonga-with-brooke-pyke/mother-calf.jpeg" alt="Humpback whale close-up underwater">
+  <img src="tonga-with-brooke-pyke/whales-blue.jpeg" alt="Two humpback whales in blue water">
+  <img src="tonga-with-brooke-pyke/freediver-cave.jpeg" alt="Freediver in a blue cave">
+</div>
+
+<section class="itinerary page-break">
+  <div class="container">
+    <div class="section-label">Day by Day</div>
+    <div class="section-title">Your Vava'u whale swim itinerary</div>
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">1</div>
+        </div>
+        <div class="itin-content">
+          <h3>Welcome to Vava'u</h3>
+          <p>Arrive into Vava'u, transfer to your water-view accommodation, meet Brooke and the group, then open the week with a traditional Tongan welcome feast and Brooke's first whale behaviour masterclass.</p>
+        </div>
+        <div class="itin-tag">Arrival</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">2</div>
+        </div>
+        <div class="itin-content">
+          <h3>Island Pace and Water Confidence</h3>
+          <p>Settle into mask, fins, breath and body position before the whale days begin. A local guide introduces beaches, lookouts and the cultural rhythm of the island.</p>
+        </div>
+        <div class="itin-tag">Preparation</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Days</div>
+          <div class="day-number">3-7</div>
+        </div>
+        <div class="itin-content">
+          <h3>Private Boat Whale Swim Days</h3>
+          <p>Each day is dedicated to the water. The crew searches for spouts, fins and signs of calm whale behaviour. When an encounter is appropriate, Brooke helps with positioning, movement, light and respectful image-making. Lunches, reef stops, blue caves and remote beaches fill the spaces between whale opportunities.</p>
+        </div>
+        <div class="itin-tag">Whales</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">8</div>
+        </div>
+        <div class="itin-content">
+          <h3>Editing Masterclass and Farewell</h3>
+          <p>The boats stay at the dock while Brooke leads a hands-on editing session. Review the images you made, understand why certain frames work, then farewell the group with transfers arranged around onward travel.</p>
+        </div>
+        <div class="itin-tag">Editing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vessel">
+  <div class="container">
+    <div class="split">
+      <div>
+        <div class="image-frame wide">
+          <img src="tonga-with-brooke-pyke/whales-blue.jpeg" alt="Humpback whales moving through blue water">
+        </div>
+      </div>
+      <div class="copy">
+        <div class="section-label">On The Water</div>
+        <div class="section-title">Five full days by private boat</div>
+        <p class="lead">The heart of the trip is time: five full days on the water with a private vessel and an experienced local whale operator.</p>
+        <p>Each day is shaped by conditions. The crew reads the surface, listens to local knowledge and watches the whales closely before deciding whether an in-water approach is appropriate.</p>
+        <p>Brooke stays close to the guest experience, helping with confidence, camera handling, composition and the quiet discipline needed for ethical wildlife photography.</p>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-number">5</div>
+        <div class="stat-label">full private-boat days focused on responsible whale swims</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">7</div>
+        <div class="stat-label">nights in private waterfront accommodation</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">1</div>
+        <div class="stat-label">underwater photography and whale behaviour masterclass</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">1</div>
+        <div class="stat-label">hands-on editing masterclass with Brooke</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="island">
+  <div class="container">
+    <div class="split reverse">
+      <div class="copy">
+        <div class="section-label">Life On Land</div>
+        <div class="section-title">Waterfront accommodation, chef meals and island culture</div>
+        <p class="lead">The land component matters because the water can be intense. After each day at sea, guests return to a private waterfront base, shared dinners and the slower pace of Vava'u.</p>
+        <p>A professional chef prepares daily meals, while the welcome feast gives the group a first taste of Tongan hospitality. The itinerary also leaves space for blue caves, secluded beaches, lookouts, markets and quiet recovery between ocean days.</p>
+        <p>This is a small island community, not a resort bubble. The experience works because local operators, hosts and guides are central to the week.</p>
+      </div>
+      <div>
+        <div class="image-frame wide">
+          <img src="tonga-with-brooke-pyke/vavau-island.jpeg" alt="Vava'u coastline and islands">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>Previous Tonga guests describe the whale encounters as mind blowing, but they remember the care of the team just as strongly.</blockquote>
+    <cite><strong>Airguides Guest Feedback</strong> | Tonga</cite>
+  </div>
+</section>
+
+<section class="included page-break">
+  <div class="container">
+    <div class="section-label">The Details</div>
+    <div class="section-title">What's included</div>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Included</h3>
+        <ul>
+          <li>7 nights private waterfront accommodation, twin-share basis unless confirmed otherwise</li>
+          <li>Hotel and airport transfers in Vava'u</li>
+          <li>Daily breakfast, lunch and dinner by a professional chef</li>
+          <li>Traditional Tongan welcome feast</li>
+          <li>Small group of 7 guests</li>
+          <li>5 full days of private boat time focused on responsible whale swims</li>
+          <li>Underwater photography guidance with Brooke Pyke</li>
+          <li>Humpback whale behaviour and ethical encounter guidance</li>
+          <li>Hands-on editing masterclass with Brooke</li>
+          <li>Private island touring, lookouts and local experiences</li>
+          <li>Exploration of blue caves and secluded beaches when conditions allow</li>
+          <li>Personal gallery of trip highlights captured by Brooke</li>
+          <li>Airguides expedition leader and storyteller guide support</li>
+        </ul>
+        <p class="field-note">Wildlife encounters, boat routing, cave access and in-water time depend on weather, safety, local regulations and animal behaviour.</p>
+      </div>
+      <div class="included-col not-included">
+        <h3>Not Included</h3>
+        <ul>
+          <li>International and domestic flights</li>
+          <li>Passport, visa or entry costs where applicable</li>
+          <li>Travel insurance, medical costs and evacuation cover</li>
+          <li>Personal snorkelling, freediving or camera equipment unless specified</li>
+          <li>Alcoholic drinks</li>
+          <li>Optional activities outside the confirmed itinerary</li>
+          <li>Personal expenses, laundry and gratuities</li>
+          <li>Single supplement or private room upgrades unless confirmed by Airguides</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq page-break">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">What guests usually need to know</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Can you guarantee whale swims?</div>
+        <div class="faq-answer">No. Humpbacks are wild animals and every day is shaped by weather, visibility, sea state, local regulations and whale behaviour. The private boat structure and experienced local operators help create opportunities, but animal welfare and safety come first.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is swimming with humpback whales ethical?</div>
+        <div class="faq-answer">Tonga has regulated whale swim guidelines, and Airguides works with operators who prioritise the whales' comfort. Entries only happen when the crew judges the situation to be appropriate. If a whale is not receptive, the group does not force the encounter.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need to be a diver?</div>
+        <div class="faq-answer">No. This is a snorkelling experience. Humpbacks come to the surface to breathe, and the focus is calm surface interaction rather than scuba diving.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How confident in the water should I be?</div>
+        <div class="faq-answer">You should be comfortable snorkelling in open water and able to manage several hours around boats, ladders, swell and changeable conditions. Brooke and the local crew support the group, but this is still an ocean expedition.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need to be a photographer?</div>
+        <div class="faq-answer">No. Brooke's guidance is valuable for camera users, but non-photographers still benefit from her wildlife knowledge, calm water coaching and conservation perspective.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What is Vava'u like?</div>
+        <div class="faq-answer">Vava'u is a low-key island group in northern Tonga, with clear water, green hills, local restaurants, cafes, markets and a warm community feel. It is beautiful, remote and less polished than a resort destination.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What should I bring?</div>
+        <div class="faq-answer">Bring your own mask, snorkel, freediving or snorkelling fins, wetsuit, reef-safe ocean layers, seasickness medication if needed and a reusable water bottle. Photographers should bring their camera, underwater housing, spare batteries, SD cards, lens cloths and a laptop with Lightroom Classic if they want to join the editing workflow.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing page-break">
+  <div class="container">
+    <div class="section-label">Pricing &amp; Dates</div>
+    <div class="section-title">Tonga whale swim expedition: Aug - Sep 2027</div>
+    <div class="price-layout">
+      <div class="price-card">
+        <h3>Trip Price</h3>
+        <div class="price">US$5,300</div>
+        <p class="price-note">Per person, based on the current public product page and pay-in-full price.</p>
+      </div>
+      <div class="price-card">
+        <h3>Payment Options</h3>
+        <div class="price">US$2,650</div>
+        <p class="price-note">Deposit and final payment options should be confirmed directly with Airguides before booking.</p>
+      </div>
+    </div>
+    <div class="date-row">
+      <div class="date-pill">Aug - Sep 2027</div>
+      <div class="date-pill">8 Days / 7 Nights</div>
+      <div class="date-pill">Vava'u, Tonga</div>
+      <div class="date-pill">7 guests</div>
+    </div>
+    <p class="field-note">Availability, currency, payment schedule, room configuration and final inclusions should be confirmed with Airguides at the time of booking.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">A rare Tonga whale week for travellers who want the ocean to mean more</div>
+    <p class="cta-sub">Get in touch to confirm availability, payment options and the final Aug - Sep 2027 schedule.</p>
+    <a class="cta-button" href="https://airguides.com/products/tonga-with-brooke-pyke">Secure Your Spot</a>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:hello@airguides.com">hello@airguides.com</a>
+      </div>
+      <div class="contact-item">
+        <span>Phone / WhatsApp</span>
+        <a href="tel:+61402552918">(+61) 402 552 918</a>
+      </div>
+      <div class="contact-item">
+        <span>Website</span>
+        <a href="https://www.airguides.com">airguides.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="https://www.airguides.com">airguides.com</a> | Tonga with Brooke Pyke: Swim with Humpback Whales
+</footer>
+
+</body>
+</html>
