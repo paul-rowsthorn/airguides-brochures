@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Congo: Gorillas of the Rainforest | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #08130f;
+    --forest: #13251c;
+    --leaf: #6f936d;
+    --bronze: #b38a58;
+    --mist: #f4f0e8;
+    --white: #ffffff;
+    --soft: #bdc8bd;
+    --muted: #849184;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--white);
+    background: var(--deep);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .hero {
+    min-height: 92vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 42px 40px 56px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .hero-bg img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 100%;
+    min-width: 100%;
+    max-width: none;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(8,19,15,0.42);
+  }
+
+  .hero-logo {
+    position: absolute;
+    top: 34px;
+    left: 40px;
+    z-index: 2;
+  }
+
+  .hero-logo img { height: 34px; opacity: 0.92; }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(760px, 100%);
+  }
+
+  .label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--bronze);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--bronze);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  h1 {
+    font-size: clamp(44px, 7vw, 82px);
+    line-height: 1.02;
+    font-weight: 700;
+    max-width: 720px;
+    margin-bottom: 18px;
+  }
+
+  .hero-sub {
+    max-width: 620px;
+    color: var(--soft);
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    width: min(920px, 100%);
+    margin-top: 38px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+  }
+
+  .meta-label {
+    font-size: 11px;
+    line-height: 1.3;
+    color: var(--muted);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .meta-value {
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  section { padding: 92px 40px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-title {
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.12;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .intro { background: var(--deep); }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    gap: 58px;
+    align-items: start;
+  }
+
+  .copy p {
+    color: var(--soft);
+    font-size: 16px;
+    line-height: 1.82;
+    margin-bottom: 18px;
+  }
+
+  .copy p.lead {
+    color: var(--mist);
+    font-size: 19px;
+    line-height: 1.72;
+  }
+
+  .image-panel {
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 4 / 5;
+    background: var(--forest);
+  }
+
+  .image-panel img { width: 100%; height: 100%; object-fit: cover; }
+
+  .facts {
+    background: var(--forest);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .fact {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 24px;
+    background: rgba(255,255,255,0.035);
+  }
+
+  .fact .number {
+    color: var(--bronze);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .fact h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .fact p {
+    color: var(--soft);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .testimonial {
+    background: var(--deep);
+    text-align: center;
+  }
+
+  blockquote {
+    color: var(--mist);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.48;
+    font-style: italic;
+    max-width: 850px;
+    margin: 0 auto 24px;
+  }
+
+  cite {
+    color: var(--soft);
+    font-size: 14px;
+    font-style: normal;
+  }
+
+  .guide { background: var(--forest); }
+  .guide-grid {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.15fr);
+    gap: 58px;
+    align-items: center;
+  }
+
+  .guide-photo {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    background: #0d1712;
+  }
+
+  .guide-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 30px;
+    background: rgba(255,255,255,0.09);
+  }
+
+  .stat {
+    background: var(--deep);
+    padding: 20px 14px;
+    text-align: center;
+  }
+
+  .stat strong {
+    display: block;
+    color: var(--bronze);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    margin-bottom: 5px;
+  }
+
+  .stat span {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    padding: 0;
+    background: var(--deep);
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 34vw;
+    min-height: 260px;
+    max-height: 430px;
+    object-fit: cover;
+  }
+
+  .itinerary { background: var(--deep); }
+  .itinerary-list { margin-top: 42px; }
+  .day {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 32px;
+    padding: 34px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .day:first-child { padding-top: 0; }
+  .day-num {
+    color: var(--bronze);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 34px;
+    font-weight: 700;
+  }
+  .day small {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .day h3 {
+    font-size: 23px;
+    margin-bottom: 10px;
+  }
+  .day p {
+    color: var(--soft);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .included { background: var(--forest); }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-top: 38px;
+  }
+
+  .list-box {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 30px;
+  }
+
+  .list-box h3 {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .list-box ul { list-style: none; }
+  .list-box li {
+    position: relative;
+    color: var(--soft);
+    font-size: 15px;
+    line-height: 1.6;
+    padding-left: 22px;
+    margin-bottom: 13px;
+  }
+  .list-box li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--bronze);
+  }
+
+  .cta {
+    background: var(--deep);
+    text-align: center;
+  }
+
+  .price {
+    color: var(--bronze);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(42px, 5vw, 66px);
+    font-weight: 700;
+    margin: 16px 0 6px;
+  }
+
+  .cta p {
+    color: var(--soft);
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 720px;
+    margin: 0 auto 26px;
+  }
+
+  .button {
+    display: inline-block;
+    background: var(--bronze);
+    color: #08130f;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    padding: 16px 30px;
+    border-radius: 4px;
+  }
+
+  footer {
+    background: #050b08;
+    color: var(--muted);
+    padding: 34px 40px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 760px) {
+    .hero { min-height: 760px; padding: 110px 24px 40px; }
+    .hero-logo { left: 24px; top: 28px; }
+    .hero-meta, .facts-grid, .intro-grid, .guide-grid, .cols { grid-template-columns: 1fr; }
+    .hero-meta { gap: 18px; }
+    section { padding: 72px 24px; }
+    .gallery { grid-template-columns: 1fr; }
+    .gallery img { height: 64vw; max-height: none; }
+    .day { grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  @media print {
+    .hero { min-height: 720px; }
+    section { break-inside: avoid; }
+    .gallery img { height: 280px; }
+    .button { color: #08130f !important; }
+  }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-bg">
+      <img src="https://airguides.com/cdn/shop/files/Kamba_james_kydd05.jpg?v=1779868317" alt="Western lowland gorilla in the rainforest">
+    </div>
+    <a class="hero-logo" href="https://airguides.com">
+      <img src="https://cdn.prod.website-files.com/618492b2c3bd4268f23ff521/674ea9b9030ce35fdba791a5_airguide-logo-01.svg" alt="Airguides">
+    </a>
+    <div class="hero-content">
+      <div class="label">Republic of the Congo</div>
+      <h1>The Congo: Gorillas of the Rainforest</h1>
+      <p class="hero-sub">A brand new 10-night rainforest expedition through Odzala-Kokoua with Martin Gregus, three included western lowland gorilla tracks and only eight guest places.</p>
+    </div>
+    <div class="hero-meta">
+      <div><div class="meta-label">Dates</div><div class="meta-value">7 to 16 June 2027</div></div>
+      <div><div class="meta-label">Duration</div><div class="meta-value">11 days, 10 nights</div></div>
+      <div><div class="meta-label">Group</div><div class="meta-value">8 guests only</div></div>
+      <div><div class="meta-label">Price</div><div class="meta-value">US$22,750 pp</div></div>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="container intro-grid">
+      <div class="copy">
+        <div class="label">The Story</div>
+        <h2 class="section-title">This is not polished safari theatre.</h2>
+        <p class="lead">The Congo Basin is older, denser and far less travelled than the safari landscapes most people know. Wildlife is not lined up on open plains here. It is hidden in green shadow, heard before it is seen, and revealed slowly to travellers willing to move at the forest's pace.</p>
+        <p>This expedition follows Kamba's classic Odzala route, moving through Ngaga, Lango and Mboko lodges. Each camp reveals a different side of the forest, from closed-canopy gorilla habitat to bai, river systems, savanna and rainforest edge.</p>
+        <p>With Martin Gregus beside you, the journey becomes more than rare wildlife access. It is a chance to learn how to observe patiently, work with low light and dense forest, and create images in one of the most complex ecosystems on the planet.</p>
+      </div>
+      <div class="image-panel">
+        <img src="https://airguides.com/cdn/shop/files/Kamba-Primates-ANDREWHOWARD-Wildlife13.jpg?v=1779868317&width=1000" alt="Primate in Odzala-Kokoua rainforest">
+      </div>
+    </div>
+  </section>
+
+  <section class="facts">
+    <div class="container">
+      <div class="label">Trip Highlights</div>
+      <h2 class="section-title">Ten nights. Three Kamba lodges. Three gorilla tracks.</h2>
+      <div class="facts-grid">
+        <div class="fact"><div class="number">3</div><h3>Gorilla Tracking Permits</h3><p>Track western lowland gorillas with expert local guides and trackers in the closed-canopy forest around Ngaga.</p></div>
+        <div class="fact"><div class="number">10</div><h3>Nights Inside Odzala</h3><p>Stay at Ngaga, Lango and Mboko, moving through rainforest, bai, river, wetland and savanna habitats.</p></div>
+        <div class="fact"><div class="number">8</div><h3>Guest Places</h3><p>A small group built for access, field learning and meaningful time with Martin in one of Africa's least understood wild places.</p></div>
+        <div class="fact"><div class="number">1</div><h3>Storyteller Guide</h3><p>Martin Gregus brings nearly two decades of expedition work across polar regions, Patagonia, the Himalayas and dense wilderness.</p></div>
+        <div class="fact"><div class="number">4</div><h3>Ways To Explore</h3><p>Rainforest walks, night drives, kayaking and river cruises reveal wildlife slowly and from different angles.</p></div>
+        <div class="fact"><div class="number">2027</div><h3>Brand New Product</h3><p>This is a first-run Airguides Congo expedition, open only to the first eight guests ready to move early.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <div class="container">
+      <blockquote>"To be in the presence of a unique visionary like Martin Gregus and be welcomed into his home away from home in the middle of nowhere is truly a once in a lifetime event."</blockquote>
+      <cite>Anne Prather, United States</cite>
+    </div>
+  </section>
+
+  <section class="guide">
+    <div class="container guide-grid">
+      <div class="guide-photo">
+        <img src="https://raw.githubusercontent.com/paul-rowsthorn/airguides-brochures/main/patagonia-incredible-landscapes-and-pumas/martin-gregus.jpeg" alt="Martin Gregus">
+      </div>
+      <div class="copy">
+        <div class="label">Your Storyteller</div>
+        <h2 class="section-title">Martin Gregus knows how to wait for the frame.</h2>
+        <p class="lead">Martin has worked across all seven continents, from polar ice to dense wilderness. His work has earned two Wildlife Photographer of the Year wins, National Geographic coverage and cinematography credits across Disney, BBC and Netflix productions.</p>
+        <p>In the Congo, that experience matters. Low light, dense canopy and quick wildlife encounters reward people who understand patience, preparation and restraint.</p>
+        <p>Martin's role is not to turn the forest into a classroom. It is to help you notice more, move better and come home with images that carry the feeling of being there.</p>
+        <div class="stats">
+          <div class="stat"><strong>20+</strong><span>Years Experience</span></div>
+          <div class="stat"><strong>200+</strong><span>Global Expeditions</span></div>
+          <div class="stat"><strong>730k+</strong><span>Followers</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <img src="https://airguides.com/cdn/shop/files/Kamba_james_kydd05.jpg?v=1779868317" alt="Western lowland gorilla">
+    <img src="https://airguides.com/cdn/shop/files/Kamba-RiverExperiences_16_-RhinoAfrica.jpg?v=1779868317" alt="River experience in Odzala">
+    <img src="https://airguides.com/cdn/shop/files/Kamba-Primates-ANDREWHOWARD-Wildlife13.jpg?v=1779868317&width=1000" alt="Rainforest primate">
+  </section>
+
+  <section class="itinerary">
+    <div class="container">
+      <div class="label">Day By Day</div>
+      <h2 class="section-title">The route through Odzala-Kokoua</h2>
+      <div class="itinerary-list">
+        <div class="day"><div><small>Day</small><div class="day-num">1</div></div><div><h3>Brazzaville to Ngaga Lodge</h3><p>Begin with Kamba airport assistance and the scheduled charter flight to Odzala. From Mboko Airstrip, transfer by open 4x4 through savanna and rainforest to Ngaga Lodge, then meet the guiding team for a conservation and gorilla tracking briefing.</p></div></div>
+        <div class="day"><div><small>Days</small><div class="day-num">2-4</div></div><div><h3>Gorilla Tracking at Ngaga</h3><p>Three western lowland gorilla permits are included. Tracks are led by expert guides and trackers through closed-canopy forest. Between tracks, join ecology walks, nocturnal safaris, night drives and photography sessions with Martin.</p></div></div>
+        <div class="day"><div><small>Day</small><div class="day-num">5</div></div><div><h3>Ngaga to Lango Bai</h3><p>After breakfast and a final forest morning, travel through Odzala-Kokoua National Park toward the waterways. Continue by kayak along the Lekoli River, watching for monkeys, forest buffalo, elephants and birdlife before arriving at Lango Lodge.</p></div></div>
+        <div class="day"><div><small>Days</small><div class="day-num">6-7</div></div><div><h3>Lango Bai</h3><p>Explore Lango's wetlands, bai and surrounding forest on foot and by water. Walk elephant trails through streams and forest clearings, watch for forest buffalo, bongo and shy forest elephants, and listen for chimps in the distance.</p></div></div>
+        <div class="day"><div><small>Day</small><div class="day-num">8</div></div><div><h3>Lango to Mboko</h3><p>Begin with an early walk before transferring to Mboko Lodge, where forest, savanna and river meet. After lunch, enjoy a forest walk, time on the river deck or a late afternoon river cruise.</p></div></div>
+        <div class="day"><div><small>Days</small><div class="day-num">9-10</div></div><div><h3>Rivers, Forest and Savanna</h3><p>Walk, boat and kayak through some of Odzala's most varied habitats. Search for birdlife, forest elephants, buffalo, monkeys, spotted hyenas, bongo and hippos, then return to quiet evenings by the Lekeni River.</p></div></div>
+        <div class="day"><div><small>Day</small><div class="day-num">11</div></div><div><h3>Return to Brazzaville</h3><p>Final breakfast at Mboko, then a game drive back through the savanna to the airstrip for your Kamba charter flight to Brazzaville. The team coordinates your return so the logistics feel calm.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="included">
+    <div class="container">
+      <div class="label">Inclusions</div>
+      <h2 class="section-title">Built for rare access, not ordinary tourism</h2>
+      <div class="cols">
+        <div class="list-box">
+          <h3>Included</h3>
+          <ul>
+            <li>10 nights at Kamba lodges: Ngaga, Lango and Mboko</li>
+            <li>Three western lowland gorilla tracking permits</li>
+            <li>Scheduled Kamba charter flights between Brazzaville and Odzala</li>
+            <li>Expert local guides, trackers and lodge teams</li>
+            <li>Rainforest walks, night drives, kayaking and river cruises</li>
+            <li>Photography guidance with Martin Gregus</li>
+            <li>Airguides expedition support before and during the journey</li>
+          </ul>
+        </div>
+        <div class="list-box">
+          <h3>Not Included</h3>
+          <ul>
+            <li>International flights to and from Brazzaville</li>
+            <li>Visas, travel insurance and medical requirements</li>
+            <li>Personal expenses, premium drinks and optional extras</li>
+            <li>Gratuities and any services not listed as included</li>
+            <li>Camera equipment, excess baggage and personal gear</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="label">Only 8 Places</div>
+      <h2 class="section-title">The first eight guests shape the first Airguides Congo expedition.</h2>
+      <div class="price">US$22,750 pp</div>
+      <p>7 to 16 June 2027. 11 days and 10 nights through Odzala-Kokoua National Park with Martin Gregus, Kamba's expert team and three included gorilla tracks.</p>
+      <a class="button" href="https://airguides.com/products/the-congo-gorillas-of-the-rainforest">View the Trip</a>
+    </div>
+  </section>
+
+  <footer>
+    Airguides | hello@airguides.com | (+61) 402 552 918<br>
+    Travel deeper with the world's greatest photographers, conservationists and explorers.
+  </footer>
+</body>
+</html>
