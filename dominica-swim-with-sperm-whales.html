@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dominica: Swim with Sperm Whales | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --abyss: #04131b;
+    --deep: #082333;
+    --reef: #0c6d73;
+    --aqua: #55d6d2;
+    --foam: #eaf8f5;
+    --mist: #9eb9bd;
+    --sand: #e8d3b2;
+    --coral: #ef7f67;
+    --ink: #102229;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--white);
+    background: var(--abyss);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 58px 42px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(4,19,27,0.08) 0%, rgba(4,19,27,0.08) 30%, rgba(4,19,27,0.62) 68%, rgba(4,19,27,0.98) 100%),
+      linear-gradient(to right, rgba(4,19,27,0.7) 0%, rgba(4,19,27,0.28) 52%, rgba(4,19,27,0.04) 100%);
+  }
+  .hero-logo {
+    position: absolute;
+    top: 38px;
+    left: 42px;
+    z-index: 2;
+  }
+  .hero-logo img { width: auto; height: 36px; opacity: 0.95; }
+  .hero-content { position: relative; z-index: 2; max-width: 760px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 6.5vw, 82px);
+    line-height: 1.02;
+    letter-spacing: 0;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.62;
+    max-width: 650px;
+  }
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 18px;
+    margin-top: 38px;
+    max-width: 820px;
+  }
+  .meta-item {
+    border-top: 1px solid rgba(255,255,255,0.18);
+    padding-top: 14px;
+  }
+  .meta-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .meta-value { color: var(--white); font-size: 15px; font-weight: 700; line-height: 1.3; }
+
+  section { padding: 96px 42px; }
+  .container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-label {
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(33px, 4vw, 50px);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+  .lead {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.72;
+    margin-bottom: 18px;
+  }
+  .copy p {
+    color: var(--mist);
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 16px;
+  }
+
+  .highlights, .testimonial, .why, .faq, .cta { background: var(--deep); }
+  .story, .guide, .itinerary, .boat, .included, .pricing, .route { background: var(--abyss); }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 34px;
+  }
+  .highlight-card {
+    min-height: 178px;
+    padding: 24px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .highlight-kicker {
+    color: var(--coral);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .highlight-card h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .highlight-card p {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .split.reverse { grid-template-columns: 0.92fr 1.08fr; }
+  .image-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .image-frame.tall { aspect-ratio: 4/5; }
+  .image-frame.wide { aspect-ratio: 16/10; }
+  .image-frame.square { aspect-ratio: 1; }
+  .image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .caption {
+    color: var(--mist);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+
+  .testimonial {
+    text-align: center;
+  }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.1vw, 34px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--sand);
+    max-width: 900px;
+    margin: 0 auto 28px;
+  }
+  .testimonial cite {
+    color: var(--mist);
+    font-size: 14px;
+    font-style: normal;
+  }
+  .testimonial strong { color: var(--white); }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 44px;
+    margin-top: 34px;
+  }
+  .guide-card {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 26px;
+    align-items: center;
+    padding: 26px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .guide-photo {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .guide-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .guide-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .guide-role {
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .guide-card p {
+    color: var(--mist);
+    font-size: 13px;
+    line-height: 1.62;
+    margin-bottom: 11px;
+  }
+
+  .quote-note {
+    margin-top: 30px;
+    padding: 26px 30px;
+    border-left: 3px solid var(--coral);
+    background: rgba(255,255,255,0.04);
+    color: var(--foam);
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 0;
+    background: var(--abyss);
+  }
+  .gallery-strip img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .itinerary-list {
+    display: grid;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .itin-day {
+    display: grid;
+    grid-template-columns: 84px 1fr 96px;
+    gap: 22px;
+    align-items: start;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .itin-day:first-child { border-top: 0; padding-top: 0; }
+  .day-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .day-number {
+    color: var(--aqua);
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    line-height: 1.15;
+    margin-bottom: 7px;
+  }
+  .itin-content p {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.62;
+  }
+  .dive-count {
+    color: var(--sand);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: right;
+    padding-top: 8px;
+  }
+
+  .route-map {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #dfe5ea;
+  }
+  .route-map img { width: 100%; height: auto; }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .stat {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+  }
+  .stat-number {
+    color: var(--sand);
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    color: var(--mist);
+    font-size: 12px;
+    line-height: 1.45;
+    font-weight: 700;
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    margin-top: 34px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative;
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 0 11px 22px;
+  }
+  .included-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--aqua);
+  }
+  .not-included li::before { background: var(--coral); }
+  .field-note {
+    color: var(--mist);
+    font-size: 12px;
+    line-height: 1.55;
+    margin-top: 14px;
+  }
+
+  .faq-list {
+    max-width: 860px;
+    margin: 36px auto 0;
+  }
+  .faq-item {
+    padding: 22px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .faq-item:first-child { border-top: 0; padding-top: 0; }
+  .faq-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    line-height: 1.2;
+    margin-bottom: 9px;
+  }
+  .faq-answer {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.62;
+  }
+
+  .price-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    margin-top: 34px;
+  }
+  .price-card {
+    padding: 32px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .price-card h3 {
+    color: var(--mist);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .price-note { color: var(--mist); font-size: 14px; line-height: 1.55; }
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--sand);
+    border: 1px solid rgba(232,211,178,0.35);
+    border-radius: 999px;
+    padding: 12px 18px;
+    font-weight: 800;
+    margin-top: 20px;
+  }
+
+  .cta { text-align: center; }
+  .cta .section-title { max-width: 820px; margin-left: auto; margin-right: auto; }
+  .cta-sub {
+    color: var(--mist);
+    font-size: 18px;
+    line-height: 1.65;
+    max-width: 640px;
+    margin: 0 auto 34px;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--aqua);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 17px 42px;
+    border-radius: 999px;
+  }
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .contact-item {
+    color: var(--mist);
+    font-size: 14px;
+  }
+  .contact-item span {
+    display: block;
+    color: var(--aqua);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .contact-item a { color: var(--white); text-decoration: none; }
+
+  .footer {
+    color: var(--mist);
+    text-align: center;
+    font-size: 12px;
+    padding: 34px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer a { color: var(--foam); text-decoration: none; }
+
+  .page-break { break-before: page; }
+  .hero { break-after: page; }
+  .gallery-strip { break-before: page; break-after: page; }
+  .split, .guide-card, .highlight-card, .itin-day, .faq-item, .price-card { break-inside: avoid; }
+
+  @page { size: A4; margin: 0; }
+
+  @media (max-width: 860px) {
+    .hero { min-height: 700px; padding: 40px 24px; }
+    .hero-logo { top: 24px; left: 24px; }
+    .hero-meta { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+    section { padding: 64px 24px; }
+    .highlights-grid, .split, .split.reverse, .guide-grid, .included-grid, .price-layout { grid-template-columns: 1fr; gap: 30px; }
+    .guide-card { grid-template-columns: 1fr; }
+    .guide-photo { width: min(260px, 100%); }
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    .itin-day { grid-template-columns: 68px 1fr; }
+    .dive-count { grid-column: 2; text-align: left; padding-top: 0; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print {
+    body, * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { width: 210mm; background: var(--abyss); }
+    section {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 17mm 14mm;
+      display: flex;
+      align-items: center;
+      break-before: page;
+      break-after: page;
+      page-break-before: always;
+      page-break-after: always;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+    .container { width: 100%; max-width: none; }
+    .hero {
+      width: 210mm;
+      height: 297mm;
+      min-height: 0;
+      padding: 18mm 14mm;
+      break-before: auto;
+      page-break-before: auto;
+      box-shadow: none;
+    }
+    .hero-logo { top: 16mm; left: 14mm; }
+    .hero-logo img { height: 28px; }
+    .hero h1 { font-size: 50px; max-width: 680px; }
+    .hero-sub { font-size: 14px; line-height: 1.52; max-width: 600px; }
+    .hero-meta { grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; max-width: none; }
+    .meta-value { font-size: 12px; }
+    .section-title { font-size: 33px; margin-bottom: 14px; }
+    .section-label { font-size: 10px; margin-bottom: 10px; }
+    .lead { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+    .copy p { font-size: 11px; line-height: 1.43; margin-bottom: 8px; }
+    .highlights-grid { grid-template-columns: repeat(3, 1fr); }
+    .highlights-grid { gap: 12px; margin-top: 24px; }
+    .highlight-card { min-height: 134px; padding: 18px; }
+    .highlight-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .highlight-card p { font-size: 10px; line-height: 1.42; }
+    .highlight-kicker { font-size: 9px; margin-bottom: 9px; }
+    .split { grid-template-columns: 1.05fr 0.95fr; }
+    .split.reverse { grid-template-columns: 0.92fr 1.08fr; }
+    .split, .split.reverse { gap: 34px; align-items: center; }
+    .image-frame.tall { aspect-ratio: 4/4.55; }
+    .image-frame.wide { aspect-ratio: 16/8.7; }
+    .caption { font-size: 9px; margin-top: 7px; }
+    .testimonial blockquote { font-size: 25px; line-height: 1.42; }
+    .testimonial cite { font-size: 12px; }
+    .guide-grid { grid-template-columns: repeat(2, 1fr); }
+    .guide-grid { gap: 18px; }
+    .guide-card { grid-template-columns: 150px 1fr; gap: 18px; padding: 18px; }
+    .guide-photo { width: auto; }
+    .guide-card h3 { font-size: 22px; }
+    .guide-role { font-size: 9px; margin-bottom: 9px; }
+    .guide-card p { font-size: 9.4px; line-height: 1.38; margin-bottom: 7px; }
+    .quote-note { font-size: 17px; line-height: 1.42; padding: 20px 22px; margin-top: 20px; }
+    .gallery-strip {
+      width: 210mm;
+      height: 297mm;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0;
+    }
+    .gallery-strip img { aspect-ratio: auto; height: 100%; }
+    .itinerary-list { gap: 0; margin-top: 20px; }
+    .itin-day { grid-template-columns: 70px 1fr 72px; gap: 16px; padding: 12px 0; }
+    .day-number { font-size: 26px; }
+    .itin-content h3 { font-size: 18px; margin-bottom: 5px; }
+    .itin-content p { font-size: 10.4px; line-height: 1.34; }
+    .dive-count { grid-column: auto; text-align: right; font-size: 9px; }
+    .route-map { max-height: 144mm; }
+    .stat-grid { grid-template-columns: repeat(4, 1fr); }
+    .stat-grid { gap: 8px; margin-top: 18px; }
+    .stat { padding: 12px; }
+    .stat-number { font-size: 28px; }
+    .stat-label { font-size: 9.5px; }
+    .included-grid { grid-template-columns: 1.05fr 0.95fr; }
+    .included-grid { gap: 34px; margin-top: 22px; }
+    .included-col h3 { font-size: 20px; margin-bottom: 12px; }
+    .included-col li { font-size: 10px; line-height: 1.32; padding-bottom: 7px; }
+    .included-col li::before { width: 6px; height: 6px; top: 5px; }
+    .field-note { font-size: 9px; }
+    .faq-list { margin-top: 20px; max-width: none; }
+    .faq-item { padding: 12px 0; }
+    .faq-question { font-size: 17px; margin-bottom: 5px; }
+    .faq-answer { font-size: 10.2px; line-height: 1.34; }
+    .price-layout { grid-template-columns: repeat(2, 1fr); }
+    .price-layout { gap: 18px; margin-top: 22px; }
+    .price-card { padding: 24px; }
+    .price { font-size: 39px; }
+    .price-note { font-size: 11px; line-height: 1.42; }
+    .date-pill { font-size: 12px; padding: 10px 14px; }
+    .cta-sub { font-size: 14px; }
+    .footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="dominica-swim-with-sperm-whales/whale-01.jpg" alt="Wild sperm whale swimming in Dominica">
+  </div>
+  <div class="hero-logo">
+    <img src="dominica-swim-with-sperm-whales/airguides-logo-white.png" alt="Airguides">
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Small-Group Ocean Expedition</div>
+    <h1>Dominica: Swim with Sperm Whales</h1>
+    <p class="hero-sub">Five days at sea with Karim Iliya, local captains and an experienced crew. Warm Caribbean water, wild sperm whales, and a group limited to just six guests.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <div class="meta-label">Season</div>
+      <div class="meta-value">April 2027</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Duration</div>
+      <div class="meta-value">7 Days / 6 Nights</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Group Size</div>
+      <div class="meta-value">Max 6 Guests</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Price</div>
+      <div class="meta-value">US$7,500</div>
+    </div>
+  </div>
+</section>
+
+<section class="highlights page-break">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">Five days built around one of the ocean's rarest encounters</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-kicker">01</div>
+        <h3>Five Days at Sea</h3>
+        <p>Repeated days on the water give the group the strongest possible chance of natural, unhurried sperm whale encounters.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">02</div>
+        <h3>Six Guests Only</h3>
+        <p>A deliberately small group keeps the experience calm, personal and respectful in and out of the water.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">03</div>
+        <h3>Wild Sperm Whales</h3>
+        <p>Watch for blows, listen for clicks and enter the water only when conditions and whale behaviour allow.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">04</div>
+        <h3>Karim Iliya</h3>
+        <p>Learn alongside a wildlife photographer, filmmaker and conservationist whose work has appeared in National Geographic and BBC Earth.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">05</div>
+        <h3>Warm Caribbean Water</h3>
+        <p>Snorkel in clear tropical water off one of the few places on Earth where these whales can be encountered this way.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">06</div>
+        <h3>Wild Dominica</h3>
+        <p>Rainforest, waterfalls, volcanic landscapes and island culture surround the days spent searching offshore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story page-break">
+  <div class="container">
+    <div class="split">
+      <div class="copy">
+        <div class="section-label">About the Experience</div>
+        <div class="section-title">Meet the largest toothed predators on the planet, on their terms</div>
+        <p class="lead">Dominica is one of the few places on Earth where sperm whales can be encountered in warm, clear Caribbean water.</p>
+        <p>Each morning, you will head out with Karim, a local captain and an experienced crew who know these waters and how to read whale behaviour. The search is part of the experience: scanning for blows, listening for clicks and waiting for the right moment.</p>
+        <p>When conditions and the whales allow, you will slip into the water quietly. You may encounter mothers and calves near the surface, social groups moving through the blue, or whales communicating through the clicks and codas that carry across the ocean.</p>
+        <p>Nothing is staged and no sighting is guaranteed. That honesty is what makes a real encounter so powerful.</p>
+      </div>
+      <div>
+        <div class="image-frame tall">
+          <img src="dominica-swim-with-sperm-whales/whale-04.jpg" alt="Family group of sperm whales underwater">
+        </div>
+        <p class="caption">Every day is different. Some moments are brief. Others stay with you for life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>"I felt like I was on a National Geographic guided trip. Karim and the team were so knowledgeable about these magnificent creatures."</blockquote>
+    <cite><strong>Nicollette C</strong></cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="section-label">Your Storyteller Guide</div>
+    <div class="section-title">Karim Iliya</div>
+    <div class="guide-grid" style="grid-template-columns: 1fr; max-width: 860px; margin: 0 auto;">
+      <div class="guide-card">
+        <div class="guide-photo">
+          <img src="dominica-swim-with-sperm-whales/karim-iliya.png" alt="Karim Iliya">
+        </div>
+        <div>
+          <h3>Karim Iliya</h3>
+          <div class="guide-role">Wildlife Photographer, Filmmaker and Conservationist</div>
+          <p>Karim's work offers a rare glimpse into the lives of some of Earth's most compelling species. From swimming with whales to filming volcanic eruptions from above, his images have appeared in National Geographic, BBC Earth and leading global publications.</p>
+          <p>He brings more than technical mastery. His approach is grounded in patience, instinct and a deep respect for the natural world. In Dominica, he is beside you in the water and behind the lens, helping you understand behaviour, improve your underwater photography and stay present for the encounter itself.</p>
+        </div>
+      </div>
+    </div>
+    <div class="quote-note">"Photography lets me see the Earth in a new way, where I take my time looking at the details that you don't usually see." - Karim Iliya</div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <div class="split reverse">
+      <div>
+        <div class="image-frame wide">
+          <img src="dominica-swim-with-sperm-whales/whale-02.jpg" alt="Snorkeller approaching a sperm whale respectfully">
+        </div>
+      </div>
+      <div class="copy">
+        <div class="section-label">Why This Trip?</div>
+        <div class="section-title">Time, patience and the right people on the water</div>
+        <p class="lead">Wildlife does not work to a timetable. That is why this expedition gives you five full days at sea instead of reducing the experience to one rushed attempt.</p>
+        <p>The local captain and crew bring deep knowledge of Dominica's waters. Karim brings years of experience around whales and a thoughtful approach to underwater storytelling. The six-guest limit keeps every day personal.</p>
+        <p>The goal is not to chase an image at any cost. It is to understand what you are seeing, move with respect and be ready when a rare, natural encounter unfolds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gallery-strip">
+  <img src="dominica-swim-with-sperm-whales/whale-01.jpg" alt="Sperm whale and freediver">
+  <img src="dominica-swim-with-sperm-whales/whale-02.jpg" alt="Snorkeller with sperm whale">
+  <img src="dominica-swim-with-sperm-whales/whale-03.jpg" alt="Two sperm whales swimming together">
+  <img src="dominica-swim-with-sperm-whales/whale-04.jpg" alt="Sperm whale family group">
+</div>
+
+<section class="itinerary page-break">
+  <div class="container">
+    <div class="section-label">Day by Day</div>
+    <div class="section-title">Your 7-day Dominica expedition</div>
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">1</div>
+        </div>
+        <div class="itin-content">
+          <h3>Welcome to Dominica</h3>
+          <p>Arrive at Douglas Charles Airport, where you will be met and transferred to The Champs Hotel in Portsmouth. Meet Karim, your Airguides host and the local team for an evening orientation covering safety, whale days, in-water etiquette and the rhythm of the week.</p>
+        </div>
+        <div class="dive-count">Arrival</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Days</div>
+          <div class="day-number">2-3</div>
+        </div>
+        <div class="itin-content">
+          <h3>The Search Begins</h3>
+          <p>After breakfast, head to the dock for your first full days at sea. Spend around six hours on the water watching for blows, listening for clicks and entering the water only when conditions and the whales allow. Packed lunches keep the group close to the action.</p>
+        </div>
+        <div class="dive-count">At Sea</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">4</div>
+        </div>
+        <div class="itin-content">
+          <h3>Whales, Photography and Island Time</h3>
+          <p>Return to the water with a better feel for the patience, signals and silence behind every encounter. Karim helps you refine your approach, whether that means stronger underwater images or simply learning to stay present.</p>
+        </div>
+        <div class="dive-count">At Sea</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Days</div>
+          <div class="day-number">5-6</div>
+        </div>
+        <div class="itin-content">
+          <h3>Back on the Water</h3>
+          <p>Two more full sea days create the best chance of varied encounters. You may see mothers with calves, social groups, juveniles, or hear the deep communication clicks and codas that sperm whales are known for.</p>
+        </div>
+        <div class="dive-count">At Sea</div>
+      </div>
+      <div class="itin-day">
+        <div>
+          <div class="day-label">Day</div>
+          <div class="day-number">7</div>
+        </div>
+        <div class="itin-content">
+          <h3>Farewell Dominica</h3>
+          <p>After breakfast, transfer back to Douglas Charles Airport. Leave with full memory cards, a deeper understanding of sperm whales and the rare feeling of having shared the water with one of the ocean's most intelligent animals.</p>
+        </div>
+        <div class="dive-count">Departure</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story page-break">
+  <div class="container">
+    <div class="split">
+      <div class="copy">
+        <div class="section-label">Your Base</div>
+        <div class="section-title">Six nights in Portsmouth</div>
+        <p class="lead">The Champs Hotel is your base between days on the water, set above Portsmouth on Dominica's north-west coast.</p>
+        <p>Mornings begin with breakfast before the group heads to the dock. Packed lunches are taken on the boat, while evenings are relaxed and social over shared dinners at the hotel or a local restaurant, depending on the final schedule.</p>
+        <p>Late afternoons leave room to rest, review images, swim or explore more of Dominica's rainforest, coastline and island culture.</p>
+      </div>
+      <div>
+        <div class="image-frame wide">
+          <img src="dominica-swim-with-sperm-whales/whale-03.jpg" alt="Sperm whales moving together through blue water">
+        </div>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-number">6</div>
+        <div class="stat-label">nights in Portsmouth</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">5</div>
+        <div class="stat-label">full days at sea</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">6</div>
+        <div class="stat-label">guest maximum</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">1</div>
+        <div class="stat-label">rare ocean expedition</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="included page-break">
+  <div class="container">
+    <div class="section-label">The Details</div>
+    <div class="section-title">What's included</div>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Included</h3>
+        <ul>
+          <li>Six nights shared accommodation at The Champs Hotel</li>
+          <li>Five full days at sea with a local captain and experienced crew</li>
+          <li>In-water guidance and underwater photography support from Karim Iliya</li>
+          <li>Breakfasts and dinners at the hotel</li>
+          <li>Packed lunches on whale days</li>
+          <li>Airport pickup and drop-off at Douglas Charles Airport</li>
+          <li>Local trip transport and listed activities</li>
+          <li>Airguides expedition support before and during the journey</li>
+        </ul>
+        <p class="field-note">Wildlife encounters and time in the water always depend on whale behaviour, weather, safety and local conditions.</p>
+      </div>
+      <div class="included-col not-included">
+        <h3>Not Included</h3>
+        <ul>
+          <li>International and domestic flights to Dominica</li>
+          <li>Snorkelling gear and personal water equipment</li>
+          <li>Travel, medical and evacuation insurance</li>
+          <li>Optional activities outside the listed itinerary</li>
+          <li>Alcoholic drinks</li>
+          <li>Private room single supplement</li>
+          <li>Tips, gratuities and personal expenses</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq page-break">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">What guests usually need to know</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Are sperm whale encounters guaranteed?</div>
+        <div class="faq-answer">No. These are wild animals and every day at sea is different. Sightings and in-water encounters cannot be scripted or guaranteed, and entering the water always depends on conditions and whale behaviour. Five full days at sea with experienced local captains, crew and Karim give you the strongest possible chance of a respectful, natural encounter.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need to be a photographer?</div>
+        <div class="faq-answer">No. The photography and filmmaking guidance is optional. Some guests come to improve their images, while others come purely for the experience of being in the water with whales.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need scuba certification?</div>
+        <div class="faq-answer">No. Encounters are by snorkelling and, when appropriate, optional freediving. You should be a confident swimmer and comfortable snorkelling in open water.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What is the group size?</div>
+        <div class="faq-answer">The expedition is limited to six guests. The small group keeps boat days personal and supports calm, respectful encounters.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I get to Dominica?</div>
+        <div class="faq-answer">Fly into Douglas Charles Airport, airport code DOM. Airport pickup and drop-off are included, and the Airguides team can help with flight routing before you book.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing page-break">
+  <div class="container">
+    <div class="section-label">Pricing &amp; Dates</div>
+    <div class="section-title">Choose your 2027 departure</div>
+    <div class="price-layout">
+      <div class="price-card">
+        <h3>Trip Price</h3>
+        <div class="price">US$7,500</div>
+        <p class="price-note">Per person in USD for seven days and six nights in Dominica.</p>
+      </div>
+      <div class="price-card">
+        <h3>Deposit</h3>
+        <div class="price">25%</div>
+        <p class="price-note">Reserve with 25% now and pay the remaining balance later, subject to the final booking terms.</p>
+      </div>
+    </div>
+    <div class="date-pill">13 April to 19 April 2027 (Confirmed)</div>
+    <div class="date-pill">18 April to 24 April 2027 (Confirmed)</div>
+    <div class="date-pill">24 April to 30 April 2027 (Pre-registration)</div>
+    <div class="date-pill">29 April to 5 May 2027 (Pre-registration)</div>
+    <p class="field-note">Availability, room type and final inclusions should be confirmed with Airguides at the time of booking.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Five days at sea. Six guests. One rare chance to meet wild sperm whales.</div>
+    <p class="cta-sub">Get in touch to check availability, talk through flights and choose the right 2027 departure.</p>
+    <a class="cta-button" href="https://airguides.com/products/dominica-swim-with-sperm-whales">Check Dates &amp; Availability</a>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:hello@airguides.com">hello@airguides.com</a>
+      </div>
+      <div class="contact-item">
+        <span>Phone / WhatsApp</span>
+        <a href="tel:+61402552918">(+61) 402 552 918</a>
+      </div>
+      <div class="contact-item">
+        <span>Website</span>
+        <a href="https://airguides.com">airguides.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="https://airguides.com">airguides.com</a> | Dominica: Swim with Sperm Whales | Copyright Airguides
+</footer>
+
+</body>
+</html>
