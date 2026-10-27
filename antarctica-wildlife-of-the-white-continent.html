@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antarctica: Wildlife of the White Continent | Airguides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --abyss: #04131b;
+    --deep: #082333;
+    --reef: #0c6d73;
+    --aqua: #55d6d2;
+    --foam: #eaf8f5;
+    --mist: #9eb9bd;
+    --sand: #e8d3b2;
+    --coral: #ef7f67;
+    --ink: #102229;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--white);
+    background: var(--abyss);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 58px 42px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(4,19,27,0.08) 0%, rgba(4,19,27,0.08) 30%, rgba(4,19,27,0.62) 68%, rgba(4,19,27,0.98) 100%),
+      linear-gradient(to right, rgba(4,19,27,0.7) 0%, rgba(4,19,27,0.28) 52%, rgba(4,19,27,0.04) 100%);
+  }
+  .hero-logo {
+    position: absolute;
+    top: 38px;
+    left: 42px;
+    z-index: 2;
+  }
+  .hero-logo img { width: auto; height: 36px; opacity: 0.95; }
+  .hero-content { position: relative; z-index: 2; max-width: 760px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 6.5vw, 82px);
+    line-height: 1.02;
+    letter-spacing: 0;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero-sub {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.62;
+    max-width: 650px;
+  }
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 18px;
+    margin-top: 38px;
+    max-width: 820px;
+  }
+  .meta-item {
+    border-top: 1px solid rgba(255,255,255,0.18);
+    padding-top: 14px;
+  }
+  .meta-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .meta-value { color: var(--white); font-size: 15px; font-weight: 700; line-height: 1.3; }
+
+  section { padding: 96px 42px; }
+  .container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-label {
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(33px, 4vw, 50px);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+  .lead {
+    color: var(--foam);
+    font-size: 18px;
+    line-height: 1.72;
+    margin-bottom: 18px;
+  }
+  .copy p {
+    color: var(--mist);
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 16px;
+  }
+
+  .highlights, .testimonial, .why, .faq, .cta { background: var(--deep); }
+  .story, .guide, .itinerary, .boat, .included, .pricing, .route { background: var(--abyss); }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 34px;
+  }
+  .highlight-card {
+    min-height: 178px;
+    padding: 24px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .highlight-kicker {
+    color: var(--coral);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .highlight-card h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .highlight-card p {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .split.reverse { grid-template-columns: 0.92fr 1.08fr; }
+  .image-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .image-frame.tall { aspect-ratio: 4/5; }
+  .image-frame.wide { aspect-ratio: 16/10; }
+  .image-frame.square { aspect-ratio: 1; }
+  .image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .caption {
+    color: var(--mist);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+
+  .testimonial {
+    text-align: center;
+  }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.1vw, 34px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--sand);
+    max-width: 900px;
+    margin: 0 auto 28px;
+  }
+  .testimonial cite {
+    color: var(--mist);
+    font-size: 14px;
+    font-style: normal;
+  }
+  .testimonial strong { color: var(--white); }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 44px;
+    margin-top: 34px;
+  }
+  .guide-card {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 26px;
+    align-items: center;
+    padding: 26px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .guide-photo {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .guide-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .guide-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .guide-role {
+    color: var(--aqua);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .guide-card p {
+    color: var(--mist);
+    font-size: 13px;
+    line-height: 1.62;
+    margin-bottom: 11px;
+  }
+
+  .quote-note {
+    margin-top: 30px;
+    padding: 26px 30px;
+    border-left: 3px solid var(--coral);
+    background: rgba(255,255,255,0.04);
+    color: var(--foam);
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 0;
+    background: var(--abyss);
+  }
+  .gallery-strip img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .itinerary-list {
+    display: grid;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .itin-day {
+    display: grid;
+    grid-template-columns: 84px 1fr 96px;
+    gap: 22px;
+    align-items: start;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .itin-day:first-child { border-top: 0; padding-top: 0; }
+  .day-label {
+    color: var(--mist);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .day-number {
+    color: var(--aqua);
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .itin-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    line-height: 1.15;
+    margin-bottom: 7px;
+  }
+  .itin-content p {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.62;
+  }
+  .dive-count {
+    color: var(--sand);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: right;
+    padding-top: 8px;
+  }
+
+  .route-map {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #dfe5ea;
+  }
+  .route-map img { width: 100%; height: auto; }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .stat {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+  }
+  .stat-number {
+    color: var(--sand);
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    color: var(--mist);
+    font-size: 12px;
+    line-height: 1.45;
+    font-weight: 700;
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    margin-top: 34px;
+  }
+  .included-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    position: relative;
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 0 11px 22px;
+  }
+  .included-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--aqua);
+  }
+  .not-included li::before { background: var(--coral); }
+  .field-note {
+    color: var(--mist);
+    font-size: 12px;
+    line-height: 1.55;
+    margin-top: 14px;
+  }
+
+  .faq-list {
+    max-width: 860px;
+    margin: 36px auto 0;
+  }
+  .faq-item {
+    padding: 22px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .faq-item:first-child { border-top: 0; padding-top: 0; }
+  .faq-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    line-height: 1.2;
+    margin-bottom: 9px;
+  }
+  .faq-answer {
+    color: var(--mist);
+    font-size: 14px;
+    line-height: 1.62;
+  }
+
+  .price-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    margin-top: 34px;
+  }
+  .price-card {
+    padding: 32px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .price-card h3 {
+    color: var(--mist);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .price-note { color: var(--mist); font-size: 14px; line-height: 1.55; }
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--sand);
+    border: 1px solid rgba(232,211,178,0.35);
+    border-radius: 999px;
+    padding: 12px 18px;
+    font-weight: 800;
+    margin-top: 20px;
+  }
+
+  .cta { text-align: center; }
+  .cta .section-title { max-width: 820px; margin-left: auto; margin-right: auto; }
+  .cta-sub {
+    color: var(--mist);
+    font-size: 18px;
+    line-height: 1.65;
+    max-width: 640px;
+    margin: 0 auto 34px;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--aqua);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 17px 42px;
+    border-radius: 999px;
+  }
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .contact-item {
+    color: var(--mist);
+    font-size: 14px;
+  }
+  .contact-item span {
+    display: block;
+    color: var(--aqua);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .contact-item a { color: var(--white); text-decoration: none; }
+
+  .footer {
+    color: var(--mist);
+    text-align: center;
+    font-size: 12px;
+    padding: 34px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer a { color: var(--foam); text-decoration: none; }
+
+  .page-break { break-before: page; }
+  .hero { break-after: page; }
+  .gallery-strip { break-before: page; break-after: page; }
+  .split, .guide-card, .highlight-card, .itin-day, .faq-item, .price-card { break-inside: avoid; }
+
+  @page { size: A4; margin: 0; }
+
+  @media (max-width: 860px) {
+    .hero { min-height: 700px; padding: 40px 24px; }
+    .hero-logo { top: 24px; left: 24px; }
+    .hero-meta { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+    section { padding: 64px 24px; }
+    .highlights-grid, .split, .split.reverse, .guide-grid, .included-grid, .price-layout { grid-template-columns: 1fr; gap: 30px; }
+    .guide-card { grid-template-columns: 1fr; }
+    .guide-photo { width: min(260px, 100%); }
+    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    .itin-day { grid-template-columns: 68px 1fr; }
+    .dive-count { grid-column: 2; text-align: left; padding-top: 0; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print {
+    body, * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { width: 210mm; background: var(--abyss); }
+    section {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 17mm 14mm;
+      display: flex;
+      align-items: center;
+      break-before: page;
+      break-after: page;
+      page-break-before: always;
+      page-break-after: always;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+    .container { width: 100%; max-width: none; }
+    .hero {
+      width: 210mm;
+      height: 297mm;
+      min-height: 0;
+      padding: 18mm 14mm;
+      break-before: auto;
+      page-break-before: auto;
+      box-shadow: none;
+    }
+    .hero-logo { top: 16mm; left: 14mm; }
+    .hero-logo img { height: 28px; }
+    .hero h1 { font-size: 50px; max-width: 680px; }
+    .hero-sub { font-size: 14px; line-height: 1.52; max-width: 600px; }
+    .hero-meta { grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; max-width: none; }
+    .meta-value { font-size: 12px; }
+    .section-title { font-size: 33px; margin-bottom: 14px; }
+    .section-label { font-size: 10px; margin-bottom: 10px; }
+    .lead { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+    .copy p { font-size: 11px; line-height: 1.43; margin-bottom: 8px; }
+    .highlights-grid { grid-template-columns: repeat(3, 1fr); }
+    .highlights-grid { gap: 12px; margin-top: 24px; }
+    .highlight-card { min-height: 134px; padding: 18px; }
+    .highlight-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .highlight-card p { font-size: 10px; line-height: 1.42; }
+    .highlight-kicker { font-size: 9px; margin-bottom: 9px; }
+    .split { grid-template-columns: 1.05fr 0.95fr; }
+    .split.reverse { grid-template-columns: 0.92fr 1.08fr; }
+    .split, .split.reverse { gap: 34px; align-items: center; }
+    .image-frame.tall { aspect-ratio: 4/4.55; }
+    .image-frame.wide { aspect-ratio: 16/8.7; }
+    .caption { font-size: 9px; margin-top: 7px; }
+    .testimonial blockquote { font-size: 25px; line-height: 1.42; }
+    .testimonial cite { font-size: 12px; }
+    .guide-grid { grid-template-columns: repeat(2, 1fr); }
+    .guide-grid { gap: 18px; }
+    .guide-card { grid-template-columns: 150px 1fr; gap: 18px; padding: 18px; }
+    .guide-photo { width: auto; }
+    .guide-card h3 { font-size: 22px; }
+    .guide-role { font-size: 9px; margin-bottom: 9px; }
+    .guide-card p { font-size: 9.4px; line-height: 1.38; margin-bottom: 7px; }
+    .quote-note { font-size: 17px; line-height: 1.42; padding: 20px 22px; margin-top: 20px; }
+    .gallery-strip {
+      width: 210mm;
+      height: 297mm;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0;
+    }
+    .gallery-strip img { aspect-ratio: auto; height: 100%; }
+    .itinerary-list { gap: 0; margin-top: 20px; }
+    .itin-day { grid-template-columns: 70px 1fr 72px; gap: 16px; padding: 12px 0; }
+    .day-number { font-size: 26px; }
+    .itin-content h3 { font-size: 18px; margin-bottom: 5px; }
+    .itin-content p { font-size: 10.4px; line-height: 1.34; }
+    .dive-count { grid-column: auto; text-align: right; font-size: 9px; }
+    .route-map { max-height: 144mm; }
+    .stat-grid { grid-template-columns: repeat(4, 1fr); }
+    .stat-grid { gap: 8px; margin-top: 18px; }
+    .stat { padding: 12px; }
+    .stat-number { font-size: 28px; }
+    .stat-label { font-size: 9.5px; }
+    .included-grid { grid-template-columns: 1.05fr 0.95fr; }
+    .included-grid { gap: 34px; margin-top: 22px; }
+    .included-col h3 { font-size: 20px; margin-bottom: 12px; }
+    .included-col li { font-size: 10px; line-height: 1.32; padding-bottom: 7px; }
+    .included-col li::before { width: 6px; height: 6px; top: 5px; }
+    .field-note { font-size: 9px; }
+    .faq-list { margin-top: 20px; max-width: none; }
+    .faq-item { padding: 12px 0; }
+    .faq-question { font-size: 17px; margin-bottom: 5px; }
+    .faq-answer { font-size: 10.2px; line-height: 1.34; }
+    .price-layout { grid-template-columns: repeat(2, 1fr); }
+    .price-layout { gap: 18px; margin-top: 22px; }
+    .price-card { padding: 24px; }
+    .price { font-size: 39px; }
+    .price-note { font-size: 11px; line-height: 1.42; }
+    .date-pill { font-size: 12px; padding: 10px 14px; }
+    .cta-sub { font-size: 14px; }
+    .footer { display: none; }
+  }
+</style>
+<style>
+  .guide-grid { grid-template-columns: 1fr; max-width: 920px; }
+  .guide-card { grid-template-columns: 250px 1fr; }
+  @media (max-width: 860px) {
+    .guide-card { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .guide-grid { grid-template-columns: 1fr; max-width: none; }
+    .guide-card { grid-template-columns: 190px 1fr; }
+  }
+</style>
+</head>
+<body>
+<!-- Draft brochure source: current live Shopify product page, checked 27 October 2026. -->
+<section class="hero">
+  <div class="hero-bg"><img src="antarctica-wildlife-of-the-white-continent/hero.jpg" alt="Antarctica: Wildlife of the White Continent"></div>
+  <div class="hero-logo"><img src="antarctica-wildlife-of-the-white-continent/airguides-logo-white.png" alt="Airguides"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Private Small-Vessel Expedition</div>
+    <h1>Antarctica: Wildlife of the White Continent</h1>
+    <p class="hero-sub">Twenty-seven nights aboard Meridian with wildlife photographer Martin Gregus, a flexible route and only 12 guests.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><div class="meta-label">Dates</div><div class="meta-value">27 November - 24 December 2027</div></div>
+    <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-value">28 Days / 27 Nights</div></div>
+    <div class="meta-item"><div class="meta-label">Group Size</div><div class="meta-value">Maximum 12 Guests</div></div>
+    <div class="meta-item"><div class="meta-label">Trip Price</div><div class="meta-value">US$33,850</div></div>
+  </div>
+</section>
+
+<section class="highlights page-break">
+  <div class="container">
+    <div class="section-label">Highlights</div>
+    <div class="section-title">Twenty-seven nights to explore, wait and stay with the moment</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-kicker">01</div>
+        <h3>27 Nights Aboard Meridian</h3>
+        <p>A long-format expedition with enough time to move beyond a quick Antarctic overview.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">02</div>
+        <h3>Only 12 Guests</h3>
+        <p>The entire vessel is chartered for a small group, keeping the experience personal and flexible.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">03</div>
+        <h3>Early Antarctic Summer</h3>
+        <p>Active penguin colonies, seals, returning whales and dramatic ice at the opening of the season.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">04</div>
+        <h3>Daily Field Time</h3>
+        <p>Zodiac excursions, shore landings and wildlife scouting whenever conditions allow.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">05</div>
+        <h3>Flexible Routing</h3>
+        <p>The captain and expedition team can respond to weather, wildlife, sea ice and the best available light.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-kicker">06</div>
+        <h3>Martin Gregus</h3>
+        <p>Photography workshops, field guidance, presentations, image reviews and storytelling sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story page-break">
+  <div class="container"><div class="split">
+    <div class="copy">
+      <div class="section-label">About the Experience</div>
+      <div class="section-title">Let the ice, wildlife and light set the pace</div>
+      <p class="lead">Antarctica is not a place you can force into a schedule. The ice moves, the weather decides, and the wildlife reveals itself only when the moment is right.</p>
+      <p>This 27-night expedition aboard Meridian is built around that truth. With the entire vessel chartered for just 12 guests, the route can flex around weather, light and wildlife.</p>
+<p>Early December marks the beginning of the Antarctic summer. Penguin colonies are alive with activity, seals move through the ice, whales begin returning to feeding grounds, and the landscape still carries the raw feeling of the season opening.</p>
+<p>Martin brings the patience of a wildlife photographer to every day in the field. This is about learning to read the ice, understand animal behaviour, wait for the right light and experience Antarctica with the time it deserves.</p>
+    </div>
+    <div><div class="image-frame tall"><img src="antarctica-wildlife-of-the-white-continent/penguins.jpg" alt="Penguins in the Antarctic landscape"></div></div>
+  </div></div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote>&quot;To be in the presence of a unique visionary like Martin Gregus and be welcomed into his home away from home in the middle of nowhere is truly a once in a lifetime event right up there with getting married or having a child.&quot;</blockquote>
+    <cite><strong>Anne Prather</strong> · United States</cite>
+  </div>
+</section>
+
+<section class="guide page-break">
+  <div class="container">
+    <div class="section-label">Your Storyteller Guide</div>
+    <div class="section-title">Martin Gregus</div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <div class="guide-photo"><img src="antarctica-wildlife-of-the-white-continent/martin-gregus.jpg" alt="Martin Gregus"></div>
+        <div><h3>Martin Gregus</h3><div class="guide-role">Wildlife Photographer and Cinematographer</div><p>Martin Gregus grew up in Bratislava, Slovakia, in a household full of artists. He learned photography from his father and was exploring local wildlife with a camera before most kids had decided what they wanted to do with their lives.</p>
+<p>His work has taken him across all seven continents and some of the most remote ecosystems on the planet. He has earned two wins and two nominations at Wildlife Photographer of the Year, and his polar bear project, 33 Days Among the Bears, became an international story after National Geographic coverage.</p>
+<p>His cinematography has contributed to productions for Disney, BBC and Netflix. In the field, Martin teaches patience, preparation and how to read wildlife, weather and light.</p></div>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-number">20+</div><div class="stat-label">years of experience</div></div>
+      <div class="stat"><div class="stat-number">200+</div><div class="stat-label">global expeditions</div></div>
+      <div class="stat"><div class="stat-number">7</div><div class="stat-label">continents explored</div></div>
+      <div class="stat"><div class="stat-number">730k+</div><div class="stat-label">social followers</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container"><div class="split reverse">
+    <div><div class="image-frame wide"><img src="antarctica-wildlife-of-the-white-continent/ice-wildlife.jpg" alt="Antarctic ice and wildlife"></div></div>
+    <div class="copy">
+      <div class="section-label">Why This Trip?</div>
+      <div class="section-title">A floating field camp, not a rushed cruise</div>
+      <p>The value of this expedition is time. Twenty-seven nights create room to stay longer when conditions are extraordinary, move toward quieter coastline and let wildlife behaviour shape the day.</p>
+<p>With only 12 guests, Martin can work closely with photographers and wildlife lovers alike. The group can learn from each sighting instead of racing through a fixed checklist.</p>
+<p>This is still true expedition travel. Landings, routes and wildlife encounters depend on weather, ice, safety and permissions. That uncertainty is part of what makes Antarctica real.</p>
+    </div>
+  </div></div>
+</section>
+
+<div class="gallery-strip">
+  <img src="antarctica-wildlife-of-the-white-continent/hero.jpg" alt="Antarctica: Wildlife of the White Continent expedition image 1">
+  <img src="antarctica-wildlife-of-the-white-continent/gallery-01.jpg" alt="Antarctica: Wildlife of the White Continent expedition image 2">
+  <img src="antarctica-wildlife-of-the-white-continent/gallery-03.jpg" alt="Antarctica: Wildlife of the White Continent expedition image 3">
+  <img src="antarctica-wildlife-of-the-white-continent/gallery-04.jpg" alt="Antarctica: Wildlife of the White Continent expedition image 4">
+</div>
+
+<section class="itinerary page-break">
+  <div class="container">
+    <div class="section-label">Day by Day</div>
+    <div class="section-title">Your 28-day Antarctic expedition</div>
+    <div class="itinerary-list">
+      <div class="itin-day">
+        <div><div class="day-label">Day</div><div class="day-number">1</div></div>
+        <div class="itin-content"><h3>Embark Meridian</h3><p>Board at the confirmed departure port, settle into your cabin and meet Martin, your additional guide and the expedition team. After safety briefings and dinner onboard, the voyage begins.</p></div>
+        <div class="dive-count">Expedition</div>
+      </div>
+      <div class="itin-day">
+        <div><div class="day-label">Days</div><div class="day-number">2-4</div></div>
+        <div class="itin-content"><h3>South Across the Southern Ocean</h3><p>Settle into life at sea with wildlife scouting, photography briefings, seabirds from the deck and preparation for Antarctic conditions.</p></div>
+        <div class="dive-count">Expedition</div>
+      </div>
+      <div class="itin-day">
+        <div><div class="day-label">Days</div><div class="day-number">5-8</div></div>
+        <div class="itin-content"><h3>First Ice and First Landings</h3><p>Conditions allowing, begin Zodiac cruising and shore landings among penguin colonies, glacier fronts, sculpted ice and the early signs of summer.</p></div>
+        <div class="dive-count">Expedition</div>
+      </div>
+      <div class="itin-day">
+        <div><div class="day-label">Days</div><div class="day-number">9-18</div></div>
+        <div class="itin-content"><h3>Deep Antarctic Exploration</h3><p>Follow the best windows for wildlife, light and ice. Days may bring Zodiac cruises, shore landings, penguins, seals, whale scouting and field guidance with Martin.</p></div>
+        <div class="dive-count">Expedition</div>
+      </div>
+      <div class="itin-day">
+        <div><div class="day-label">Days</div><div class="day-number">19-24</div></div>
+        <div class="itin-content"><h3>Wildlife, Light and Remote Coastline</h3><p>Stay longer when conditions are exceptional or move toward quieter bays. Expect patient observation, image reviews and the unpredictability that makes Antarctica powerful.</p></div>
+        <div class="dive-count">Expedition</div>
+      </div>
+      <div class="itin-day">
+        <div><div class="day-label">Days</div><div class="day-number">25-27</div></div>
+        <div class="itin-content"><h3>The Return Crossing</h3><p>Head north across the Southern Ocean with editing sessions, presentations, final image reviews and time to reflect on nearly four weeks in Antarctic waters.</p></div>
+        <div class="dive-count">Expedition</div>
+      </div>
+      <div class="itin-day">
+        <div><div class="day-label">Day</div><div class="day-number">28</div></div>
+        <div class="itin-content"><h3>Return from the White Continent</h3><p>Arrive at the confirmed port and disembark after breakfast. Final joining details will be supplied before guests book travel.</p></div>
+        <div class="dive-count">Expedition</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="boat page-break">
+  <div class="container"><div class="split">
+    <div><div class="image-frame wide"><img src="antarctica-wildlife-of-the-white-continent/cabin.jpg" alt="Cabin interior shown on the current trip listing"></div></div>
+    <div class="copy">
+      <div class="section-label">Your Expedition Base</div>
+      <div class="section-title">Twenty-seven nights aboard Meridian</div>
+      <p>Meridian is the base for wildlife scouting, daily briefings, shared meals, workshops and the crossings that connect each landing opportunity.</p>
+<p>The full vessel is chartered for a maximum of 12 guests. This gives the expedition team room to adapt the route and creates more direct time with Martin.</p>
+<p>The final embarkation and disembarkation port is still to be confirmed. Exact joining details will be supplied before guests book travel.</p>
+    </div>
+  </div>
+  <div class="stat-grid">
+      <div class="stat"><div class="stat-number">27</div><div class="stat-label">nights aboard Meridian</div></div>
+      <div class="stat"><div class="stat-number">12</div><div class="stat-label">guest maximum</div></div>
+      <div class="stat"><div class="stat-number">28</div><div class="stat-label">days of expedition travel</div></div>
+      <div class="stat"><div class="stat-number">1</div><div class="stat-label">private vessel charter</div></div>
+  </div></div>
+</section>
+
+<section class="included page-break">
+  <div class="container">
+    <div class="section-label">The Details</div>
+    <div class="section-title">What is included</div>
+    <div class="included-grid">
+      <div class="included-col"><h3>Included</h3><ul><li>27 nights aboard Meridian</li><li>All meals and beverages onboard</li><li>Daily Zodiac excursions and shore landings where conditions allow</li><li>Professional expedition guides</li><li>Photography workshops and presentations with Martin Gregus</li><li>Evening image reviews and storytelling sessions</li><li>Airport and vessel transfers where applicable</li><li>All planned excursions and activities</li><li>Dedicated Airguides expedition leader</li></ul></div>
+      <div class="included-col not-included"><h3>Not Included</h3><ul><li>International and domestic flights</li><li>Hotels before or after the expedition</li><li>Travel insurance, including medical evacuation cover</li><li>Visa or transit fees where applicable</li><li>Personal camera equipment and personal expenses</li><li>Crew gratuities</li><li>Costs caused by weather or travel delays</li></ul></div>
+    </div>
+    <p class="field-note">Final routes, landings and wildlife encounters depend on weather, sea, ice, safety and local permissions.</p>
+  </div>
+</section>
+
+<section class="faq page-break">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">What guests usually need to know</div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-question">Where does the expedition start and finish?</div><div class="faq-answer">The final embarkation and disembarkation port is still to be confirmed. Guests will receive exact joining details before booking travel.</div></div>
+      <div class="faq-item"><div class="faq-question">Is the itinerary or wildlife guaranteed?</div><div class="faq-answer">No. The route is shaped each day by safety, weather, ice, wildlife activity and landing permissions. Wildlife encounters and shore landings cannot be guaranteed.</div></div>
+      <div class="faq-item"><div class="faq-question">Can I join if I am not a photographer?</div><div class="faq-answer">Yes. Martin supports photographers at every level, but the expedition is equally suited to wildlife lovers and adventurous travellers who want to experience Antarctica deeply.</div></div>
+      <div class="faq-item"><div class="faq-question">What fitness level is required?</div><div class="faq-answer">Guests should be comfortable stepping in and out of Zodiacs, walking on uneven or snowy ground and spending time outside in cold, wet and windy conditions.</div></div>
+      <div class="faq-item"><div class="faq-question">Why travel in early December?</div><div class="faq-answer">The opening of the Antarctic summer brings active penguin colonies, seals moving through the ice and whales beginning to return to feeding grounds. Conditions remain wild and changeable.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing page-break">
+  <div class="container">
+    <div class="section-label">Pricing and Dates</div>
+    <div class="section-title">Reserve your place with Airguides</div>
+    <div class="price-layout">
+      <div class="price-card"><h3>Trip Price</h3><div class="price">US$33,850</div><p class="price-note">Per person in USD for the confirmed departure.</p></div>
+      <div class="price-card"><h3>Deposit</h3><div class="price">US$3,750</div><p class="price-note">Per person in USD to reserve your place.</p></div>
+    </div>
+    <div class="date-pill">27 November - 24 December 2027 (Confirmed)</div>
+    <p class="field-note">Trip price, deposit, availability, payment schedule and final inclusions should be confirmed with Airguides at the time of booking.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Twenty-seven nights. Twelve guests. Antarctica with time on your side.</div>
+    <p class="cta-sub">Get in touch to check availability, confirm final joining details and secure your place with a deposit.</p>
+    <a class="cta-button" href="https://airguides.com/products/antarctica-wildlife-of-the-white-continent">Secure Your Spot</a>
+    <div class="contact-row">
+      <div class="contact-item"><span>Email</span><a href="mailto:hello@airguides.com">hello@airguides.com</a></div>
+      <div class="contact-item"><span>Phone / WhatsApp</span><a href="tel:+61402552918">(+61) 402 552 918</a></div>
+      <div class="contact-item"><span>Website</span><a href="https://www.airguides.com">airguides.com</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><a href="https://www.airguides.com">airguides.com</a> | Antarctica: Wildlife of the White Continent | Copyright Airguides</footer>
+</body>
+</html>
